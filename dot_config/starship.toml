@@ -1,0 +1,141 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+username.show_always = true
+
+format = """
+$os\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$vcsh\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$package\
+$deno\
+$nodejs\
+$env_var\
+${custom.asdf}\
+$fill\
+$sudo\
+$cmd_duration\
+$time\
+$line_break\
+$jobs\
+$status\
+$shell\
+$character"""
+
+[nodejs]
+detect_extensions = []
+detect_folders = []
+format = "[$symbol($version )]($style)"
+
+[deno]
+format = "[$symbol($version )]($style)"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[package]
+format = "[$symbol$version]($style) "
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+time_format = "%d/%m/%Y %Hh%M"
+
+[sudo]
+disabled = false
+format = "[$symbol]($style)"
+
+[os]
+disabled = false
+format = "[$symbol]($style) "
+
+[os.symbols]
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = "💠 "
+Alpine = "🏔 "
+Amazon = "🙂 "
+Android = "🤖 "
+Arch = "🎗 "
+Artix = "🎗 "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+Emscripten = "🔗 "
+EndeavourOS = " "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜 "
+HardenedBSD = "🛡 "
+Illumos = "🐦 "
+Kali = "🐉 "
+Linux = "🐧 "
+Mabox = "📦 "
+Macos = " "
+Manjaro = "🥭 "
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "❄️ "
+OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "🦎 "
+OracleLinux = "🦴 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+RockyLinux = "💠 "
+Redox = "🧪 "
+Solus = "⛵️ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Ultramarine = "🔷 "
+Unknown = "❓ "
+Void = "  "
+Windows = "🪟 "
+
+[custom.asdf]
+command = """
+if [ ! -f .tool-versions ]; then
+  echo "No .tool-versions file found"
+  return
+fi
+
+while read -r line; do
+  if [ -z "$line" ]; then
+    continue
+  fi
+  plugin=$(echo $line | cut -d ' ' -f 1)
+  version=$(echo $line | cut -d ' ' -f 2)
+  if [ -z "$version" ]; then
+    echo "No version found for $plugin"
+  else
+    installed=$(asdf list $plugin 2> /dev/null | grep $version)
+    if [ -z "$installed" ]; then
+      echo -n "$plugin v$version "
+    fi
+  fi
+done < .tool-versions
+"""
+detect_files = [".tool-versions"]
+style = "red bold"
+format = "[(missing: $output)]($style)"

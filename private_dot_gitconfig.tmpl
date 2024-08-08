@@ -1,0 +1,17 @@
+# This is Git's per-user configuration file.
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkEqt1+4j1m5Q1ms0z56Bc/LN9GbISX0KOknakaJpjr
+	name = Roz
+	email = {{ .email | quote  }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+  {{- if eq .chezmoi.os "darwin" }}
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+  {{- else if eq .chezmoi.os "linux" }}
+  program = /opt/1Password/op-ssh-sign
+  {{- end }}
+[commit]
+	gpgsign = true
+[push]
+	default = current

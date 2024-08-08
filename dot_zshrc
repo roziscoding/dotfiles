@@ -1,0 +1,102 @@
+eval "$(starship init zsh)"
+
+. "$HOME/.asdf/asdf.sh"
+
+# Fixing completions
+setopt automenu nolistambiguous
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd beep extendedglob nomatch notify
+# End of lines configured by zsh-newuser-install
+
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+# Sets default editor to vim
+export EDITOR=vim
+
+# Loads plugins
+zinit wait lucid for \
+  atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay' \
+    zdharma-continuum/fast-syntax-highlighting \
+  blockf \
+    zsh-users/zsh-completions \
+  atload'!_zsh_autosuggest_start' \
+    zsh-users/zsh-autosuggestions \
+  hlissner/zsh-autopair \
+  zpm-zsh/colorize \
+  Tarrasch/zsh-command-not-found \
+  zpm-zsh/ls \
+  atload'unalias gst; alias gst="git status"' davidde/git \
+  atload'alias python=python3' amstrad/oh-my-matrix \
+  reegnz/jq-zsh-plugin \
+  atload'bindkey "^[[A" history-substring-search-up; bindkey "^[[B" history-substring-search-down;' zsh-users/zsh-history-substring-search \
+  Tarrasch/zsh-colors
+
+# Aliases
+function cz () {
+  code $(z -e $1)
+}
+
+function cfz () {
+  code $(fzf)
+}
+
+function mkd () {
+  mkdir -p $1 && cd $1
+}
+
+function ghc () {
+  OWNER=$(basename $(pwd))
+  gh repo clone $OWNER/$1
+}
+
+function secrets () {
+  eval "$(op inject -i ~/.envs.sh)"
+}
+
+alias rd="rm -rf"
+alias mongo="docker exec -it mongodb mongo"
+alias cat="bat"
+alias cm="chezmoi"
+
+eval "$(zoxide init zsh)"
+source "$HOME/.config/op/plugins.sh"
+
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=${HOME}/.colima/docker.sock
+[[ $(uname -s) == "Darwin" ]] && export DOCKER_HOST="unix:///${HOME}/.colima/docker.sock"
+export TESTCONTAINERS_RYUK_DISABLED=true
