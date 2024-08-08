@@ -1,12 +1,15 @@
 #!/bin/sh
-
-# if we're on macos, use brew dump to install everything,
-# otherwise, assume it's arch and use the pacman
+{{/*
+   * if we're on macos, use brew dump to install everything,
+   *otherwise, assume it's arch and use the pacman
+   */}}
 {{ if eq .chezmoi.os "darwin" -}}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle install --file={{ joinPath .chezmoi.homeDir "Brewfile" }} --no-lock
+  {{ if not (lookPath "brew") }}
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  {{ end }}
+  brew bundle install --file={{ joinPath .chezmoi.homeDir "Brewfile" }} --no-lock
 {{ else if eq .chezmoi.os "linux" }}
-pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+  pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
   {{ if stat (joinPath .chezmoi.homeDir "packages.txt") }}
     yay -S --needed --noconfirm - < {{ joinPath .chezmoi.homeDir "packages.txt" }}
   {{ else -}}
