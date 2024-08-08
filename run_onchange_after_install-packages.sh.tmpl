@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# if we're on macos, use brew dump to install everything,
+# otherwise, assume it's arch and use the pacman
+{{ if eq .chezmoi.os "darwin" -}}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew bundle install --file={{ joinPath .chezmoi.homeDir "Brewfile" }} --no-lock
+{{ else if eq .chezmoi.os "linux" }}
+pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+  {{ if stat (joinPath .chezmoi.homeDir "packages.txt") }}
+    yay -S --needed --noconfirm - < {{ joinPath .chezmoi.homeDir "packages.txt" }}
+  {{ else -}}
+    yay -Sy --noconfirm --needed kitty zsh curl vim
+    curl -sS https://starship.rs/install.sh | sh
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+  {{ end -}}
+{{ end -}}
