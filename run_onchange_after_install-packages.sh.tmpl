@@ -1,20 +1,27 @@
 #!/bin/sh
 {{/*
-   * if we're on macos, use brew dump to install everything,
-   *otherwise, assume it's arch and use the pacman
-   */}}
-{{ if eq .chezmoi.os "darwin" -}}
-  {{ if not (lookPath "brew") }}
+     * if we're on macos, use brew dump to install everything,
+     * otherwise, assume it's arch and use the pacman
+     */}}
+{{- if eq .chezmoi.os "darwin" -}}
+  {{- if not (lookPath "brew") -}}
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  {{ end }}
-  brew bundle install --file={{ joinPath .chezmoi.homeDir "Brewfile" }} --no-lock
+  {{- end -}}
+  brew bundle install --file="~/Brewfile" --no-lock
 {{ else if eq .chezmoi.os "linux" }}
   pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
-  {{ if stat (joinPath .chezmoi.homeDir "packages.txt") }}
-    yay -S --needed --noconfirm - < {{ joinPath .chezmoi.homeDir "packages.txt" }}
-  {{ else -}}
+  {{ if stat "~/packages.txt" }}
+    yay -S --needed --noconfirm - < ~/packages.txt
+  {{ else }}
     yay -Sy --noconfirm --needed kitty zsh curl vim
     curl -sS https://starship.rs/install.sh | sh
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-  {{ end -}}
+  {{ end }}
 {{ end -}}
+
+{{/* Packages I want installed on every machine, not handled by package managers */}}
+{{- if not (stat (joinPath .chezmoi.homeDir ".asdf")) -}}
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch {{ (gitHubLatestRelease "asdf-vm/asdf" ).TagName }}
+{{ end }}
+{{- if not (stat (joinPath .chezmoi.homeDir ".vim/pack/plugins/opt/chezmoi.vim")) -}}
+  git clone https://github.com/alker0/chezmoi.vim ~/.vim/pack/plugins/opt/chezmoi.vim
+{{ end }}

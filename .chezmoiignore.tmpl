@@ -2,3 +2,6 @@ LICENSE
 {{ if eq .chezmoi.os "darwin" -}}
   backup_packages.sh
 {{ end }}
+{{ if eq .chezmoi.os "linux" -}}
+  Brewfile
+{{ end }}
