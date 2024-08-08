@@ -95,7 +95,9 @@ alias cat="bat"
 alias cm="chezmoi"
 
 eval "$(zoxide init zsh)"
-source "$HOME/.config/op/plugins.sh"
+{{ if stat (joinPath .chezmoi.homeDir ".config/op/plugins.sh") -}}
+  source "$HOME/.config/op/plugins.sh"
+{{ end }}
 
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=${HOME}/.colima/docker.sock
 [[ $(uname -s) == "Darwin" ]] && export DOCKER_HOST="unix:///${HOME}/.colima/docker.sock"

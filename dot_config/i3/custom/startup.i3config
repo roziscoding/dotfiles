@@ -1,0 +1,15 @@
+# launch picom
+exec_always --no-startup-id picom
+
+# launch polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# clipboard management
+exec_always --no-startup-id greenclip daemon
+
+# wallpaper
+exec_always --no-startup-id feh --bg-fill -z ~/Pictures/BingWallpaper/
+
+# automatic screen lock
+exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy-rapid 10 30"
+

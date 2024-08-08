@@ -1,0 +1,1 @@
+echo -n $(cat ~/.fehbg | awk -F" " '{print $4}' | sed "s/'//g")

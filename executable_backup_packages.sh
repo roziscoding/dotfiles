@@ -16,7 +16,7 @@
 #The net result is all needed packages that are not required
 #(avoids system pacakge re-installations), adding groups that don't #match required pacakges, and downloaded packages that don't match #group packages.  A nice CLEAN list :)
 #
-pacman -Qqet | grep -v "$(pacman -Qqg base)" | grep -v "$(pacman -Qqm)" > ~/packages.txt
+pacman -Qqet | grep -v "$(pacman -Qqn base)" | grep -v "$(pacman -Qqm)" > ~/packages.txt
 #
 
 # List modified config files, credit uoou of reddit

@@ -1,6 +1,10 @@
 LICENSE
 {{ if eq .chezmoi.os "darwin" -}}
   backup_packages.sh
+  .config/i3
+  .config/rofi
+  .config/polybar
+  .config/dunst
 {{ end }}
 {{ if eq .chezmoi.os "linux" -}}
   Brewfile

@@ -1,0 +1,17 @@
+bindsym $mod+Shift+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+# opens i3 config in vscode
+bindsym $mod+Shift+c exec --no-startup-id code ~/.config/i3
+# reload the configuration file
+bindsym $mod+Shift+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Ctrl+Shift+r restart
+# lock screen
+bindsym $mod+l exec --no-startup-id "i3lock-fancy-rapid 10 30";
+# take screenshot
+bindsym Print exec --no-startup-id "flameshot gui"
+# take screenshot of whole screen
+bindsym Shift+Print exec --no-startup-id "flameshot screen -c"
+# take screenshot of full display
+bindsym Ctrl+Print exec --no-startup-id "flameshot full -c"
+# show power menu
+bindsym Ctrl+$mod+Delete exec "rofi -show power-menu -modi power-menu:/home/roziscoding/.local/bin/rofi-power-menu
