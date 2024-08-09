@@ -14,7 +14,7 @@ set number
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
 " Highlight cursor line underneath the cursor vertically.
-set cursorcolumn
+" set cursorcolumn
 " Set shift width to 4 spaces.
 set shiftwidth=2
 " Set tab width to 4 columns.
@@ -60,3 +60,4 @@ augroup END
 
 " Clears search when hitting return again
 nnoremap <silent> <cr> :noh<CR><CR>
+
