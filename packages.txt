@@ -1,0 +1,133 @@
+alsa-firmware
+alsa-plugins
+alsa-utils
+amd-ucode
+arandr
+arc-gtk-theme-eos
+autorandr
+b43-fwcutter
+bluez-utils
+btop
+chezmoi
+direnv
+discord
+dive
+docker
+docker-compose
+downgrade
+duf
+efitools
+endeavouros-keyring
+endeavouros-mirrorlist
+eos-apps-info
+eos-dracut
+eos-hooks
+eos-log-tool
+eos-packagelist
+eos-rankmirrors
+eos-settings-gnome
+eos-update-notifier
+ethtool
+eza
+fastfetch
+ffmpegthumbnailer
+file-roller
+firefox
+flameshot
+fsarchiver
+gdm
+glances
+gnome-browser-connector
+gnome-calculator
+gnome-clocks
+gnome-console
+gnome-font-viewer
+gnome-nettool
+gnome-power-manager
+gnome-screenshot
+gnome-system-monitor
+gnome-text-editor
+gnome-tweaks
+gnome-usage
+gnome-weather
+grub
+haveged
+hdparm
+hwdetect
+hwinfo
+inetutils
+jdk8-openjdk
+jfsutils
+kitty
+libsixel
+libwnck3
+logrotate
+loupe
+lsb-release
+lsscsi
+lxappearance-gtk3
+man-db
+man-pages
+mpc
+mpd
+nano-syntax-highlighting
+nautilus
+netctl
+networkmanager-openconnect
+networkmanager-openvpn
+ntp
+nushell
+nvidia-dkms
+nvidia-hook
+nvidia-inst
+pavucontrol
+picom
+pkgfile
+playerctl
+pv
+python-pyqt5
+rebuild-detector
+sg3_utils
+sof-firmware
+starship
+sushi
+telegram-desktop
+thunderbird
+tldr
+totem
+ttf-opensans
+vi
+welcome
+xautolock
+xdg-user-dirs-gtk
+xl2tpd
+xorg-xinit
+xorg-xinput
+xorg-xkill
+zoxide
+1password 8.10.36-46
+1password-cli 2.29.0-1
+cura-bin 5.7.2-2
+datagrip 2024.1.4-1
+google-chrome 127.0.6533.72-1
+i3lock-fancy-rapid-git r19.6eeebd4-2
+i3lock-fancy-rapid-git-debug r19.6eeebd4-2
+insomnia 9.3.2-1
+libgda 5.2.10-5
+nautilus-sendto 3.8.6+28+gc87aac4-3
+nautilus-sendto-debug 3.8.6+28+gc87aac4-3
+networkmanager-dmenu-git r201.6ad647e-1
+nvm 0.39.7-1
+overskride 0.5.7-1
+overskride-debug 0.5.7-1
+polybar-themes-git 1:r73.39c73cc-1
+postman-bin 11.3.2-1
+prismlauncher-bin-debug 8.3-1
+rofi-code-git 0.2.r5.gf053229-1
+rofi-code-git-debug 0.2.r5.gf053229-1
+rofi-greenclip 4.2-3
+spotify-player-full-pipe 0.19.1-1
+spotify-player-full-pipe-debug 0.19.1-1
+visual-studio-code-bin 1.92.0-1
+visual-studio-code-bin-debug 1.92.0-1
+zscroll-git 2.0.1.r4.g35c50fa-1
