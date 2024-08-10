@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "vue-language-server" }
+        ensure_installed = { "lua_ls", "tsserver", "volar" }
       })
     end
   },
