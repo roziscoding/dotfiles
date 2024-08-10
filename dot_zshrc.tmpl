@@ -47,7 +47,7 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 # Sets default editor to vim
-export EDITOR=vim
+export EDITOR=nvim
 
 # Loads plugins
 zinit wait lucid for \
@@ -89,10 +89,16 @@ function secrets () {
   eval "$(op inject -i ~/.envs.sh)"
 }
 
+function wreboot () {
+        sudo efibootmgr -n 0
+        sudo reboot
+}
+
 alias rd="rm -rf"
 alias mongo="docker exec -it mongodb mongo"
 alias cat="bat"
 alias cm="chezmoi"
+alias spt="spotify_player"
 
 eval "$(zoxide init zsh)"
 {{ if stat (joinPath .chezmoi.homeDir ".config/op/plugins.sh") -}}
