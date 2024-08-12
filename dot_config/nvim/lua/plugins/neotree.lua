@@ -26,6 +26,7 @@ return {
         local stats = vim.uv.fs_stat(args.file)
 
         if not stats or stats.type ~= "directory" then
+          require("neo-tree.sources.manager").show("filesystem")
           return
         end
 
@@ -36,7 +37,8 @@ return {
     })
   end,
   config = function(_, opts)
-    require("neo-tree").setup(opts)
+    local neotree = require("neo-tree")
+    neotree.setup(opts)
     vim.api.nvim_create_augroup("load_neo_tree", {})
   end,
 }
