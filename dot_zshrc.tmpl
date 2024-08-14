@@ -108,3 +108,6 @@ eval "$(zoxide init zsh)"
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=${HOME}/.colima/docker.sock
 [[ $(uname -s) == "Darwin" ]] && export DOCKER_HOST="unix:///${HOME}/.colima/docker.sock"
 export TESTCONTAINERS_RYUK_DISABLED=true
+
+eval "$(direnv hook zsh)"
+
