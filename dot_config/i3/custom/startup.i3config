@@ -13,3 +13,5 @@ exec_always --no-startup-id feh --bg-fill -z ~/Pictures/BingWallpaper/
 # automatic screen lock
 exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy-rapid 10 30"
 
+# launch 1password
+exec_always --no-startup-id 1password
