@@ -19,6 +19,7 @@
   graph = log --all --graph --decorate --oneline --abbrev-commit
   SelectLocalBranches = !git branch | (grep -v \"*\" > /dev/null) && (git branch | grep -v \"*\" | ipt -M \"Select local branches$EXTRA_MESSAGE:\" -am)
   db = !EXTRA_MESSAGE=\" to delete\" git SelectLocalBranches | xargs git branch -d
+  gone = "!git branch -vv | gawk '{print $1,$4}' | grep 'gone]' | gawk '{print $1}'"
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [url "ssh://git@gitlab.com/"]
