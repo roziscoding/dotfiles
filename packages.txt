@@ -6,6 +6,7 @@ arandr
 arc-gtk-theme-eos
 autorandr
 b43-fwcutter
+bat
 bluez-utils
 btop
 chezmoi
@@ -59,6 +60,7 @@ inetutils
 jdk8-openjdk
 jfsutils
 kitty
+lazygit
 libsixel
 libwnck3
 logrotate
@@ -72,6 +74,7 @@ mpc
 mpd
 nano-syntax-highlighting
 nautilus
+neovim
 netctl
 networkmanager-openconnect
 networkmanager-openvpn
@@ -85,10 +88,10 @@ picom
 pkgfile
 playerctl
 pv
-python-pyqt5
 rebuild-detector
 sg3_utils
 sof-firmware
+solaar
 starship
 sushi
 telegram-desktop
@@ -100,6 +103,7 @@ vi
 welcome
 xautolock
 xdg-user-dirs-gtk
+xdotool
 xl2tpd
 xorg-xinit
 xorg-xinput
@@ -107,6 +111,11 @@ xorg-xkill
 zoxide
 1password 8.10.36-46
 1password-cli 2.29.0-1
+cava 0.10.2-2
+cava-debug 0.10.2-2
+cavalier 2024.1.0-1
+cavalier-debug 2024.1.0-1
+cavasik v2.0.1-1
 cura-bin 5.7.2-2
 datagrip 2024.1.4-1
 google-chrome 127.0.6533.72-1

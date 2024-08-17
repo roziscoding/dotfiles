@@ -65,7 +65,8 @@ zinit wait lucid for \
   atload'alias python=python3' amstrad/oh-my-matrix \
   reegnz/jq-zsh-plugin \
   atload'bindkey "^[[A" history-substring-search-up; bindkey "^[[B" history-substring-search-down;' zsh-users/zsh-history-substring-search \
-  Tarrasch/zsh-colors
+  Tarrasch/zsh-colors \
+  Aloxaf/fzf-tab
 
 # Aliases
 function cz () {
@@ -111,3 +112,4 @@ export TESTCONTAINERS_RYUK_DISABLED=true
 
 eval "$(direnv hook zsh)"
 
+source <(fzf --zsh)
