@@ -14,4 +14,4 @@ bindsym Shift+Print exec --no-startup-id "flameshot screen -c"
 # take screenshot of full display
 bindsym Ctrl+Print exec --no-startup-id "flameshot full -c"
 # show power menu
-bindsym Ctrl+$mod+Delete exec "rofi -show power-menu -modi power-menu:/home/roziscoding/.local/bin/rofi-power-menu
+bindsym Ctrl+$mod+Delete exec "rofi -show power-menu -modi power-menu:/home/roziscoding/.local/bin/rofi-power-menu"
