@@ -15,3 +15,6 @@ exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy-rapid 10 30
 
 # launch 1password
 exec_always --no-startup-id 1password
+
+# set monitor layout
+exec_always --no-startup-id ~/.screenlayout/default.sh
