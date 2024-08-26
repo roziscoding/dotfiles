@@ -1195,7 +1195,7 @@ background_blur 10
 #: macOS and KDE.
 
 {{ if eq .chezmoi.os "darwin" }}
-background_image /Users/user/Pictures/rainbow-cat.png
+background_image {{ joinPath .chezmoi.homeDir "Pictures/rainbow-cat.png" }}
 {{ end }}
 
 #: Path to a background image. Must be in PNG format.
