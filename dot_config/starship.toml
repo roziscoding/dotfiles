@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-
+command_timeout = 5000
 username.show_always = true
 
 format = """
@@ -139,3 +139,4 @@ done < .tool-versions
 detect_files = [".tool-versions"]
 style = "red bold"
 format = "[(missing: $output)]($style)"
+ignore_timeout = true
