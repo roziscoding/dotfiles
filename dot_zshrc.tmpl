@@ -95,7 +95,14 @@ function wreboot () {
         sudo reboot
 }
 
-alias rd="rm -rf"
+function rd () {
+    echo -n "Deleting $1. Continue? [y/n] "
+    read REPLY
+    case $REPLY in
+      [Yy]) rm -rf $1 ;;
+    esac
+}
+
 alias mongo="docker exec -it mongodb mongo"
 alias cat="bat"
 alias cm="chezmoi"

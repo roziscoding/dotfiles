@@ -4,4 +4,4 @@ github-cli 2.52.0
 jq 1.7.1
 httpie-go 0.7.0
 bun 1.1.26
-deno 1.46.1
+deno 1.46.2
