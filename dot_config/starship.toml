@@ -37,6 +37,7 @@ $shell\
 $character"""
 
 [username]
+format = "[$user]($style) in "
 show_always = true
 aliases = { "user" = "roziscoding" }
 
