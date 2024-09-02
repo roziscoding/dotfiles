@@ -11,6 +11,7 @@ $hostname\
 $localip\
 $shlvl\
 $singularity\
+$username\
 $directory\
 $vcsh\
 $fossil_metrics\
@@ -34,6 +35,10 @@ $jobs\
 $status\
 $shell\
 $character"""
+
+[username]
+show_always = true
+aliases = { "user" = "roziscoding" }
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -91,7 +96,7 @@ format = "[$symbol]($style)"
 
 [os]
 disabled = false
-format = "[$symbol]($style) "
+format = "[$symbol]($style)"
 
 [os.symbols]
 AIX = "➿ "
