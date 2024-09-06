@@ -1,0 +1,106 @@
+{
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.8,
+    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
+    "codesnap-plus.shutterAction": "copy",
+    "codesnap-plus.containerPadding": "0",
+    "editor.fontLigatures": true,
+    "terminal.integrated.scrollback": 10000000000000,
+    "editor.tabSize": 2,
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.cursorStyle": "underline",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+    "terminal.integrated.showExitAlert": false,
+    "workbench.editor.labelFormat": "short",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.renderLineHighlight": "gutter",
+    "codesnap-plus.showWindowTitle": true,
+    "git.autofetch": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font Mono",
+    "gitlens.views.contributors.files.layout": "tree",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "explorer.compactFolders": true,
+    "gitlens.codeLens.authors.enabled": false,
+    "http.proxySupport": "off",
+    "editor.inlineSuggest.enabled": true,
+    "docker.containers.label": "ContainerName",
+    "workbench.iconTheme": "catppuccin-perfect-mocha",
+    "workbench.tree.indent": 20,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "docker.containers.description": [
+        "Ports"
+    ],
+    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Consolas, 'Courier New', monospace",
+    "editor.minimap.enabled": false,
+    "deno.cacheOnSave": false,
+    "symbols.hidesExplorerArrows": false,
+    "window.menuBarVisibility": "compact",
+    "window.commandCenter": false,
+    "git.openRepositoryInParentFolders": "always",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "explorer.sortOrder": "foldersNestsFiles",
+    "explorer.fileNesting.enabled": true,
+    "sqltools.useNodeRuntime": true,
+    "sqlite.sqlite3": "/usr/bin/sqlite3",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "scad-lsp.launchPath": "C:\\Program Files\\OpenSCAD\\openscad.exe",
+    "scad-lsp.fmtExePath": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+    "vim.cursorStylePerMode.replace": "underline",
+    "window.customTitleBarVisibility": "auto",
+    "editor.detectIndentation": false,
+    "material-icon-theme.activeIconPack": "none",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "settingsSync.ignoredSettings": [
+        "deno.path"
+    ],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+        "source.organizeImports": "always"
+    },
+    "[typescript]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom",
+    "deno.path": "/Users/suprisul/.asdf/shims/deno",
+    "git.confirmSync": false,
+    "codesnap.showWindowControls": false,
+    "codesnap.shutterAction": "copy",
+    "codesnap.target": "window",
+    "terminal.external.osxExec": "iTerm.app",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "files.associations": {
+        ".env*": "properties"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.sideBar.location": "right",
+    "redhat.telemetry.enabled": false,
+    "eslint.format.enable": true,
+    "typescript.inlayHints.parameterNames.enabled": "all",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "cursor.cpp.disabledLanguages": [
+      "plaintext",
+      "scminput"
+    ]
+}
