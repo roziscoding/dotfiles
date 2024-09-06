@@ -122,11 +122,10 @@ eval "$(direnv hook zsh)"
 source <(fzf --zsh)
 
 # pnpm
-export PNPM_HOME="/Users/user/Library/pnpm"
+export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-source /Users/user/.config/op/plugins.sh
+#
