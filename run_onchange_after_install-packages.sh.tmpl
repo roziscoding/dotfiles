@@ -24,6 +24,7 @@
 {{/* Packages I want installed on every machine, not handled by package managers */}}
 {{- if not (stat (joinPath .chezmoi.homeDir ".asdf")) -}}
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch {{ (gitHubLatestRelease "asdf-vm/asdf" ).TagName }}
+  . "$HOME/.asdf/asdf.sh"
   for plugin in $(cat {{ joinPath .chezmoi.homeDir ".tool-versions" }} | sed s/' .*$'//); do
     asdf plugin-list | grep $plugin > /dev/null 2>&1
     if [ $? -ne 0 ]; then
