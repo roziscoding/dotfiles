@@ -40,13 +40,19 @@
   "editor.minimap.enabled": false,
   "editor.renderLineHighlight": "gutter",
   "editor.rulers": [
-    80,
-    120
+    {
+      "color": "#f9e1af6f",
+      "column": 80,
+    },
+    {
+      "color": "#f38ba875",
+      "column": 120
+    }
   ],
-  "editor.scrollbar.horizontal": "hidden",
-  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "auto",
+  "editor.scrollbar.vertical": "auto",
   "editor.tabSize": 2,
-  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.nonBasicASCII": true,
   "eslint.format.enable": true,
   "explorer.compactFolders": true,
   "explorer.fileNesting.enabled": true,
@@ -75,12 +81,12 @@
   ],
   "sqlite.sqlite3": "/usr/bin/sqlite3",
   "sqltools.useNodeRuntime": true,
-  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.osxExec": "kitty",
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font Mono",
   "terminal.integrated.scrollback": 10000000000000,
-  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "terminal.integrated.shellIntegration.decorationsEnabled": "gutter",
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.showExitAlert": false,
   "typescript.inlayHints.parameterNames.enabled": "all",
