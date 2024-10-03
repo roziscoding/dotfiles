@@ -1,8 +1,9 @@
 {
   "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-      "source.organizeImports": "explicit"
+      "source.fixAll.eslint": "always",
+      "source.organizeImports": "never"
     }
   },
   "[vue]": {
@@ -102,5 +103,8 @@
   "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.sideBar.location": "right",
-  "workbench.tree.indent": 20
+  "workbench.tree.indent": 20,
+  "eslint.useESLintClass": true,
+  "editor.semanticHighlighting.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
