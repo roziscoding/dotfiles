@@ -23,6 +23,9 @@
   gone = "!git branch -vv | gawk '{print $1,$4}' | grep 'gone]' | gawk '{print $1}'"
   amend = "commit --amend --no-edit"
   shove = "push --force-with-lease"
+  ps = "push"
+  pl = "pull"
+  co = "checkout"
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [url "ssh://git@gitlab.com/"]
