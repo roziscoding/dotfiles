@@ -1,13 +1,13 @@
 {
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
       "source.organizeImports": "never"
     }
   },
   "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "Vue.volar"
   },
   "codesnap-plus.containerPadding": "0",
   "codesnap-plus.showWindowControls": false,
@@ -106,5 +106,9 @@
   "eslint.useESLintClass": true,
   "editor.semanticHighlighting.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "gitlens.ai.experimental.model": "openai:gpt-4o"
+  "gitlens.ai.experimental.model": "openai:gpt-4o",
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.inlayHints.enabled": "offUnlessPressed"
 }
