@@ -110,6 +110,11 @@ alias mongo="docker exec -it mongodb mongo"
 alias cat="bat"
 alias cm="chezmoi"
 alias spt="spotify_player"
+alias jqenv="jq -r '.[] | \"export \" + .key + \"=\\\"\" + .value + \"\\\"\"'"
+
+{{ if eq "darwin" .chezmoi.os }}
+alias tar=$(which gtar)
+{{ end }}
 
 eval "$(zoxide init zsh)"
 {{ if stat (joinPath .chezmoi.homeDir ".config/op/plugins.sh") -}}
@@ -131,4 +136,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-#
+

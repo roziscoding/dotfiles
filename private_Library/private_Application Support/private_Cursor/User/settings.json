@@ -108,7 +108,17 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "gitlens.ai.experimental.model": "openai:gpt-4o",
   "[json]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "never",
+      "source.fixAll.ts": "never",
+      "source.addMissingImports.ts": "never",
+      "source.organizeImports": "never",
+      "source.removeUnused.ts": "never",
+      "source.removeUnusedImports": "never",
+      "source.sortImports": "never"
+    },
+    "editor.formatOnSave": false
   },
   "editor.inlayHints.enabled": "offUnlessPressed"
 }
