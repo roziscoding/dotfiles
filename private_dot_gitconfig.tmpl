@@ -9,7 +9,13 @@
   {{- if eq .chezmoi.os "darwin" }}
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
   {{- else if eq .chezmoi.os "linux" }}
+  {{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+  program = "/mnt/c/Users/Roz/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+[core]
+  sshCommand = ssh.exe
+  {{-   else }}
   program = /opt/1Password/op-ssh-sign
+  {{-   end }}
   {{- end }}
 [commit]
 	gpgsign = true
@@ -27,11 +33,11 @@
   pl = "pull"
   co = "checkout"
   publish = "push -u origin HEAD"
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-[url "ssh://git@gitlab.com/"]
-	insteadOf = https://gitlab.com/
 [init]
   defaultBranch = main
 [core]
   excludesFile = "~/.gitignore"
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gist.github.com:"]
+    insteadOf = https://gist.github.com/
