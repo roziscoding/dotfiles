@@ -30,6 +30,6 @@ swaymsg "output $output bg $wlpath/regular.jpg fill"
 
 convert $wlpath/regular.jpg -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $wlpath/lock.jpg
 
-ln -sfn $wlpath/regular.png $HOME/Pictures/Wallpapers/regular.png
-ln -sfn $wlpath/lock.png $HOME/Pictures/Wallpapers/lock.png
+ln -sfn $wlpath/regular.png $HOME/Pictures/Wallpapers/regular.jpg
+ln -sfn $wlpath/lock.png $HOME/Pictures/Wallpapers/lock.jpg
 
