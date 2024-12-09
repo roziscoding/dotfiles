@@ -99,10 +99,10 @@ function wreboot () {
 }
 
 function rd () {
-    echo -n "Deleting $1. Continue? [y/n] "
+    echo -n "Deleting $@. Continue? [y/n] "
     read REPLY
     case $REPLY in
-      [Yy]) rm -rf $1 ;;
+      [Yy]) rm -rf $@ ;;
     esac
 }
 
