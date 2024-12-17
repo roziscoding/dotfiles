@@ -1,4 +1,4 @@
-export LC_ALL=en_US.UTF-8  
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 eval "$(starship init zsh)"
@@ -105,6 +105,17 @@ function rd () {
       [Yy]) rm -rf $@ ;;
     esac
 }
+
+function yy () {
+ local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" 
+ yazi "$@" --cwd-file="$tmp"
+ if cwd="$(cat -- "$tmp")"  && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]
+ then
+  cd -- "$cwd" || return
+ fi
+ rm -f -- "$tmp"
+}
+
 
 alias mongo="docker exec -it mongodb mongo"
 alias cat="bat"

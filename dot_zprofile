@@ -1,0 +1,3 @@
+if [[ -z $DISPLAY && $(tty) == /dev/tty1 ]]; then
+  WLR_RENDERER=vulkan sway --unsupported-gpu
+fi;
