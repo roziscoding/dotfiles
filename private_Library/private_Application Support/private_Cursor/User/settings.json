@@ -18,7 +18,6 @@
     "scminput"
   ],
   "deno.cacheOnSave": false,
-  "deno.path": "/Users/suprisul/.asdf/shims/deno",
   "diffEditor.ignoreTrimWhitespace": false,
   "docker.containers.description": [
     "Ports"
