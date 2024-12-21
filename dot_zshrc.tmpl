@@ -1,5 +1,8 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+{{ if eq "darwin" .chezmoi.os }}
+export PATH=/opt/homebrew/bin:$PATH
+{{ end }}
 
 eval "$(starship init zsh)"
 
