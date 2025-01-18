@@ -18,3 +18,5 @@ exec_always --no-startup-id 1password
 
 # set monitor layout
 exec_always --no-startup-id ~/.screenlayout/default.sh
+
+exec_always --no-startup-id swaymsg input 'type:keyboard' xkb_layout br
