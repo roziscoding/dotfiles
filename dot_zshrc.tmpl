@@ -125,6 +125,7 @@ alias cat="bat"
 alias cm="chezmoi"
 alias spt="spotify_player"
 alias jqenv="jq -r '.[] | \"export \" + .key + \"=\\\"\" + .value + \"\\\"\"'"
+alias nodeclear='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
 
 {{ if eq "darwin" .chezmoi.os }}
 alias tar=$(which gtar)
