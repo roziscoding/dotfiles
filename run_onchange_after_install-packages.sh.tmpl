@@ -1,39 +1,39 @@
 #!/bin/sh
 
 # Brewfile hash: {{ include "Brewfile" | sha256sum }}
+# packages.txt hash: {{ include "packages.txt" | sha256sum }}
 
 {{/*
-     * if we're on macos, use brew dump to install everything,
-     * otherwise, assume it's arch and use the pacman
-     */}}
+   * if we're on macos, use brew dump to install everything,
+   * otherwise, assume it's arch and use the pacman
+   */}}
 {{- if eq .chezmoi.os "darwin" -}}
   {{- if not (lookPath "brew") -}}
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   {{- end -}}
   brew bundle install --file="~/Brewfile" --no-lock
 {{ else if eq .chezmoi.os "linux" }}
-  pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+  if ! command -v yay 2>&1>/dev/null; then
+    sudo pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+  fi;
   {{ if stat "~/packages.txt" }}
     yay -S --needed --noconfirm - < ~/packages.txt
   {{ else }}
     yay -Sy --noconfirm --needed kitty zsh curl vim
-    curl -sS https://starship.rs/install.sh | sh
+    if ! command -v starship 2>&1>/dev/null; then
+     curl -sS https://starship.rs/install.sh | sh
+    fi;
   {{ end }}
 {{ end -}}
 
-{{/* Packages I want installed on every machine, not handled by package managers */}}
-{{- if not (stat (joinPath .chezmoi.homeDir ".asdf")) -}}
-  git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch {{ (gitHubLatestRelease "asdf-vm/asdf" ).TagName }}
-  . "$HOME/.asdf/asdf.sh"
+if command -v asdf 2>&1>/dev/null; then
   asdf plugin add ni https://github.com/CanRau/asdf-ni.git
   for plugin in $(cat {{ joinPath .chezmoi.homeDir ".tool-versions" }} | sed s/' .*$'//); do
-    asdf plugin-list | grep $plugin > /dev/null 2>&1
+    asdf plugin list | grep $plugin > /dev/null 2>&1
     if [ $? -ne 0 ]; then
-     asdf plugin-add $plugin
+     asdf plugin add $plugin
     fi
   done
   asdf install
-{{ end }}
-{{- if not (stat (joinPath .chezmoi.homeDir ".vim/pack/plugins/opt/chezmoi.vim")) -}}
-  git clone https://github.com/alker0/chezmoi.vim ~/.vim/pack/plugins/opt/chezmoi.vim
-{{ end }}
+fi;
+

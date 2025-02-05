@@ -4,6 +4,7 @@ alsa-utils
 amd-ucode
 arandr
 arc-gtk-theme-eos
+asdf-vm
 autorandr
 b43-fwcutter
 bat
