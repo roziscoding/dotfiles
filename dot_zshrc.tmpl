@@ -4,7 +4,7 @@ export LANG=en_US.UTF-8
 export PATH=/opt/homebrew/bin:$PATH
 {{ end }}
 
-PATH=$ASDF_DATA_DIR/shims:$PATH
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 eval "$(starship init zsh)"
 
 # Fixing completions
@@ -23,6 +23,10 @@ bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 bindkey -e
+
+# install asdf completions
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)\
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 

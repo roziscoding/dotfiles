@@ -22,6 +22,7 @@
   co = "checkout"
   publish = "push -u origin HEAD"
   cdiff = "rev-list --format=%B"
+  wipe = "!git checkout . && git clean -fd"
 [init]
   defaultBranch = main
 [core]

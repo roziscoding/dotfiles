@@ -1,6 +1,6 @@
 {
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
       "source.organizeImports": "never"
@@ -119,5 +119,8 @@
     "editor.formatOnSave": false
   },
   "editor.inlayHints.enabled": "offUnlessPressed",
-  "vim.smartRelativeLine": true
+  "vim.smartRelativeLine": true,
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  }
 }
