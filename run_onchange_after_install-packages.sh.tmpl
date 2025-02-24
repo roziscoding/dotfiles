@@ -13,9 +13,9 @@
   {{- end -}}
   brew bundle install --file="~/Brewfile" --no-lock
 {{ else if eq .chezmoi.os "linux" }}
-  if ! command -v yay 2>&1>/dev/null; then
+  {{- if not (lookPath "yay") -}}
     sudo pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
-  fi;
+  {{- end -}}
   {{ if stat "~/packages.txt" }}
     yay -S --needed --noconfirm - < ~/packages.txt
   {{ else }}
