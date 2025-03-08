@@ -27,6 +27,9 @@ bindkey -e
 # install asdf completions
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)\
 
+# install other completions
+fpath=(~/.zsh/completion $fpath)
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
@@ -154,3 +157,7 @@ esac
 # pnpm end
 
 export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+if [ -f ~/.config/op/plugins.sh ]; then
+  source /home/roziscoding/.config/op/plugins.sh
+fi;
