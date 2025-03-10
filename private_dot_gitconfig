@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
-	signingkey = ~/.ssh/id_ed25519
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkEqt1+4j1m5Q1ms0z56Bc/LN9GbISX0KOknakaJpjr
 	name = Roz
-	email = {{ .email | quote  }}
+	email = "roz@rjmunhoz.me"
 [gpg]
 	format = ssh
 [commit]
@@ -31,3 +31,5 @@
     insteadOf = https://github.com/
 [url "git@gist.github.com:"]
     insteadOf = https://gist.github.com/
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
