@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 # systemd example: https://stackoverflow.com/a/50321912
 # cron example:
 # 0 * * * * ~/.config/sway/scripts/bing_wallpaper.sh
@@ -19,7 +21,7 @@ echo "$wlpath"
 mkdir -p "$wlpath"
 
 echo "$wlpath"/regular.jpg
-https "$baseurl" -d --output "$wlpath"/regular.jpg
+https --ignore-stdin "$baseurl" -d --output "$wlpath"/regular.jpg
 
 # killall swaybg || true
 
@@ -30,3 +32,5 @@ magick "$wlpath"/regular.jpg -filter Gaussian -blur 0x8 -level 10%,90%,0.5 "$wlp
 
 ln -sfn "$wlpath"/regular.png "$HOME"/Pictures/Wallpapers/regular.jpg
 ln -sfn "$wlpath"/lock.png "$HOME"/Pictures/Wallpapers/lock.jpg
+
+set +x
