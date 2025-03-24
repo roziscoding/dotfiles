@@ -93,7 +93,7 @@ function mkd () {
 
 function ghc () {
   OWNER=$(basename $(pwd))
-  gh repo clone $OWNER/$1
+  op plugin run -- gh repo clone $OWNER/$1
 }
 
 function secrets () {
@@ -129,7 +129,7 @@ alias cat="bat"
 alias cm="chezmoi"
 alias spt="spotify_player"
 alias jqenv="jq -r '.[] | \"export \" + .key + \"=\\\"\" + .value + \"\\\"\"'"
-alias nodeclear='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
+alias nodeclear='find . -name "node_modules" -type d -prune -exec rm -rf "{}" + && rm -f ./pnpm-lock.yaml'
 
 {{ if eq "darwin" .chezmoi.os }}
 alias tar=$(which gtar)

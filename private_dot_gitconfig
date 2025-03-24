@@ -23,6 +23,9 @@
   publish = "push -u origin HEAD"
   cdiff = "rev-list --format=%B"
   wipe = "!git checkout . && git clean -fd"
+  nuke = "clean -fdx"
+  prenuke = "clean -fdxn"
+  uncommit = "!git reset --soft HEAD~1 && git reset"
 [init]
   defaultBranch = main
 [core]

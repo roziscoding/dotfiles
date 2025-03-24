@@ -6,3 +6,9 @@ vim.api.nvim_create_autocmd("TermEnter", {
     vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = ev.buf, nowait = true })
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+  command = "silent! EslintFixAll",
+  group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
+})

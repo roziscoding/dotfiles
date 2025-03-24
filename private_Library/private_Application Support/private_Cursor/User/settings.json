@@ -3,11 +3,11 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
-      "source.organizeImports": "never"
-    }
+      "source.organizeImports": "always"
+    },
   },
   "[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "codesnap-plus.containerPadding": "0",
   "codesnap-plus.showWindowControls": false,
@@ -17,23 +17,13 @@
   "cursor.cpp.disabledLanguages": [
     "scminput"
   ],
-  "deno.cacheOnSave": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "docker.containers.description": [
-    "Ports"
-  ],
-  "docker.containers.label": "ContainerName",
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
-    "source.organizeImports": "always"
-  },
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.detectIndentation": false,
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
-  "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 1.8,
   "editor.minimap.enabled": false,
@@ -51,7 +41,7 @@
   "editor.scrollbar.horizontal": "auto",
   "editor.scrollbar.vertical": "auto",
   "editor.tabSize": 2,
-  "editor.unicodeHighlight.nonBasicASCII": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
   "eslint.format.enable": true,
   "explorer.compactFolders": true,
   "explorer.fileNesting.enabled": true,
@@ -62,23 +52,12 @@
   "files.autoSave": "onFocusChange",
   "git.confirmSync": false,
   "git.openRepositoryInParentFolders": "always",
-  "github.copilot.enable": {
-    "*": true,
-    "markdown": true,
-    "plaintext": false,
-    "scminput": false
-  },
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.views.contributors.files.layout": "tree",
   "http.proxySupport": "off",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
-  "settingsSync.ignoredSettings": [
-    "deno.path"
-  ],
-  "sqlite.sqlite3": "/usr/bin/sqlite3",
-  "sqltools.useNodeRuntime": true,
   "terminal.external.osxExec": "kitty",
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -94,17 +73,14 @@
   "window.dialogStyle": "custom",
   "window.nativeTabs": false,
   "window.titleBarStyle": "custom",
-  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.editor.labelFormat": "short",
   "workbench.iconTheme": "catppuccin-perfect-mocha",
-  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.sideBar.location": "right",
   "workbench.tree.indent": 20,
   "eslint.useESLintClass": true,
   "editor.semanticHighlighting.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "gitlens.ai.experimental.model": "openai:gpt-4o",
   "[json]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
@@ -116,11 +92,25 @@
       "source.removeUnusedImports": "never",
       "source.sortImports": "never"
     },
-    "editor.formatOnSave": false
   },
   "editor.inlayHints.enabled": "offUnlessPressed",
   "vim.smartRelativeLine": true,
-  "[handlebars]": {
-    "editor.formatOnSave": false
-  }
+  "vue.server.hybridMode": true,
+  "disableTsErrors.enableCustomizations": true,
+  "disableTsErrors.customizations": [
+    {
+      "code": [
+        80006
+      ],
+      "severity": "off"
+    }
+  ],
+  "editor.accessibilitySupport": "off",
+  "editor.formatOnSave": true,
+  "workbench.preferredHighContrastColorTheme": "Cursor Dark High Contrast",
+  "workbench.preferredHighContrastLightColorTheme": "Catppuccin Latte",
+  "window.autoDetectHighContrast": false,
+  "vitest.cliArguments": "--expect.requireAssertions",
+  "vitest.configSearchPatternExclude": "{**/node_modules/**,**/.*/**,**/*.d.ts}",
+  "git.autofetch": true
 }
