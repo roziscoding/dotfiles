@@ -28,6 +28,7 @@
   uncommit = "!git reset --soft HEAD~1 && git reset"
   continue = -c core.editor=true rebase --continue
   rhead = reset --hard HEAD
+  identical = "!~/.git-merge-drivers/identical-strat.sh"
 [init]
   defaultBranch = main
 [core]
