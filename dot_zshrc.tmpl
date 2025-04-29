@@ -167,3 +167,7 @@ elif command -v fzf >/dev/null 2>&1; then
 fi
 
 export NTFY_ACCESS_TOKEN={{ onepasswordRead "op://Private/ntfy/access token" }}
+
+if command -v fastfetch >/dev/null 2>&1; then
+  fastfetch;
+fi;
