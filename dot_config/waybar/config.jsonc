@@ -10,7 +10,9 @@
       "tray"
     ],
     "modules-center": ["hyprland/window"],
-    "modules-right": [],
+    "modules-right": [
+      "custom/colortemp"
+    ],
     "hyprland/window": {
       "separate-outputs": true
     },
@@ -18,6 +20,14 @@
       "show-passive-items": true,
       "spacing": 10,
       "icon-size": 24
+    },
+    "custom/colortemp": {
+        "format": "{icon} {text}",
+        "format-icons": ["󰌶", "󰌵"],
+        "interval": 30,
+        "exec": "$HOME/.local/bin/gradtemp",
+        "on-click": "$HOME/.local/bin/gradtemp tgl",
+        "return-type": "json"
     }
   },
   {
@@ -38,7 +48,6 @@
       "custom/ip",
       "custom/weather",
       "clock",
-      "custom/power"
     ],
     "hyprland/window": {
       "separate-outputs": true

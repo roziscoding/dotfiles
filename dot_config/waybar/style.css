@@ -73,7 +73,8 @@ window#waybar.solo #window {
 #tray,
 #taskbar,
 #custom-ip,
-#custom-weather{
+#custom-weather,
+#custom-colortemp{
   padding: 0px 20px;
   margin: 7px 0px 10px 0px;
 	border-radius: 8px;
@@ -158,4 +159,24 @@ label:focus {
 
 #custom-weather {
   background-color: @blue;
+}
+
+#custom-colortemp {
+  margin-right: 10px;
+}
+
+#custom-colortemp.candle {
+    background-color: #ff5522;
+}
+
+#custom-colortemp.warm {
+    background-color: #ff9944;
+}
+
+#custom-colortemp.neutral {
+    background-color: #ffee66;
+}
+
+#custom-colortemp.cool {
+    background-color: #bbddff;
 }

@@ -39,7 +39,11 @@
 [url "git@gist.github.com:"]
     insteadOf = https://gist.github.com/
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{ if eq .chezmoi.os "darwin" }}
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{ else if eq .chezmoi.os "linux" }}
+    program = "/opt/1Password/op-ssh-sign"
+{{ end }}
 [merge]
   conflictStyle = diff3
 [merge "identical"]
