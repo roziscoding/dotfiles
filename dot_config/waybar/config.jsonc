@@ -1,8 +1,8 @@
 [
   {
     "height": 60,
-    "layer": "top",
-    "position": "top",
+    "layer": "bottom",
+    "position": "bottom",
     "output": "HDMI-A-1",
     "spacing": 7,
     "modules-left": [
@@ -32,8 +32,8 @@
   },
   {
     "height": 60,
-    "layer": "top",
-    "position": "top",
+    "layer": "bottom",
+    "position": "bottom",
     "output": "DP-2",
     "spacing": 7,
     "modules-left": [
@@ -45,9 +45,9 @@
     "modules-right": [
       "pulseaudio",
       "network",
-      "custom/ip",
       "custom/weather",
-      "clock",
+      "custom/date",
+      "custom/clock",
     ],
     "hyprland/window": {
       "separate-outputs": true
@@ -161,25 +161,16 @@
       "format-icons": [" ", " ", " ", " ", " "]
     },
 
-    "clock": {
-      "format": "  {:%H:%m %B %d, %Y}",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
-      "calendar": {
-        "mode": "year",
-        "mode-mon-col": 3,
-        "weeks-pos": "right",
-        "on-scroll": 1,
-        "on-click-right": "mode",
-        "format": {
-          "months": "<span color='#ffead3'><b>{}</b></span>",
-          "days": "<span color='#ecc6d9'><b>{}</b></span>",
-          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-        }
-      }
+    "custom/clock": {
+      "interval": 60,
+      "exec": "date +\"%H:%M\"",
+      "tooltip": false
     },
-
+    "custom/date": {
+      "interval": 86400,
+      "exec": "date +\"%d/%m/%Y\"",
+      "tooltip": false
+    },
     "custom/power": {
       "format": "",
       "tooltip": false,

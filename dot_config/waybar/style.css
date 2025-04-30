@@ -12,7 +12,8 @@
 }
 
 window#waybar {
-  background-color: rgba(17, 17, 27, 0.7);
+  /* background-color: rgba(17, 17, 27, 0.7); */
+  background-color: transparent;
   color: @text;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -34,17 +35,14 @@ window#waybar.empty #window {
   background-color: transparent;
 }
 
-window#waybar.solo #window {
-  background-color: transparent;
-  color: @text;
+
+#workspaces {
+  margin-left: 10px;
 }
 
 #workspaces button {
   color: @text;
-  background: @background3;
-  border-radius: 8px;
-  padding: 0px 10px 0px 10px;
-  margin: 7px 5px 10px 5px;
+  background-color: @surface0;
   border: 1px solid @border;
 }
 
@@ -60,7 +58,7 @@ window#waybar.solo #window {
 }
 
 #custom-launcher,
-#clock,
+#custom-clock,
 #battery,
 #cpu,
 #,
@@ -74,11 +72,19 @@ window#waybar.solo #window {
 #taskbar,
 #custom-ip,
 #custom-weather,
-#custom-colortemp{
+#custom-colortemp,
+#custom-date,
+window#waybar #window,
+#workspaces button{
   padding: 0px 20px;
-  margin: 7px 0px 10px 0px;
-	border-radius: 8px;
+  margin: 7px 0px 0px 0px;
+	border-radius: 8px 8px 0 0;
   color: @crust;
+}
+
+window#waybar #window {
+  color: @text;
+  background-color: @crust;
 }
 
 #custom-launcher {
@@ -118,8 +124,13 @@ window#waybar.solo #window {
   background-color: @yellow;
 }
 
-#clock {
+#custom-date {
   background-color: @peach;
+}
+
+#custom-clock {
+  background-color: @sky;
+  margin-right: 10px;
 }
 
 #custom-power {
