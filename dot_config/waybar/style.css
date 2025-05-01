@@ -77,8 +77,8 @@ window#waybar.empty #window {
 window#waybar #window,
 #workspaces button{
   padding: 0px 20px;
-  margin: 7px 0px 0px 0px;
-	border-radius: 8px 8px 0 0;
+  margin: 10px 0px 10px 0px;
+	border-radius: 50px;
   color: @crust;
 }
 
