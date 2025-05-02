@@ -6,6 +6,7 @@ arc-gtk-theme-eos
 b43-fwcutter
 bat
 bluez-utils
+btop
 chezmoi
 clonezilla
 direnv
@@ -16,6 +17,7 @@ duf
 efitools
 endeavouros-keyring
 endeavouros-mirrorlist
+entr
 eos-apps-info
 eos-dracut
 eos-hooks
@@ -55,9 +57,9 @@ hyprlock
 hyprpolkitagent
 hyprsunset
 inetutils
+inotify-tools
 intellij-idea-community-edition
 jfsutils
-kitty
 ldns
 libwnck3
 logrotate
@@ -75,6 +77,7 @@ nvidia-hook
 nvidia-inst
 nvidia-open-dkms
 nwg-displays
+openscad
 pavucontrol
 pkgfile
 prusa-slicer
@@ -97,13 +100,15 @@ vlc
 waybar
 welcome
 wev
+wf-recorder
+wl-clip-persist
 xf86-video-nouveau
 xl2tpd
 xorg-xinit
 xorg-xinput
 xorg-xkill
 yazi
-1password 8.10.70-26
+1password 8.10.72-27
 1password-cli 2.30.3-1
 asdf-vm 0.16.7-1
 blockbench 4.12.4-1
@@ -111,18 +116,23 @@ clipse 1.1.0-1
 cura-bin 5.10.0-3
 gdlauncher-bin 2.0.22-1
 giblib 1.2.4-9
-google-chrome 135.0.7049.84-1
+google-chrome 135.0.7049.114-1
+hyprshot 1.3.0-2
+hyprshot-gui-git r16.30a9bc3-2
 jellyfin-media-player 1.12.0-3
 jellyfin-tui 1.1.3-1
 libpam-pwdfile-rs-bin 0.2.0-1
 python-imageio 2.37.0-2
 python-imageio-ffmpeg 0.6.0-2
+python-pywal16 1:3.8.5-1
 python-screeninfo 0.8.1-2
+rose-pine-hyprcursor v0.3.2.r0.d2c0e680-1
 spotify 1:1.2.60.564-2
 syspower 2025.03.10-1
 texlive-fonts-fontawesome 2021.61408-1
-visual-studio-code-bin 1.99.2-1
+visual-studio-code-bin 1.99.3-1
 wallust 3.3.0-2
+walogram-git 1.3.0.r79.d6a9d90-1
 warp-terminal-pacman-repo 0.1.2-1
 waypaper 2.5-1
 wttrbar 0.12.0-1
