@@ -1,4 +1,4 @@
-@import "../colors/mocha.css";
+@import "../../.cache/wal/colors-waybar.css";
 
 /* margin: top right bottom left */
 /* Spacing outside the element */
@@ -7,24 +7,17 @@
 /* Spacing inside the element */
 
 * {
-  font-family: SFPro;
+  font-family: JetBrainsMono Nerd Font;
   font-size: 17px;
 }
 
 window#waybar {
-  /* background-color: rgba(17, 17, 27, 0.7); */
   background-color: transparent;
-  color: @text;
+  color: white;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0px;
   transition-duration: .5s;
-  margin: 16px 16px;
-}
-
-#taskbar button.active {
-  background-color: @blue;
-  color: black;
 }
 
 window#waybar.hidden {
@@ -41,27 +34,26 @@ window#waybar.empty #window {
 }
 
 #workspaces button {
-  color: @text;
-  background-color: @surface0;
-  border: 1px solid @border;
+  color: @foreground;
+  background-color: @color1;
+  border: 1px solid @color2;
 }
 
 #workspaces button:hover {
-  background: @surface0;
-  color: @text;
+  background: @color1;
+  color: @foreground;
 }
 
 #workspaces button.active {
-  color: @crust;
-  background: @overlay2;
-  border: none; 
+  color: @color13;
+  background: @color3;
+  border: none;
 }
 
 #custom-launcher,
 #custom-clock,
 #battery,
 #cpu,
-#,
 #backlight,
 #network,
 #pulseaudio,
@@ -75,68 +67,68 @@ window#waybar.empty #window {
 #custom-colortemp,
 #custom-date,
 window#waybar #window,
-#workspaces button{
-  padding: 0px 20px;
-  margin: 10px 0px 10px 0px;
-	border-radius: 50px;
-  color: @crust;
+#workspaces button {
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  margin: 10px 0;
 }
 
 window#waybar #window {
-  color: @text;
-  background-color: @crust;
-}
-
-#custom-launcher {
-  padding: 0px 25px 0px 20px;
-  margin: 7px 0px 10px 20px;
-  background-color: @mauve;
-}
-
-#cpu {
-  background-color: @lavender;
-}
-
-#temperature{
-  background-color: @blue;
-}
-
-#memory {
-  background-color: @sapphire;
-}
-
-#custom-dunst {
-  padding: 0px 20px 0px 13px;
-  background-color: @sky;
+  background-color: @color3;
 }
 
 #pulseaudio {
   padding: 0px 20px 0px 17px;
-  background-color: @teal;
+  background-color: @color9;
 }
 
 #network {
   padding: 0px 15px 0px 20px;
-  background-color: @green;
+  background-color: @color10;
 }
 
-#battery {
-  background-color: @yellow;
+#custom-weather {
+  background-color: @color12;
 }
 
 #custom-date {
-  background-color: @peach;
+  background-color: @color13;
 }
 
 #custom-clock {
-  background-color: @sky;
+  background-color: @color15;
   margin-right: 10px;
 }
 
-#custom-power {
-  padding: 0px 25px 0px 20px;
-  margin: 7px 20px 10px 0px;
-  background-color: @maroon;
+
+/* Secondary monitor */
+
+#tray {
+  padding: 0px 10px 0px 10px;
+  background-color: @color9;
+}
+
+
+#custom-colortemp {
+  margin-right: 10px;
+  color: black;
+}
+
+#custom-colortemp.candle {
+  background-color: #ff5522;
+}
+
+#custom-colortemp.warm {
+  background-color: #ff9944;
+}
+
+#custom-colortemp.neutral {
+  background-color: #ffee66;
+}
+
+#custom-colortemp.cool {
+  background-color: #bbddff;
 }
 
 @keyframes blink {
@@ -144,50 +136,4 @@ window#waybar #window {
     background-color: rgba(30, 34, 42, 0.5);
     color: #abb2bf;
   }
-}
-
-#battery.critical:not(.charging) {
-  color: #f53c3c;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-label:focus {
-  background-color: #000000;
-}
-
-#tray {
-  padding: 0px 10px 0px 10px;
-  background-color: @sapphire;
-}
-
-#custom-ip {
-  background-color: @yellow;
-}
-
-#custom-weather {
-  background-color: @blue;
-}
-
-#custom-colortemp {
-  margin-right: 10px;
-}
-
-#custom-colortemp.candle {
-    background-color: #ff5522;
-}
-
-#custom-colortemp.warm {
-    background-color: #ff9944;
-}
-
-#custom-colortemp.neutral {
-    background-color: #ffee66;
-}
-
-#custom-colortemp.cool {
-    background-color: #bbddff;
 }
