@@ -43,6 +43,7 @@
       "hyprland/window"
     ],
     "modules-right": [
+      "custom/media",
       "custom/wayves",
       "pulseaudio",
       "network",
@@ -62,16 +63,27 @@
       "on-click": "pactl --format=json list sinks short | jq -cM --unbuffered \"[.[].name] | .[((index(\\\"$(pactl get-default-sink)\\\")+1)%length)]\" | xargs pactl set-default-sink"
     },
     "custom/media": {
-      "format": "{icon} {}",
-      "escape": true,
-      "return-type": "json",
-      "max-length": 40,
-      "on-click": "playerctl play-pause",
-      "on-click-right": "playerctl stop",
-      "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
-      "on-scroll-up": "playerctl next",
-      "on-scroll-down": "playerctl previous",
-      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-click-middle": "hyprctl dispatch focuswindow class:Spotify",
+        "menu": "on-click-right",
+        "smooth-scrolling-threshold": 5,
+        "menu-file": "$HOME/.config/waybar/media_menu.xml",
+        "exec-if": "pgrep spotify",
+        "menu-actions": {
+            "toggle": "playerctl -p spotify play-pause",
+            "next": "playerctl -p spotify next",
+            "previous": "playerctl -p spotify previous"
+        },
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": " ",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null"
     },
     "tray": {
       "show-passive-items": true,
