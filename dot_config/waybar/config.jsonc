@@ -1,8 +1,8 @@
 [
   {
     "height": 10,
-    "layer": "bottom",
-    "position": "bottom",
+    "layer": "top",
+    "position": "top",
     "output": "HDMI-A-1",
     "spacing": 7,
     "modules-left": [
@@ -22,32 +22,33 @@
       "icon-size": 24
     },
     "custom/colortemp": {
-        "format": "{icon} {text}",
-        "format-icons": ["󰌶", "󰌵"],
-        "interval": 30,
-        "exec": "$HOME/.local/bin/gradtemp",
-        "on-click": "$HOME/.local/bin/gradtemp tgl",
-        "return-type": "json"
+      "format": "{icon} {text}",
+      "format-icons": ["󰌶", "󰌵"],
+      "interval": 30,
+      "exec": "$HOME/.local/bin/gradtemp",
+      "on-click": "$HOME/.local/bin/gradtemp tgl",
+      "return-type": "json"
     }
   },
   {
     "height": 60,
-    "layer": "bottom",
-    "position": "bottom",
+    "layer": "top",
+    "position": "top",
     "output": "DP-2",
     "spacing": 7,
     "modules-left": [
-      "hyprland/workspaces",
+      "hyprland/workspaces"
     ],
     "modules-center": [
       "hyprland/window"
     ],
     "modules-right": [
+      "custom/wayves",
       "pulseaudio",
       "network",
       "custom/weather",
       "custom/date",
-      "custom/clock",
+      "custom/clock"
     ],
     "hyprland/window": {
       "separate-outputs": true
@@ -193,6 +194,17 @@
       "interval": 3600,
       "exec": "wttrbar --nerd --custom-indicator \"{areaName} | {ICON}  {temp_C}\" --hide-conditions --date-format \"%d/%m/%Y\"",
       "return-type": "json"
+    },
+    "custom/wayves": {
+      "format": "{}",
+      "exec": "python $HOME/github.com/jvc84/wayves/wayves.py -o cava -i cava -a cava"
+    },
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
     }
+}
   }
 ]

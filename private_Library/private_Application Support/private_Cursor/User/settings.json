@@ -4,7 +4,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
       "source.organizeImports": "always"
-    },
+    }
   },
   "[vue]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -31,7 +31,7 @@
   "editor.rulers": [
     {
       "color": "#f9e1af6f",
-      "column": 80,
+      "column": 80
     },
     {
       "color": "#f38ba875",
@@ -91,7 +91,7 @@
       "source.removeUnused.ts": "never",
       "source.removeUnusedImports": "never",
       "source.sortImports": "never"
-    },
+    }
   },
   "editor.inlayHints.enabled": "offUnlessPressed",
   "vim.smartRelativeLine": true,
