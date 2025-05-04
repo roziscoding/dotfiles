@@ -68,7 +68,8 @@ window#waybar.empty #window {
 #custom-colortemp,
 #custom-date,
 window#waybar #window,
-#custom-wayves{
+#custom-wayves,
+#custom-media{
   padding: 5px;
   border-radius: 5px;
   color: white;
@@ -79,7 +80,8 @@ window#waybar #window {
   background-color: @color3;
 }
 
-#custom-wayves {
+#custom-wayves,
+#custom-media{
   background-color: @color9;
 }
 

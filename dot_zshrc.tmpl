@@ -148,7 +148,6 @@ export PATH="$PATH:$HOME/.atuin/bin"
 export PATH="$PATH:$HOME/pnpm"
 export PATH="$PATH:$HOME/.local/bin"
 
-
 if command -v atuin >/dev/null 2>&1; then
   eval "$(atuin init zsh)"
 elif command -v zinit >/dev/null 2>&1; then
@@ -172,3 +171,5 @@ export NTFY_ACCESS_TOKEN={{ onepasswordRead "op://Private/ntfy/access token" }}
 if command -v fastfetch >/dev/null 2>&1; then
   fastfetch;
 fi;
+
+export PATH=$PATH:/home/roziscoding/.spicetify
