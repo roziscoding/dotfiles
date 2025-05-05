@@ -69,13 +69,7 @@
         "on-click-middle": "hyprctl dispatch focuswindow class:Spotify",
         "menu": "on-click-right",
         "smooth-scrolling-threshold": 5,
-        "menu-file": "$HOME/.config/waybar/media_menu.xml",
         "exec-if": "pgrep spotify",
-        "menu-actions": {
-            "toggle": "playerctl -p spotify play-pause",
-            "next": "playerctl -p spotify next",
-            "previous": "playerctl -p spotify previous"
-        },
         "return-type": "json",
         "max-length": 40,
         "format-icons": {

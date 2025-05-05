@@ -1,0 +1,12 @@
+# https://manpages.ubuntu.com/manpages/jammy/man5/wofi.5.html
+width=800
+lines=8
+prompt=Type to search
+allow_images=true
+insensitive=true
+location=center
+allow_markup=true
+term=kitty
+matching=fuzzy
+gtk_dark=true
+line_wrap=word
