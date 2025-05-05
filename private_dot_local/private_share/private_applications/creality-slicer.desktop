@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Creality Print
+Comment=Creality 3D Slicer
+Exec=env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=mesa "/home/roziscoding/.local/bin/Creality_Print.AppImage"
+Icon=creality
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;Engineering;

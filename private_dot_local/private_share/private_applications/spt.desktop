@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=spt
+Comment=
+Exec=kitty --class Spotify spotify_player
+Icon=
+Terminal=False
