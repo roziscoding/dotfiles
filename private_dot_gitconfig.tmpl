@@ -29,6 +29,7 @@
   continue = -c core.editor=true rebase --continue
   rhead = reset --hard HEAD
   identical = "!~/.git-merge-drivers/identical-strat.sh"
+  theirs = "!f() { git checkout --theirs -- \"$@\" && git add \"$@\"; }; f"
 [init]
   defaultBranch = main
 [core]
