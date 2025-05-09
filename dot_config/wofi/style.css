@@ -3,7 +3,7 @@ scheme: "Nord"
 author: "arcticicestudio"
 */
 
-@import "$HOME/.cache/wal/colors-wofi.css";
+@import "/home/roziscoding/.cache/wal/colors-wofi.css";
 
 #entry {
     padding: 5px 2px 5px 2px;
