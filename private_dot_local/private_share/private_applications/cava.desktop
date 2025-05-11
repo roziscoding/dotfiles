@@ -1,8 +1,10 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
-Name=Cava
+Encoding=UTF-8
+Name=cava
 Comment=
-Path=
-Exec=kitty --class cava cava
-Terminal=false
+Exec=kitty --class=cava -e 'cava'
+Icon=
+Categories=Audio;Music;Player;AudioVideo
+StartupWMClass=cava
+Terminal=False

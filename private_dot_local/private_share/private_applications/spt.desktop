@@ -1,8 +1,11 @@
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
-Name=spt
+Name=Spotify TUI
 Comment=
 Exec=kitty --class Spotify spotify_player
-Icon=
+Icon=spotify-client
+MimeType=x-scheme-handler/spotify;
+Categories=Audio;Music;Player;AudioVideo
+StartupWMClass=spotify
 Terminal=False
