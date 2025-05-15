@@ -43,6 +43,7 @@
       "hyprland/window"
     ],
     "modules-right": [
+      "idle_inhibitor",
       "custom/media",
       "custom/wayves",
       "pulseaudio",

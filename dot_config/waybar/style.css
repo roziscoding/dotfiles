@@ -69,11 +69,16 @@ window#waybar.empty #window {
 #custom-date,
 window#waybar #window,
 #custom-wayves,
-#custom-media{
+#custom-media,
+#idle_inhibitor{
   padding: 5px;
   border-radius: 5px;
   color: white;
   margin: 10px 0;
+}
+
+#idle_inhibitor {
+  margin-right: 10px;
 }
 
 window#waybar #window {
