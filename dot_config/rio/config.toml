@@ -129,10 +129,13 @@ theme = "wal"
 # [window]
 # width = 600
 # height = 400
-# mode = "windowed"
-# opacity = 1.0
-# blur = false
-# decorations = "enabled"
+[window]
+mode = "Maximized"
+opacity = 0.01
+blur = true
+decorations = "enabled"
+macos-use-unified-titlebar = true
+macos-use-shadow = true
 
 # Renderer
 #

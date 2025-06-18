@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
-      "source.organizeImports": "always"
+      "source.organizeImports": "never"
     }
   },
   "[vue]": {
@@ -45,6 +45,15 @@
   "eslint.format.enable": true,
   "explorer.compactFolders": true,
   "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "Cargo.toml": "Cargo.lock"
+  },
   "explorer.sortOrder": "foldersNestsFiles",
   "files.associations": {
     ".env*": "properties"
@@ -112,5 +121,7 @@
   "window.autoDetectHighContrast": false,
   "vitest.cliArguments": "--expect.requireAssertions",
   "vitest.configSearchPatternExclude": "{**/node_modules/**,**/.*/**,**/*.d.ts}",
-  "git.autofetch": true
+  "git.autofetch": true,
+  "workbench.preferredDarkColorTheme": "Cursor Dark High Contrast",
+  "workbench.colorTheme": "Cursor Dark High Contrast"
 }

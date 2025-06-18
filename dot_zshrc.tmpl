@@ -174,4 +174,6 @@ fi;
 
 export PATH=$PATH:/home/roziscoding/.spicetify
 
+{{ if eq "linux" .chezmoi.os }}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ end }}
