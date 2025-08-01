@@ -33,9 +33,14 @@
         "workspaces",
         "windowtitle"
       ],
-      "middle": [],
+      "middle": [
+        "cava"
+      ],
       "right": [
-        "clock"
+        "weather",
+        "clock",
+        "hypridle",
+        "hyprsunset"
       ]
     },
     "1": {
@@ -73,7 +78,7 @@
   "menus.dashboard.directories.right.directory3.label": "󱂵  Home",
   "theme.bar.margin_sides": "0.5em",
   "theme.bar.buttons.dashboard.enableBorder": false,
-  "wallpaper.image": "/home/roziscoding/Pictures/Wallpapers/wallhaven-pk2o23.png",
+  "wallpaper.image": "/home/roziscoding/Pictures/Wallpapers/wallhaven-e8zyww.jpg",
   "theme.matugen": true,
   "theme.matugen_settings.mode": "dark",
   "theme.matugen_settings.scheme_type": "fidelity",

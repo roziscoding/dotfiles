@@ -4,6 +4,10 @@ export PATH=/opt/homebrew/bin:$PATH
 
 eval "$(starship init zsh)"
 
+# Flatpak environment
+FLATPAK_DATA_DIRS=/var/lib/flatpak/exports/share:${XDG_DATA_HOME}/flatpak/exports/share
+XDG_DATA_DIRS=$FLATPAK_DATA_DIRS${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}
+
 # Fixing completions
 setopt automenu nolistambiguous
 zstyle ':completion:*' menu select

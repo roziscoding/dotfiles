@@ -7,7 +7,7 @@ insensitive=true
 location=center
 allow_markup=true
 term=kitty
-matching=fuzzy
+matching=contains
 gtk_dark=true
 line_wrap=word
 
