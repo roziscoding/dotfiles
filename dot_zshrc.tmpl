@@ -30,6 +30,11 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)\
 
 # install other completions
 fpath=(~/.zsh/completion $fpath)
+{{ if eq "darwin" .chezmoi.os }}
+
+# install docker desktop completions
+fpath=(/Users/roziscoding/.docker/completions $fpath)
+{{ end }}
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
@@ -79,6 +84,10 @@ zinit wait lucid for \
 #  Aloxaf/fzf-tab
 
 # Aliases
+function mkcommit () {
+  claude -p 'check staged changes and create a conventional commit message. print only the message, no additional output, so it can be passed directly to git'
+}
+
 function cz () {
   code $(z -e $1)
 }

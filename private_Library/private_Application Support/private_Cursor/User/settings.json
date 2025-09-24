@@ -9,14 +9,6 @@
   "[vue]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "codesnap-plus.containerPadding": "0",
-  "codesnap-plus.showWindowControls": false,
-  "codesnap-plus.showWindowTitle": true,
-  "codesnap-plus.shutterAction": "copy",
-  "codesnap-plus.target": "window",
-  "cursor.cpp.disabledLanguages": [
-    "scminput"
-  ],
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.cursorSmoothCaretAnimation": "on",
@@ -29,17 +21,17 @@
   "editor.minimap.enabled": false,
   "editor.renderLineHighlight": "gutter",
   "editor.rulers": [
-    {
-      "color": "#f9e1af6f",
-      "column": 80
-    },
+    // {
+    //   "color": "#f9e1af6f",
+    //   "column": 80
+    // },
     {
       "color": "#f38ba875",
       "column": 120
     }
   ],
   "editor.scrollbar.horizontal": "auto",
-  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.vertical": "hidden",
   "editor.tabSize": 2,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "eslint.format.enable": true,
@@ -56,7 +48,8 @@
   },
   "explorer.sortOrder": "foldersNestsFiles",
   "files.associations": {
-    ".env*": "properties"
+    ".env*": "properties",
+    "*.caddy": "caddyfile"
   },
   "files.autoSave": "onFocusChange",
   "git.confirmSync": false,
@@ -72,18 +65,16 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font Mono",
   "terminal.integrated.scrollback": 10000000000000,
-  "terminal.integrated.shellIntegration.decorationsEnabled": "gutter",
-  "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.showExitAlert": false,
   "typescript.inlayHints.parameterNames.enabled": "all",
   "vim.cursorStylePerMode.replace": "underline",
   "window.commandCenter": false,
-  "window.customTitleBarVisibility": "auto",
+  "window.customTitleBarVisibility": "windowed",
   "window.dialogStyle": "custom",
   "window.nativeTabs": false,
   "window.titleBarStyle": "custom",
   "workbench.editor.labelFormat": "short",
-  "workbench.iconTheme": "catppuccin-perfect-mocha",
+  "workbench.iconTheme": "bearded-icons",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.sideBar.location": "right",
   "workbench.tree.indent": 20,
@@ -105,23 +96,18 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "vim.smartRelativeLine": true,
   "vue.server.hybridMode": true,
-  "disableTsErrors.enableCustomizations": true,
-  "disableTsErrors.customizations": [
-    {
-      "code": [
-        80006
-      ],
-      "severity": "off"
-    }
-  ],
   "editor.accessibilitySupport": "off",
   "editor.formatOnSave": true,
-  "workbench.preferredHighContrastColorTheme": "Cursor Dark High Contrast",
-  "workbench.preferredHighContrastLightColorTheme": "Catppuccin Latte",
   "window.autoDetectHighContrast": false,
-  "vitest.cliArguments": "--expect.requireAssertions",
-  "vitest.configSearchPatternExclude": "{**/node_modules/**,**/.*/**,**/*.d.ts}",
   "git.autofetch": true,
-  "workbench.preferredDarkColorTheme": "Cursor Dark High Contrast",
-  "workbench.colorTheme": "Cursor Dark High Contrast"
+  "security.promptForLocalFileProtocolHandling": false,
+  "editor.stickyScroll.enabled": false,
+  "breadcrumbs.enabled": false,
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "workbench.preferredHighContrastLightColorTheme": "Catppuccin Latte",
+  "workbench.preferredHighContrastColorTheme": "Cursor Dark High Contrast",
+  "vim.easymotion": true,
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.chat.terminalShowHoverHint": false,
 }

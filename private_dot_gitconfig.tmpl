@@ -12,24 +12,26 @@
   followTags = true
 [alias]
   graph = log --all --graph --decorate --oneline --abbrev-commit
-  SelectLocalBranches = !git branch | (grep -v \"*\" > /dev/null) && (git branch | grep -v \"*\" | ipt -M \"Select local branches$EXTRA_MESSAGE:\" -am)
-  db = !EXTRA_MESSAGE=\" to delete\" git SelectLocalBranches | xargs git branch -d
   gone = "!git branch -vv | gawk '{print $1,$4}' | grep 'gone]' | gawk '{print $1}'"
   amend = "commit --amend --no-edit"
   shove = "push --force-with-lease"
-  ps = "push"
-  pl = "pull"
   co = "checkout"
   publish = "push -u origin HEAD"
-  cdiff = "rev-list --format=%B"
   wipe = "!git checkout . && git clean -fd"
   nuke = "clean -fdx"
   prenuke = "clean -fdxn"
   uncommit = "!git reset --soft HEAD~1 && git reset"
-  continue = -c core.editor=true rebase --continue
-  rhead = reset --hard HEAD
-  identical = "!~/.git-merge-drivers/identical-strat.sh"
-  theirs = "!f() { git checkout --theirs -- \"$@\" && git add \"$@\"; }; f"
+  rh = reset --hard
+  rs = reset --soft
+	psu = push -u origin HEAD
+	psf = push --force-with-lease
+  ps = push
+  pl = pull
+	aa = add --all
+	st = status
+	l = log
+  lo = log --oneline
+  s = switch
 [init]
   defaultBranch = main
 [core]

@@ -131,7 +131,7 @@ theme = "wal"
 # height = 400
 [window]
 mode = "Maximized"
-opacity = 0.01
+opacity = 0.5
 blur = true
 decorations = "enabled"
 macos-use-unified-titlebar = true
