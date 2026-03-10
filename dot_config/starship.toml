@@ -24,6 +24,7 @@ $docker_context\
 $package\
 $deno\
 $nodejs\
+$bun\
 $env_var\
 ${custom.asdf}\
 $fill\

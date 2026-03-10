@@ -11,11 +11,16 @@
   default = current
   followTags = true
 [alias]
+  prunef = "!git fetch --all --prune && git branch -vv | gawk '{print $1,$4}' | grep 'gone]' | gawk '{print $1}' | xargs git branch -D" 
+  prune = "!git fetch --all --prune && git branch -vv | gawk '{print $1,$4}' | grep 'gone]' | gawk '{print $1}' | xargs git branch -d" 
   graph = log --all --graph --decorate --oneline --abbrev-commit
   gone = "!git branch -vv | gawk '{print $1,$4}' | grep 'gone]' | gawk '{print $1}'"
   amend = "commit --amend --no-edit"
   shove = "push --force-with-lease"
-  co = "checkout"
+  co = "switch"
+  cb = "checkout -B"
+  c = "commit"
+  cm = "commit -m"
   publish = "push -u origin HEAD"
   wipe = "!git checkout . && git clean -fd"
   nuke = "clean -fdx"
@@ -23,11 +28,13 @@
   uncommit = "!git reset --soft HEAD~1 && git reset"
   rh = reset --hard
   rs = reset --soft
-	psu = push -u origin HEAD
 	psf = push --force-with-lease
-  ps = push
+  apsf = !git amend && git psf
+  ps = push -u
   pl = pull
 	aa = add --all
+  ai = add -i
+  ap = add -p
 	st = status
 	l = log
   lo = log --oneline

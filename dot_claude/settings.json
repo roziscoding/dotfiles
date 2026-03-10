@@ -1,4 +1,18 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(dig:*)",
+      "Bash(ssh:*)",
+      "WebSearch",
+      "WebFetch(domain:dev.to)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": [],
+    "ask": [],
+    "defaultMode": "default"
+  },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -10,5 +24,19 @@
         ]
       }
     ]
-  }
+  },
+  "alwaysThinkingEnabled": true,
+  "promptSuggestionEnabled": false,
+  "mcpServers": {
+    "caddy-mcp": {
+      "command": "/Users/roziscoding/github.com/lum8rjack/caddy-mcp/caddy-mcp",
+      "args": [
+        "-transport",
+        "stdio",
+        "-url",
+        "http://127.0.0.1:2019"
+      ]
+    }
+  },
+  "skipDangerousModePermissionPrompt": true
 }

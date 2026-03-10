@@ -77,7 +77,6 @@ zinit wait lucid for \
   zpm-zsh/colorize \
   Tarrasch/zsh-command-not-found \
   zpm-zsh/ls \
-  atload'unalias gst; alias gst="git status"' davidde/git \
   atload'alias python=python3' amstrad/oh-my-matrix \
   reegnz/jq-zsh-plugin \
   Tarrasch/zsh-colors #\
@@ -190,3 +189,11 @@ export PATH=$PATH:/home/roziscoding/.spicetify
 {{ if eq "linux" .chezmoi.os }}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end }}
+
+alias claude=/opt/homebrew/bin/claude
+alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
+alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)";
+fi;

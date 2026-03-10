@@ -3,11 +3,17 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
+      "source.organizeImports.biome": "explicit",
+      "source.fixAll.biome": "explicit",
       "source.organizeImports": "never"
     }
   },
   "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "always",
+    }
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
@@ -68,46 +74,50 @@
   "terminal.integrated.showExitAlert": false,
   "typescript.inlayHints.parameterNames.enabled": "all",
   "vim.cursorStylePerMode.replace": "underline",
-  "window.commandCenter": false,
   "window.customTitleBarVisibility": "windowed",
   "window.dialogStyle": "custom",
   "window.nativeTabs": false,
   "window.titleBarStyle": "custom",
   "workbench.editor.labelFormat": "short",
-  "workbench.iconTheme": "bearded-icons",
+  "workbench.iconTheme": "catppuccin-perfect-mocha",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
-  "workbench.sideBar.location": "right",
   "workbench.tree.indent": 20,
   "eslint.useESLintClass": true,
-  "editor.semanticHighlighting.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[json]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never",
-      "source.fixAll.ts": "never",
-      "source.addMissingImports.ts": "never",
-      "source.organizeImports": "never",
-      "source.removeUnused.ts": "never",
-      "source.removeUnusedImports": "never",
-      "source.sortImports": "never"
-    }
-  },
   "editor.inlayHints.enabled": "offUnlessPressed",
   "vim.smartRelativeLine": true,
   "vue.server.hybridMode": true,
   "editor.accessibilitySupport": "off",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "window.autoDetectHighContrast": false,
   "git.autofetch": true,
   "security.promptForLocalFileProtocolHandling": false,
   "editor.stickyScroll.enabled": false,
   "breadcrumbs.enabled": false,
   "window.autoDetectColorScheme": true,
-  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "workbench.preferredDarkColorTheme": "Bearded Theme Vivid Black",
   "workbench.preferredHighContrastLightColorTheme": "Catppuccin Latte",
   "workbench.preferredHighContrastColorTheme": "Cursor Dark High Contrast",
   "vim.easymotion": true,
-  "cursor.cpp.enablePartialAccepts": true,
   "cursor.chat.terminalShowHoverHint": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "workbench.sideBar.location": "right",
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "claudeCode.preferredLocation": "panel",
+  "cursor.cpp.disabledLanguages": [
+    "plaintext"
+  ]
 }
