@@ -188,6 +188,7 @@ export PATH=$PATH:/home/roziscoding/.spicetify
 
 {{ if eq "linux" .chezmoi.os }}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+alias pbcopy='xclip -selection clipboard -in'
 {{ end }}
 
 alias claude=/opt/homebrew/bin/claude
