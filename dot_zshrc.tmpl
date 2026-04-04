@@ -2,6 +2,10 @@
 export PATH=/opt/homebrew/bin:$PATH
 {{ end }}
 
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)";
+fi;
+
 eval "$(starship init zsh)"
 
 # Flatpak environment
@@ -24,9 +28,6 @@ bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 bindkey -e
-
-# install asdf completions
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)\
 
 # install other completions
 fpath=(~/.zsh/completion $fpath)
@@ -131,6 +132,17 @@ function yy () {
  rm -f -- "$tmp"
 }
 
+# Usage `aws-login <PROFILE>`
+aws-login() {
+  local creds
+  creds=$(aws configure export-credentials --profile $1 --format env 2>/dev/null)
+  if [ $? -ne 0 ]; then
+    aws sso login --profile $1
+    creds=$(aws configure export-credentials --profile $1 --format env)
+  fi
+  eval "$creds"
+}
+
 
 {{ if eq "darwin" .chezmoi.os }}
 alias tar=$(which gtar)
@@ -155,7 +167,6 @@ if [ -f ~/.config/op/plugins.sh ]; then
 fi;
 
 export PATH="$PATH:$HOME/.atuin/bin"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$PATH:$HOME/.atuin/bin"
 export PATH="$PATH:$HOME/pnpm"
 export PATH="$PATH:$HOME/.local/bin"
@@ -191,10 +202,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 alias pbcopy='xclip -selection clipboard -in'
 {{ end }}
 
-alias claude=/opt/homebrew/bin/claude
 alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
 alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
 
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)";
-fi;
