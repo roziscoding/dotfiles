@@ -150,6 +150,10 @@ aws-login() {
   eval "$creds"
 }
 
+alias cme="chezmoi edit --apply"
+alias g="git"
+alias cm="chezmoi"
+
 
 {{ if eq "darwin" .chezmoi.os }}
 alias tar=$(which gtar)

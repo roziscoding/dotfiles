@@ -1,1 +1,4 @@
 [MIME Cache]
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop;
+x-scheme-handler/com.cloudflare.warp=warp-cli.desktop;
+x-scheme-handler/spotify=spt.desktop;

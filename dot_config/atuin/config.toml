@@ -1,9 +1,14 @@
-sync_address = "http://192.168.15.30:8888"
+sync_address = "http://192.168.0.156:8888"
 style = "compact"
 enter_accept = true
+search_mode = "daemon-fuzzy"
 
 [theme]
 name = "catppuccin-mocha-blue"
 
 [dotfiles]
 enable = true
+
+[daemon]
+enabled = true
+autostart = true
