@@ -3,24 +3,30 @@
     "height": 60,
     "layer": "top",
     "position": "top",
-    "output": "HDMI-A-1",
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
     "spacing": 7,
     "modules-left": [
       "hyprland/workspaces",
-      "tray"
+      "tray",
+      "custom/wallpaper"
     ],
-    "modules-center": ["hyprland/window"],
+    "modules-center": [
+      "hyprland/window"
+    ],
     "modules-right": [
-      "custom/colortemp"
+      "battery",
+      "idle_inhibitor",
+      "custom/media",
+      "custom/wayves",
+      "pulseaudio",
+      "network",
+      "custom/weather",
+      "custom/colortemp",
+      "custom/date",
+      "custom/clock"
     ],
-    "hyprland/window": {
-      "separate-outputs": true
-    },
-    "tray": {
-      "show-passive-items": true,
-      "spacing": 10,
-      "icon-size": 24
-    },
     "custom/colortemp": {
       "format": "{icon} {text}",
       "format-icons": ["󰌶", "󰌵"],
@@ -28,30 +34,7 @@
       "exec": "$HOME/.local/bin/gradtemp",
       "on-click": "$HOME/.local/bin/gradtemp tgl",
       "return-type": "json"
-    }
-  },
-  {
-    "height": 60,
-    "layer": "top",
-    "position": "top",
-    "output": "DP-2",
-    "spacing": 7,
-    "modules-left": [
-      "hyprland/workspaces"
-    ],
-    "modules-center": [
-      "hyprland/window"
-    ],
-    "modules-right": [
-      "idle_inhibitor",
-      "custom/media",
-      "custom/wayves",
-      "pulseaudio",
-      "network",
-      "custom/weather",
-      "custom/date",
-      "custom/clock"
-    ],
+    },
     "hyprland/window": {
       "separate-outputs": true
     },
@@ -143,9 +126,9 @@
     },
 
     "network": {
-      "format-wifi": "直  {signalStrength}%",
-      "format-ethernet": " ",
-      "format-disconnected": "睊 ",
+      "format-wifi": "󰤨",
+      "format-ethernet": "󰈀 ",
+      "format-disconnected": "󰤭 ",
       "tooltip-format": "{ifname} | {bandwidthUpBits} up | {bandwidthDownBits} down | {bandwidthTotalBits} total",
       "family": "ipv4"
     },
@@ -212,6 +195,11 @@
         "activated": "",
         "deactivated": ""
     }
-}
+},
+    "custom/wallpaper": {
+      "format": "󰸉",
+      "tooltip-format": "Random wallpaper",
+      "on-click": "waypaper --random"
+    }
   }
 ]

@@ -1,4 +1,4 @@
-@import "../../.cache/wal/colors-waybar.css";
+@import "../../.cache/hellwal/waybar-colors.css";
 
 /* margin: top right bottom left */
 /* Spacing outside the element */
@@ -12,12 +12,12 @@
 }
 
 window#waybar {
-  background-color: transparent;
+  background: linear-gradient(to right, alpha(@color8, 0.4), alpha(@color10, 0.4), alpha(@color8, 0.4));
   color: @foreground;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-radius: 0px;
-  transition-duration: .5s;
+  border-radius: 10px;
+  margin: 10px 10px 0 10px;
 }
 
 window#waybar.hidden {
@@ -35,19 +35,19 @@ window#waybar.empty #window {
 
 #workspaces button {
   color: @foreground;
-  background-color: @color1;
-  border: 1px solid @color2;
+  background-color: transparent;
+  border: none;
   margin: 10px 10px;
 }
 
 #workspaces button:hover {
-  background: @color1;
+  background: @color8;
   color: @foreground;
 }
 
 #workspaces button.active {
-  color: @color13;
-  background: @color3;
+  color: @foreground;
+  background: @color8;
   border: none;
 }
 
@@ -70,6 +70,7 @@ window#waybar.empty #window {
 window#waybar #window,
 #custom-wayves,
 #custom-media,
+#custom-wallpaper,
 #idle_inhibitor{
   padding: 5px;
   border-radius: 5px;
@@ -77,39 +78,37 @@ window#waybar #window,
   margin: 10px 0;
 }
 
+#battery {
+}
+
 #idle_inhibitor {
-  margin-right: 10px;
+  padding: 5px 14px 5px 10px;
+  min-width: 20px;
 }
 
 window#waybar #window {
-  background-color: @color3;
 }
 
 #custom-wayves,
 #custom-media{
-  background-color: @color9;
 }
 
 #pulseaudio {
   padding: 0px 20px 0px 17px;
-  background-color: @color10;
 }
 
 #network {
-  padding: 0px 15px 0px 20px;
-  background-color: @color11;
+  padding: 0px 10px 0px 6px;
+  min-width: 20px;
 }
 
 #custom-weather {
-  background-color: @color12;
 }
 
 #custom-date {
-  background-color: @color13;
 }
 
 #custom-clock {
-  background-color: @color14;
   margin-right: 10px;
 }
 
@@ -118,7 +117,6 @@ window#waybar #window {
 
 #tray {
   padding: 0px 10px 0px 10px;
-  background-color: @color9;
 }
 
 

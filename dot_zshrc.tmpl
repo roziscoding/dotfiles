@@ -1,3 +1,10 @@
+export PATH=$HOME/.local/bin:$PATH
+
+# 1Password SSH agent
+if [ -S "$HOME/.1password/agent.sock" ]; then
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
+
 {{ if eq "darwin" .chezmoi.os }}
 export PATH=/opt/homebrew/bin:$PATH
 {{ end }}
@@ -100,14 +107,14 @@ function mkd () {
   mkdir -p $1 && cd $1
 }
 
-function ghc () {
-  OWNER=$(basename $(pwd))
-  op plugin run -- gh repo clone $OWNER/$1
-}
+# function ghc () {
+#   OWNER=$(basename $(pwd))
+#   op plugin run -- gh repo clone $OWNER/$1
+# }
 
-function secrets () {
-  eval "$(op inject -i ~/.envs.sh)"
-}
+# function secrets () {
+#   eval "$(op inject -i ~/.envs.sh)"
+# }
 
 function wreboot () {
         sudo efibootmgr -n 0
@@ -162,9 +169,9 @@ esac
 # pnpm end
 
 
-if [ -f ~/.config/op/plugins.sh ]; then
-  source ~/.config/op/plugins.sh
-fi;
+# if [ -f ~/.config/op/plugins.sh ]; then
+#   source ~/.config/op/plugins.sh
+# fi;
 
 export PATH="$PATH:$HOME/.atuin/bin"
 export PATH="$PATH:$HOME/.atuin/bin"
@@ -189,7 +196,7 @@ elif command -v fzf >/dev/null 2>&1; then
   zle -N fzf-history-widget
 fi
 
-export NTFY_ACCESS_TOKEN={{ onepasswordRead "op://Private/ntfy/access token" }}
+{{/* # export NTFY_ACCESS_TOKEN={{ onepasswordRead "op://Private/ntfy/access token" }} */}}
 
 if command -v fastfetch >/dev/null 2>&1; then
   fastfetch;
@@ -198,10 +205,10 @@ fi;
 export PATH=$PATH:/home/roziscoding/.spicetify
 
 {{ if eq "linux" .chezmoi.os }}
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 alias pbcopy='xclip -selection clipboard -in'
 {{ end }}
 
 alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
 alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
-
+alias wal=hellwal

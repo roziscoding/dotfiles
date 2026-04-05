@@ -12,7 +12,7 @@
     "ask": [],
     "defaultMode": "default"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -25,8 +25,10 @@
       }
     ]
   },
+  "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
     "caddy-mcp": {
       "command": "/Users/roziscoding/github.com/lum8rjack/caddy-mcp/caddy-mcp",
@@ -37,6 +39,5 @@
         "http://127.0.0.1:2019"
       ]
     }
-  },
-  "skipDangerousModePermissionPrompt": true
+  }
 }
