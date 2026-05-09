@@ -6,7 +6,6 @@ github-cli = "latest"
 golang = "1.25.0"
 jq = "latest"
 "npm:pino-pretty" = "latest"
-pnpm = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 kubectl = "latest"
 "npm:agent-browser" = "latest"
@@ -42,7 +41,9 @@ claude = "latest"
 helm = "latest"
 argocd = "latest"
 "npm:ccstatusline" = "latest"
-go = "1.26.2"
+go = "1.26.3"
+codex = "latest"
+"npm:pnpm" = "latest"
 
 [settings]
 color = true
