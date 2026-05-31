@@ -1,0 +1,11 @@
+background-opacity = 0.80
+background-blur = true
+gtk-titlebar = true
+gtk-toolbar-style = raised-border
+font-family = JetBrainsMono NF
+background-opacity-cells = true
+clipboard-read = allow
+clipboard-write = allow
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo,path
+

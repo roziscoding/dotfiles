@@ -140,6 +140,10 @@ function yy () {
  rm -f -- "$tmp"
 }
 
+function ssh() {
+  [ "$TERM" = "xterm-kitty" ] && command kitten ssh "$@" || command ssh "$@";
+}
+
 # Usage `aws-login <PROFILE>`
 aws-login() {
   local creds
@@ -150,6 +154,7 @@ aws-login() {
   fi
   eval "$creds"
 }
+
 
 alias cme="chezmoi edit --apply"
 alias g="git"
@@ -217,3 +222,4 @@ alias pbcopy='xclip -selection clipboard -in'
 alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
 alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
 alias wal=hellwal
+
