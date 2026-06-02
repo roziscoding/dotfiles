@@ -148,8 +148,13 @@ function ssh() {
   [ "$TERM" = "xterm-kitty" ] && command kitten ssh "$@" || command ssh "$@";
 }
 
+function cdtemp() {
+  local tmp="$(mktemp -d $@)"
+  cd $tmp
+}
+
 # Usage `aws-login <PROFILE>`
-aws-login() {
+function aws-login() {
   local creds
   creds=$(aws configure export-credentials --profile $1 --format env 2>/dev/null)
   if [ $? -ne 0 ]; then
@@ -169,7 +174,6 @@ alias cm="chezmoi"
 alias tar=$(which gtar)
 {{ end }}
 
-eval "$(zoxide init zsh)"
 
 eval "$(direnv hook zsh)"
 
@@ -226,4 +230,5 @@ alias pbcopy='xclip -selection clipboard -in'
 alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
 alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
 alias wal=hellwal
+eval "$(zoxide init zsh)"
 
