@@ -31,5 +31,6 @@
   "terminalProgressBarEnabled": false,
   "remoteControlAtStartup": false,
   "agentPushNotifEnabled": false,
-  "mcpServers": {}
+  "mcpServers": {},
+  "inputNeededNotifEnabled": true
 }

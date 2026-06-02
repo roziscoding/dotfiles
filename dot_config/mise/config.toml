@@ -43,10 +43,12 @@ argocd = "latest"
 "npm:ccstatusline" = "latest"
 go = "1.26.3"
 codex = "latest"
-"npm:pnpm" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+"npm:greptile" = "latest"
 
 [settings]
 color = true
+idiomatic_version_file_enable_tools = ["node"]
 
 [settings.npm]
 package_manager = "bun"

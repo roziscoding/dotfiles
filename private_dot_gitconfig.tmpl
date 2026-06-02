@@ -32,8 +32,8 @@
   cm = "commit -m"
   publish = "push -u origin HEAD"
   wipe = "!git checkout . && git clean -fd"
-  nuke = "clean -fdx"
-  prenuke = "clean -fdxn"
+  nuke = "clean -fdx -e ai_docs"
+  prenuke = "clean -fdxn -e ai_docs"
   uncommit = "!git reset --soft HEAD~1 && git reset"
   rh = reset --hard
   rs = reset --soft
@@ -48,11 +48,13 @@
 	l = log
   lo = log --oneline
   s = switch
+  wt = worktree
 [init]
   defaultBranch = main
 [core]
   excludesFile = "~/.gitignore"
 	whitespace = cr-at-eol
+  hooksPath = /Users/roziscoding/.git-hooks
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [url "git@gist.github.com:"]

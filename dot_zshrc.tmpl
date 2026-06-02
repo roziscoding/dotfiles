@@ -108,6 +108,10 @@ function mkd () {
   mkdir -p $1 && cd $1
 }
 
+function telatun () {
+  cloudflared tunnel run --url $1 roz-dev-tunnel
+}
+
 # function ghc () {
 #   OWNER=$(basename $(pwd))
 #   op plugin run -- gh repo clone $OWNER/$1
