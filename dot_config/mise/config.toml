@@ -46,6 +46,16 @@ codex = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:greptile" = "latest"
 
+[env]
+DOCKER_HOST = ""
+EDITOR = "nvim"
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
+LANG = "en_US.UTF-8"
+LC_ALL = "en_US.UTF-8"
+PNPM_HOME = "{{env.HOME}}/pnpm"
+TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/home/roziscoding/.colima/docker.sock"
+TESTCONTAINERS_RYUK_DISABLED = "true"
+
 [settings]
 color = true
 idiomatic_version_file_enable_tools = ["node"]
@@ -55,4 +65,36 @@ package_manager = "bun"
 
 [shell_alias]
 m = "mise"
-
+als = 'atuin dotfiles alias set'
+at = 'atuin'
+cat = 'bat'
+claudio = 'claude --dangerously-skip-permissions'
+cm = 'chezmoi'
+cme = 'cm edit --apply'
+createdb = 'docker run --rm -it --network=host postgres createdb'
+db = 'devbox'
+dbr = 'devbox run'
+dc = 'docker compose'
+g = 'git'
+ga = 'git add'
+gaa = 'git add .'
+gap = 'git add -p'
+gb = 'git branch'
+gco = 'git switch'
+gpl = 'git pull'
+gps = 'git push'
+ht = 'xhs'
+http = 'xhs'
+k = 'kubectl'
+mkpr = 'gh pr create -a @me -f -B dev'
+mongo = 'docker exec -it mongodb mongo'
+nodeclear = 'find . -name "node_modules" -type d -prune -exec rm -rf "{}" + && rm -f ./pnpm-lock.yaml'
+p = 'pulumi'
+pbcopy = 'xclip -selection clipboard -in'
+pk = 'pakku-mc'
+psql = 'docker run --rm -it --network=host postgres psql'
+pup = 'pulumi up'
+randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
+spt = 'spotify_player'
+unlock = 'pkill -USR1 hyprlock'
+yayy = 'yay --noconfirm'
