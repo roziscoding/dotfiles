@@ -74,6 +74,7 @@
   "defaultPadding": " ",
   "inheritSeparatorColors": false,
   "globalBold": true,
+  "gitCacheTtlSeconds": 5,
   "minimalistMode": false,
   "powerline": {
     "enabled": true,
@@ -92,5 +93,9 @@
     "theme": "minimal",
     "autoAlign": true,
     "continueThemeAcrossLines": true
+  },
+  "installation": {
+    "method": "auto-update",
+    "packageManager": "bun"
   }
 }
