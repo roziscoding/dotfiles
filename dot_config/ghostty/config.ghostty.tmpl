@@ -1,0 +1,18 @@
+{{- $ghosttyBackgroundImagePath := (index . "ghosttyBackgroundImagePath" | default "" | trim) -}}
+{{- if hasPrefix "~/" $ghosttyBackgroundImagePath -}}
+{{- $ghosttyBackgroundImagePath = joinPath .chezmoi.homeDir (trimPrefix "~/" $ghosttyBackgroundImagePath) -}}
+{{- end -}}
+{{- if and $ghosttyBackgroundImagePath (stat $ghosttyBackgroundImagePath) -}}
+background-image = {{ $ghosttyBackgroundImagePath }}
+{{ end -}}
+background-image-fit = cover
+background-image-opacity = 0.01
+background-opacity-cells = true
+gtk-titlebar = true
+gtk-toolbar-style = raised-border
+font-family = JetBrainsMono NF
+clipboard-read = allow
+clipboard-write = allow
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo,path
+config-file = ?auto/theme.ghostty

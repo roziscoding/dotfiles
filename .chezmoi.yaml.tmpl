@@ -1,4 +1,6 @@
 {{ $email := promptString "email" -}}
+{{ $ghosttyBackgroundImagePath := promptString "ghosttyBackgroundImagePath" -}}
 
 data:
     email: {{ $email | quote }}
+    ghosttyBackgroundImagePath: {{ $ghosttyBackgroundImagePath | quote }}
