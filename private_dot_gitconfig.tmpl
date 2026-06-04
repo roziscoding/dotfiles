@@ -1,12 +1,38 @@
 {{- $sshPubKey := joinPath .chezmoi.homeDir ".ssh" "id_ed25519.pub" -}}
 {{- $sshPrivateKey := joinPath .chezmoi.homeDir ".ssh" "id_ed25519" -}}
+{{- $onePasswordSshSignProgram := "" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{- $onePasswordSshSignProgram = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" -}}
+{{- else if eq .chezmoi.os "linux" -}}
+{{- $onePasswordSshSignProgram = "/opt/1Password/op-ssh-sign" -}}
+{{- end -}}
 {{- $sshPubKeyContents := "" -}}
 {{- if stat $sshPubKey -}}
 {{- $sshPubKeyContents = output "cat" $sshPubKey | trim -}}
 {{- end -}}
+{{- $onePasswordSigningKey := "" -}}
+{{- $onePasswordSigningKeyRef := "op://Private/main - id_ed25519/public key" -}}
+{{- $op := lookPath "op" -}}
+{{- if and (not $onePasswordSigningKey) $onePasswordSigningKeyRef $op -}}
+{{- $onePasswordSigningKey = output "sh" "-c" "\"$1\" read \"$2\" 2>/dev/null || true" "sh" $op $onePasswordSigningKeyRef | trim -}}
+{{- end -}}
+{{- if and (not $onePasswordSigningKey) $sshPubKeyContents -}}
+{{- $onePasswordSigningKey = $sshPubKeyContents -}}
+{{- end -}}
+{{- $usesLocalPrivateKey := stat $sshPrivateKey -}}
+{{- if and (not $usesLocalPrivateKey) (not $onePasswordSigningKey) -}}
+{{- warnf "git signing is intentionally broken: no %s, no public key from %s, and no %s fallback" $sshPrivateKey $onePasswordSigningKeyRef $sshPubKey -}}
+{{- end -}}
+{{- if and (not $usesLocalPrivateKey) $onePasswordSigningKey $onePasswordSshSignProgram (not (stat $onePasswordSshSignProgram)) -}}
+{{- warnf "git signing may be broken: 1Password SSH signing program was not found at %s" $onePasswordSshSignProgram -}}
+{{- end -}}
 {{- $email := .email -}}
-{{- if $sshPubKeyContents -}}
-{{- range $field := splitList " " $sshPubKeyContents -}}
+{{- $emailSourceKey := $sshPubKeyContents -}}
+{{- if not $emailSourceKey -}}
+{{- $emailSourceKey = $onePasswordSigningKey -}}
+{{- end -}}
+{{- if $emailSourceKey -}}
+{{- range $field := splitList " " $emailSourceKey -}}
 {{- if contains "@" $field -}}
 {{- $email = $field -}}
 {{- end -}}
@@ -16,12 +42,35 @@
 [user]
 	name = Roz
 	email = {{ $email | quote }}
-{{- if stat $sshPrivateKey }}
+{{- if $usesLocalPrivateKey }}
 	signingkey = {{ $sshPrivateKey }}
 [gpg]
 	format = ssh
 [gpg "ssh"]
 	allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+{{- else if and $onePasswordSshSignProgram $onePasswordSigningKey }}
+	signingkey = {{ $onePasswordSigningKey }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+	program = {{ $onePasswordSshSignProgram }}
+[commit]
+	gpgsign = true
+{{- else }}
+	# WARNING: Git signing is intentionally broken.
+	# Reason: no local {{ $sshPrivateKey }} private key exists, and chezmoi could not resolve a public signing key from {{ $onePasswordSigningKeyRef }}.
+	# Fix: install 1Password CLI and the 1Password desktop app, sign in, enable the SSH agent, and verify:
+	#   op read {{ $onePasswordSigningKeyRef }}
+	# Alternative fix: create {{ $sshPrivateKey }} and {{ $sshPubKey }} locally, then re-run chezmoi apply.
+	signingkey = CHEZMOI_MISSING_GIT_SIGNING_KEY
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+	program = {{ $onePasswordSshSignProgram | default "/__chezmoi_missing_op_ssh_sign__" }}
 [commit]
 	gpgsign = true
 {{- end }}
