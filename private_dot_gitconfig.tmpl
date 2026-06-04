@@ -1,14 +1,23 @@
+{{- $sshPubKey := joinPath .chezmoi.homeDir ".ssh" "id_ed25519.pub" -}}
+{{- $sshPrivateKey := joinPath .chezmoi.homeDir ".ssh" "id_ed25519" -}}
+{{- $sshPubKeyContents := "" -}}
+{{- if stat $sshPubKey -}}
+{{- $sshPubKeyContents = output "cat" $sshPubKey | trim -}}
+{{- end -}}
+{{- $email := .email -}}
+{{- if $sshPubKeyContents -}}
+{{- range $field := splitList " " $sshPubKeyContents -}}
+{{- if contains "@" $field -}}
+{{- $email = $field -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
 # This is Git's per-user configuration file.
 [user]
 	name = Roz
-{{- if stat (joinPath .chezmoi.homeDir ".ssh" "id_ed25519.pub") }}
-	email = {{ output "cat" (joinPath .chezmoi.homeDir ".ssh" "id_ed25519.pub") | trim | splitList " " | last | quote }}
-{{- else }}
-	email = {{ .email | quote }}
-{{- end }}
-{{- $sshPubKey := joinPath .chezmoi.homeDir ".ssh" "id_ed25519.pub" }}
-{{- if stat $sshPubKey }}
-	signingkey = {{ output "cat" $sshPubKey | trim }}
+	email = {{ $email | quote }}
+{{- if stat $sshPrivateKey }}
+	signingkey = {{ $sshPrivateKey }}
 [gpg]
 	format = ssh
 [gpg "ssh"]
