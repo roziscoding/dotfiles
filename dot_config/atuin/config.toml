@@ -1,13 +1,19 @@
-sync_address = "http://192.168.0.156:8888"
-style = "compact"
+style = "full"
 enter_accept = true
 search_mode = "daemon-fuzzy"
+auto_sync = false
+filter_mode = "directory"
+workspaces = true
+show_numeric_shortcuts = false
+
+[ui]
+columns = ["exit", "time", "command"]
 
 [theme]
 name = "catppuccin-mocha-blue"
 
 [dotfiles]
-enable = true
+enable = false
 
 [daemon]
 enabled = true
