@@ -41,8 +41,7 @@ claude = "latest"
 helm = "latest"
 argocd = "latest"
 "npm:ccstatusline" = "latest"
-go = "1.26.3"
-codex = "latest"
+go = "1.26.4"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:greptile" = "latest"
 
@@ -98,3 +97,4 @@ randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogr
 spt = 'spotify_player'
 unlock = 'pkill -USR1 hyprlock'
 yayy = 'yay --noconfirm'
+fp = 'flatpak'

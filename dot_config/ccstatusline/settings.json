@@ -63,6 +63,19 @@
         "id": "2af4f413-2f99-4850-bd76-bc8c1908cb78",
         "type": "reset-timer",
         "backgroundColor": "bgWhite"
+      },
+      {
+        "id": "342d9569-a425-4dca-9f72-a458e45a56c3",
+        "type": "model",
+        "backgroundColor": "bgYellow",
+        "rawValue": true,
+        "merge": true
+      },
+      {
+        "id": "ab60e078-2628-4017-a83e-71fdd030bba5",
+        "type": "thinking-effort",
+        "backgroundColor": "bgRed",
+        "rawValue": true
       }
     ],
     [],
@@ -85,12 +98,12 @@
       false
     ],
     "startCaps": [
-      ""
+      ""
     ],
     "endCaps": [
-      ""
+      ""
     ],
-    "theme": "minimal",
+    "theme": "catppuccin",
     "autoAlign": true,
     "continueThemeAcrossLines": true
   },
