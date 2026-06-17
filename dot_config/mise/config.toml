@@ -58,6 +58,7 @@ TESTCONTAINERS_RYUK_DISABLED = "true"
 [settings]
 color = true
 idiomatic_version_file_enable_tools = ["node"]
+minimum_release_age = "0s"
 
 [settings.npm]
 package_manager = "bun"
@@ -98,3 +99,5 @@ spt = 'spotify_player'
 unlock = 'pkill -USR1 hyprlock'
 yayy = 'yay --noconfirm'
 fp = 'flatpak'
+l1 = 'ls -1'
+l1a = 'ls -1a'
