@@ -43,6 +43,8 @@ argocd = "latest"
 go = "1.26.4"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:greptile" = "latest"
+codex = "latest"
+tmux = "latest"
 
 [env]
 DOCKER_HOST = ""
@@ -103,5 +105,5 @@ l1a = 'ls -1a'
 flms = "flameshot"
 scr = "screen"
 scrs = "screen -ls"
-nscr = "_(){ screen -S $1 -t $1 }; _"
+scrn = "_(){ screen -S $1 -t $1 }; _"
 scra = '_(){ if [ -n "$1" ]; then screen -r "$1"; else screen -r; fi; }; _'
