@@ -12,6 +12,7 @@ $localip\
 $shlvl\
 $singularity\
 $username\
+${custom.gnu_screen}\
 $directory\
 $vcsh\
 $fossil_metrics\
@@ -26,7 +27,6 @@ $deno\
 $nodejs\
 $bun\
 $env_var\
-${custom.asdf}\
 $fill\
 $sudo\
 $cmd_duration\
@@ -38,9 +38,12 @@ $shell\
 $character"""
 
 [username]
-format = "[$user]($style) in "
+format = "[$user]($style)"
 show_always = true
 aliases = { "user" = "roziscoding" }
+
+[directory]
+format = " in [$path]($style)[$read_only]($read_only_style) "
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -149,30 +152,9 @@ Unknown = "❓ "
 Void = "  "
 Windows = "🪟 "
 
-[custom.asdf]
-command = """
-if [ ! -f .tool-versions ]; then
-  echo "No .tool-versions file found"
-  return
-fi
-
-while read -r line; do
-  if [ -z "$line" ]; then
-    continue
-  fi
-  plugin=$(echo $line | cut -d ' ' -f 1)
-  version=$(echo $line | cut -d ' ' -f 2)
-  if [ -z "$version" ]; then
-    echo "No version found for $plugin"
-  else
-    installed=$(asdf list $plugin 2> /dev/null | grep $version)
-    if [ -z "$installed" ]; then
-      echo -n "$plugin v$version "
-    fi
-  fi
-done < .tool-versions
-"""
-detect_files = [".tool-versions"]
-style = "red bold"
-format = "[(missing: $output)]($style)"
-ignore_timeout = true
+[custom.gnu_screen]
+command = "screen -Q title"
+style = "green bold"
+description = "Display a monitor glyph and the session name if we're in a gnu screen session."
+format = '[:$output]($style)'
+when = """ test "$STY" """
