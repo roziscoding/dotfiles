@@ -32,10 +32,31 @@ SAVEHIST=1000
 setopt autocd beep extendedglob nomatch notify
 # End of lines configured by zsh-newuser-install
 
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
+# Use emacs keymap as the baseline, then layer custom bindings on top
 bindkey -e
+
+# Home / End (cover the common terminal escape-sequence variants)
+bindkey "^[[H"  beginning-of-line   # xterm
+bindkey "^[OH"  beginning-of-line   # application/cursor-key mode (kitty, etc.)
+bindkey "^[[1~" beginning-of-line   # linux console / rxvt
+bindkey "^[[F"  end-of-line         # xterm
+bindkey "^[OF"  end-of-line         # application/cursor-key mode
+bindkey "^[[4~" end-of-line         # linux console / rxvt
+
+# Line navigation with Alt+Left / Alt+Right (macOS Cmd+arrow muscle memory)
+bindkey "^[[1;3D" beginning-of-line # Alt+Left
+bindkey "^[[1;3C" end-of-line       # Alt+Right
+bindkey "^[^[[D"  beginning-of-line # Alt+Left (meta-prefixed variant)
+bindkey "^[^[[C"  end-of-line       # Alt+Right (meta-prefixed variant)
+
+# Word navigation with Ctrl+Left / Ctrl+Right
+bindkey "^[[1;5D" backward-word     # Ctrl+Left
+bindkey "^[[1;5C" forward-word      # Ctrl+Right
+bindkey "^[Od"    backward-word     # rxvt Ctrl+Left
+bindkey "^[Oc"    forward-word      # rxvt Ctrl+Right
+
+# Delete key
+bindkey "^[[3~" delete-char
 
 # install other completions
 fpath=(~/.zsh/completion $fpath)
