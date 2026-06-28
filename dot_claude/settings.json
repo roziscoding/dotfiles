@@ -1,4 +1,7 @@
 {
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
@@ -8,12 +11,10 @@
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true
   },
-  "skipDangerousModePermissionPrompt": true,
-  "agentPushNotifEnabled": true,
-  "inputNeededNotifEnabled": true,
-  "permissions": {
-    "defaultMode": "auto"
-  },
   "tui": "fullscreen",
-  "autoCompactEnabled": false
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "normal",
+  "autoCompactEnabled": false,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }
