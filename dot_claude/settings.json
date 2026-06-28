@@ -9,6 +9,11 @@
     "frontend-design@claude-plugins-official": true
   },
   "skipDangerousModePermissionPrompt": true,
-  "agentPushNotifEnabled": false,
-  "inputNeededNotifEnabled": false
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true,
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "tui": "fullscreen",
+  "autoCompactEnabled": false
 }

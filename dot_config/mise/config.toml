@@ -41,10 +41,11 @@ helm = "latest"
 argocd = "latest"
 "npm:ccstatusline" = "latest"
 go = "1.26.4"
-"npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:greptile" = "latest"
 codex = "latest"
 tmux = "latest"
+"npm:ctx7" = "latest"
+"npm:@oh-my-pi/pi-coding-agent" = "latest"
 
 [env]
 DOCKER_HOST = ""
