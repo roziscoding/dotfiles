@@ -11,7 +11,6 @@ kubectl = "latest"
 "npm:agent-browser" = "latest"
 act = "latest"
 pulumi = "latest"
-railway = { version = "latest", exe = "railway" }
 "aqua:neovim/neovim" = "latest"
 starship = "latest"
 atuin = "latest"
@@ -88,6 +87,7 @@ gps = 'git push'
 ht = 'xhs'
 http = 'xhs'
 k = 'kubectl'
+mkd = '_(){ mkdir $1 && cd $1 }; _'
 mkpr = 'gh pr create -a @me -f -B dev'
 mongo = 'docker exec -it mongodb mongo'
 nodeclear = 'find . -name "node_modules" -type d -prune -exec rm -rf "{}" + && rm -f ./pnpm-lock.yaml'
