@@ -2,6 +2,20 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun ~/.claude/hooks/skill-matcher/index.ts",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
@@ -10,10 +24,13 @@
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "datadog@claude-plugins-official": true
+    "datadog@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "slack@claude-plugins-official": true
   },
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "editorMode": "normal",
   "autoCompactEnabled": false,
   "inputNeededNotifEnabled": true,

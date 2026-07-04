@@ -35,7 +35,6 @@ sqlite = "latest"
 infisical = "latest"
 age = "latest"
 claude = "latest"
-"npm:@meistrari/telactl" = "latest"
 helm = "latest"
 argocd = "latest"
 "npm:ccstatusline" = "latest"
@@ -45,6 +44,8 @@ codex = "latest"
 tmux = "latest"
 "npm:ctx7" = "latest"
 "npm:@oh-my-pi/pi-coding-agent" = "latest"
+usage = "latest"
+"github:meistrari/telactl" = "latest"
 
 [env]
 DOCKER_HOST = ""
@@ -82,6 +83,7 @@ gaa = 'git add .'
 gap = 'git add -p'
 gb = 'git branch'
 gco = 'git switch'
+ghc = '_(){ dest=$(command ghc $1) && cd $dest }; _'
 gpl = 'git pull'
 gps = 'git push'
 ht = 'xhs'
