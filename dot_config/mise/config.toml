@@ -65,6 +65,9 @@ minimum_release_age = "0s"
 [settings.npm]
 package_manager = "bun"
 
+[settings.github]
+credential_command = "gh auth token"
+
 [shell_alias]
 m = "mise"
 als = 'atuin dotfiles alias set'
