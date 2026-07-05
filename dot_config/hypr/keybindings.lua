@@ -46,11 +46,23 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Lock screen
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 
--- Print screen
-hl.bind(
-	mainMod .. " + SHIFT + CONTROL + 4",
-	hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y%m%d_%H%M%S.png"')
-)
+-----------------------------
+---- SCREENSHOT BINDINGS ----
+-----------------------------
+function screenshot(modes)
+	local m = ''
+	for _, mode in ipairs(modes) do
+		m = m .. '-m ' .. mode .. ' '
+	end
+	return hl.dsp.exec_cmd('hyprshot ' .. m .. '--raw --freeze | satty --filename - --actions-on-enter save-to-clipboard --actions-on-enter exit --copy-command wl-copy')
+end
+
+-- Selection
+hl.bind( mainMod .. " + SHIFT + CONTROL + 4", screenshot({ "region" }))
+-- Window
+hl.bind( mainMod .. " + SHIFT + CONTROL + 3", screenshot({ "window" }))
+-- Screen
+hl.bind( mainMod .. " + SHIFT + CONTROL + 2", screenshot({ "output", "active" }))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
