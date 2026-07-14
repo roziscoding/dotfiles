@@ -63,6 +63,7 @@ SYSTEMD_PAGER = "bat -l syslog -p"
 color = true
 idiomatic_version_file_enable_tools = ["node"]
 minimum_release_age = "0s"
+experimental = true
 
 [settings.npm]
 package_manager = "bun"
@@ -115,3 +116,33 @@ tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
+
+[bootstrap.repos]
+"~/.local/share/zinit/zinit.git" = { url = "https://github.com/zdharma-continuum/zinit.git" }
+
+[bootstrap.packages]
+"pacman:hyprland" = "latest"
+"pacman:hyprlock" = "latest"
+"pacman:ghostty" = "latest"
+"pacman:nautilus" = "latest"
+"pacman:openrgb" = "latest"
+"pacman:brightnessctl" = "latest"
+"pacman:playerctl" = "latest"
+"pacman:wireplumber" = "latest"
+"pacman:wl-clipboard" = "latest"
+"pacman:satty" = "latest"
+"pacman:xclip" = "latest"
+"pacman:flatpak" = "latest"
+"padman:cliphist" = "latest"
+"pacman:wl-clip-persist" = "latest"
+
+[bootstrap.user]
+login_shell = "/usr/bin/zsh"
+
+[tasks.bootstrap]
+run = [
+  'test -f ~/.ssh/id_ed25519 || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -C ""',
+  'paru -S --needed --noconfirm noctalia vicinae || true',
+  'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service || true',
+  'chezmoi init roziscoding --apply',
+]
