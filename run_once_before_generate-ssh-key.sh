@@ -12,7 +12,7 @@ mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
 
 echo "Generating new SSH key..."
-ssh-keygen -t ed25519 -C {{ .email | quote }} -f "$KEY_PATH" -N ""
+ssh-keygen -t ed25519 -f "$KEY_PATH" -N ""
 
 echo "SSH key generated at $KEY_PATH"
 echo "Public key:"
