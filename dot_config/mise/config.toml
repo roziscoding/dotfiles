@@ -133,7 +133,7 @@ claude = "claude --allow-dangerously-skip-permissions"
 "pacman:satty" = "latest"
 "pacman:xclip" = "latest"
 "pacman:flatpak" = "latest"
-"padman:cliphist" = "latest"
+"pacman:cliphist" = "latest"
 "pacman:wl-clip-persist" = "latest"
 
 [bootstrap.user]
