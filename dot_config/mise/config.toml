@@ -38,7 +38,7 @@ claude = "latest"
 helm = "latest"
 argocd = "latest"
 "npm:ccstatusline" = "latest"
-go = "1.26.4"
+go = "1.26.5"
 "npm:greptile" = "latest"
 codex = "latest"
 tmux = "latest"
@@ -46,6 +46,7 @@ tmux = "latest"
 "npm:@oh-my-pi/pi-coding-agent" = "latest"
 usage = "latest"
 "github:meistrari/telactl" = "latest"
+railway = "latest"
 
 [env]
 DOCKER_HOST = ""
@@ -56,6 +57,9 @@ LC_ALL = "en_US.UTF-8"
 PNPM_HOME = "{{env.HOME}}/pnpm"
 TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/home/roziscoding/.colima/docker.sock"
 TESTCONTAINERS_RYUK_DISABLED = "true"
+SYSTEMD_COLORS = "false"
+SYSTEMD_PAGERSECURE = "true"
+SYSTEMD_PAGER = "bat -l syslog -p"
 
 [settings]
 color = true
