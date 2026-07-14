@@ -23,3 +23,12 @@ hl.config({
     },
   },
 })
+
+local noctalia = require("noctalia")
+
+hl.window_rule({
+  name = "scratchpad-borders",
+  match = { workspace = "special:magic" },
+  border_size = 3,
+  border_color = noctalia.colors.error .. " " .. noctalia.colors.surface,
+})
