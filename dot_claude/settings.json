@@ -1,8 +1,13 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -26,9 +31,11 @@
     "frontend-design@claude-plugins-official": true,
     "datadog@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "linear@claude-plugins-official": true,
+    "github@claude-plugins-official": true
   },
-  "tui": "fullscreen",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "editorMode": "normal",
