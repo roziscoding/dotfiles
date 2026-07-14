@@ -48,3 +48,18 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+-- Keep chat apps on the scratchpad (special:magic).
+hl.window_rule({
+	name = "slack-to-scratchpad",
+	match = { class = "com.slack.Slack" },
+
+	workspace = "special:magic",
+})
+
+hl.window_rule({
+	name = "discord-to-scratchpad",
+	match = { class = "discord" },
+
+	workspace = "special:magic",
+})
