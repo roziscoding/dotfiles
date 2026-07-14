@@ -9,7 +9,19 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", function()
+	local win = hl.get_active_window()
+	if not win then
+		return
+	end
+	if win.floating then
+		hl.dispatch(hl.dsp.window.fullscreen({ mode = "maximized", action = "unset" }))
+		hl.dispatch(hl.dsp.window.float({ action = "disable" }))
+	else
+		hl.dispatch(hl.dsp.window.float({ action = "enable" }))
+		hl.dispatch(hl.dsp.window.fullscreen({ mode = "maximized", action = "set" }))
+	end
+end)
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
@@ -50,19 +62,23 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 ---- SCREENSHOT BINDINGS ----
 -----------------------------
 function screenshot(modes)
-	local m = ''
+	local m = ""
 	for _, mode in ipairs(modes) do
-		m = m .. '-m ' .. mode .. ' '
+		m = m .. "-m " .. mode .. " "
 	end
-	return hl.dsp.exec_cmd('hyprshot ' .. m .. '--raw --freeze | satty --filename - --actions-on-enter save-to-clipboard --actions-on-enter exit --copy-command wl-copy')
+	return hl.dsp.exec_cmd(
+		"hyprshot "
+			.. m
+			.. "--raw --freeze | satty --filename - --actions-on-enter save-to-clipboard --actions-on-enter exit --copy-command wl-copy"
+	)
 end
 
 -- Selection
-hl.bind( mainMod .. " + SHIFT + CONTROL + 4", screenshot({ "region" }))
+hl.bind(mainMod .. " + SHIFT + CONTROL + 4", screenshot({ "region" }))
 -- Window
-hl.bind( mainMod .. " + SHIFT + CONTROL + 3", screenshot({ "window" }))
+hl.bind(mainMod .. " + SHIFT + CONTROL + 3", screenshot({ "window" }))
 -- Screen
-hl.bind( mainMod .. " + SHIFT + CONTROL + 2", screenshot({ "output", "active" }))
+hl.bind(mainMod .. " + SHIFT + CONTROL + 2", screenshot({ "output", "active" }))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -99,3 +115,6 @@ hl.bind(
 	mainMod .. "+ SHIFT + C",
 	hl.dsp.exec_cmd("vicinae vicinae://launch/@ShyAssassin/store.vicinae.vscode-recents/open-recents")
 )
+
+-- Clipboard history with vicinae
+hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
