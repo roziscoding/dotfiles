@@ -46,7 +46,6 @@ tmux = "latest"
 "npm:@oh-my-pi/pi-coding-agent" = "latest"
 usage = "latest"
 "github:meistrari/telactl" = "latest"
-railway = "latest"
 
 [env]
 DOCKER_HOST = ""
