@@ -142,7 +142,7 @@ login_shell = "/usr/bin/zsh"
 [tasks.bootstrap]
 run = [
   'test -f ~/.ssh/id_ed25519 || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -C ""',
-  'paru -S --needed --noconfirm noctalia vicinae || true',
+  'paru -S --needed --noconfirm noctalia vicinae-bin || true',
   'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service || true',
   'chezmoi init roziscoding --apply',
 ]
