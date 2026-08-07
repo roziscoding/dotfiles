@@ -10,5 +10,7 @@ require("globals")
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("noctalia")
-	hl.exec_cmd("openrgb --mode direct --color FF2C00")
+	hl.exec_cmd(
+		"openrgb --mode direct --color \"$(cat $(find ~/.config/noctalia/palettes -name '*.json' -print -quit) | jq '.dark.mOnError' -r | tr -d \\#)\""
+	)
 end)
