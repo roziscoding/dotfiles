@@ -9,7 +9,7 @@
         "bold": false,
         "rawValue": false,
         "metadata": {
-          "display": "progress-short"
+          "display": "slider-only"
         }
       },
       {
@@ -23,27 +23,30 @@
         }
       },
       {
-        "id": "5",
-        "type": "git-branch",
-        "color": "brightGreen",
-        "bold": true,
+        "id": "a5eb90f1-e804-47be-aef9-77b93e1e9bd2",
+        "type": "session-usage",
+        "backgroundColor": "bgBrightMagenta",
+        "rawValue": false,
         "metadata": {
-          "hideNoGit": "true",
-          "linkToGitHub": "true"
-        }
+          "display": "time"
+        },
+        "merge": true
       },
       {
-        "id": "345a8ca4-ec4c-4da6-ae1a-45760b96d51e",
-        "type": "git-ahead-behind",
-        "color": "brightGreen",
-        "metadata": {
-          "hideNoGit": "true"
-        }
+        "id": "2af4f413-2f99-4850-bd76-bc8c1908cb78",
+        "type": "reset-timer",
+        "backgroundColor": "bgWhite",
+        "rawValue": true
       },
       {
         "id": "0ef80f3f-53ed-43b3-b8d7-e9e52e7c8b26",
         "type": "weekly-usage",
-        "color": "magenta"
+        "color": "magenta",
+        "rawValue": false,
+        "merge": true,
+        "metadata": {
+          "display": "time"
+        }
       },
       {
         "id": "6ad28771-f117-4070-b1d3-fa79282d7dbc",
@@ -51,18 +54,11 @@
         "color": "magenta",
         "rawValue": true,
         "metadata": {
-          "display": "time"
+          "display": "time",
+          "compact": "false",
+          "absolute": "false",
+          "hours": "false"
         }
-      },
-      {
-        "id": "a5eb90f1-e804-47be-aef9-77b93e1e9bd2",
-        "type": "session-usage",
-        "backgroundColor": "bgBrightMagenta"
-      },
-      {
-        "id": "2af4f413-2f99-4850-bd76-bc8c1908cb78",
-        "type": "reset-timer",
-        "backgroundColor": "bgWhite"
       },
       {
         "id": "342d9569-a425-4dca-9f72-a458e45a56c3",
@@ -76,6 +72,36 @@
         "type": "thinking-effort",
         "backgroundColor": "bgRed",
         "rawValue": true
+      },
+      {
+        "id": "5",
+        "type": "git-branch",
+        "color": "brightGreen",
+        "bold": true,
+        "rawValue": false,
+        "merge": true,
+        "metadata": {
+          "hideNoGit": "true",
+          "linkToGitHub": "true"
+        }
+      },
+      {
+        "id": "e1859c92-8d6b-400c-a6e7-5698ad159672",
+        "type": "git-changes",
+        "backgroundColor": "bgRed",
+        "metadata": {
+          "hideNoGit": "true"
+        },
+        "merge": true
+      },
+      {
+        "id": "345a8ca4-ec4c-4da6-ae1a-45760b96d51e",
+        "type": "git-ahead-behind",
+        "color": "brightGreen",
+        "rawValue": false,
+        "metadata": {
+          "hideNoGit": "true"
+        }
       }
     ],
     [],
@@ -85,10 +111,11 @@
   "compactThreshold": 60,
   "colorLevel": 3,
   "defaultPadding": " ",
+  "defaultPaddingSide": "both",
   "inheritSeparatorColors": false,
   "globalBold": true,
   "gitCacheTtlSeconds": 5,
-  "minimalistMode": false,
+  "minimalistMode": true,
   "powerline": {
     "enabled": true,
     "separators": [
