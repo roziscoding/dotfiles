@@ -63,3 +63,10 @@ hl.window_rule({
 
 	workspace = "special:magic",
 })
+
+hl.window_rule({
+	name = "telegram-to-scratchpad",
+	match = { class = "org.telegram.desktop" },
+
+	workspace = "special:magic",
+})
