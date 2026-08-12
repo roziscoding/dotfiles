@@ -46,6 +46,7 @@ tmux = "latest"
 usage = "latest"
 "github:meistrari/pantry-cli" = "latest"
 vault = "latest"
+"npm:skills" = "latest"
 
 [env]
 DOCKER_HOST = ""
@@ -79,7 +80,7 @@ at = 'atuin'
 cat = 'bat'
 claudio = 'claude --dangerously-skip-permissions'
 cm = 'chezmoi'
-cme = 'cm edit --apply'
+cme = 'cm edit --watch'
 createdb = 'docker run --rm -it --network=host postgres createdb'
 db = 'devbox'
 dbr = 'devbox run'

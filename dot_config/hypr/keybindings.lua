@@ -5,10 +5,10 @@ require("globals")
 
 local mainMod = "ALT" -- Sets Alt key as main modifier
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(TERMINAL))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
 hl.bind(mainMod .. " + F", function()
 	local win = hl.get_active_window()
 	if not win then
@@ -23,7 +23,7 @@ hl.bind(mainMod .. " + F", function()
 	end
 end)
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(LAUNCHER_COMMAND))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
@@ -61,7 +61,7 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 -----------------------------
 ---- SCREENSHOT BINDINGS ----
 -----------------------------
-function screenshot(modes)
+local function screenshot(modes)
 	local m = ""
 	for _, mode in ipairs(modes) do
 		m = m .. "-m " .. mode .. " "
