@@ -47,6 +47,10 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
+-- Go to fixed workspaces
+hl.bind(mainMod .. " + m", hl.dsp.focus({ workspace = "10" }))
+hl.bind(mainMod .. " + b", hl.dsp.focus({ workspace = "9" }))
+
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
