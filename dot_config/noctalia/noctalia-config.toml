@@ -1,0 +1,467 @@
+[bar.default]
+background_opacity = 0.79999998211860657
+center = [ "group:g1" ]
+end = [ "media", "privacy", "group:g2", "group:g3", "session" ]
+margin_ends = 10
+start = [ "workspaces", "wallpaper", "wallhaven", "audio_visualizer" ]
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "cat_2", "ram", "temp", "widget" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g3"
+    members = [ "tray", "status", "notifications", "widget_2" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "username", "center_separator_1", "clock", "bar", "center_separator_2", "weather" ]
+    opacity = 1.0
+    padding = 6.0
+
+[control_center]
+hidden_tabs = [ "media", "audio", "monitor", "power", "network", "weather", "calendar", "notifications" ]
+width = 1080
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "session"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [
+    "desktop-widget-0000000000000001",
+    "desktop-widget-0000000000000004",
+    "desktop-widget-0000000000000002",
+    "desktop-widget-0000000000000003"
+]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 304.0
+    box_width = 544.0
+    cx = 560.0
+    cy = 408.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        font_family = "JetBrainsMono Nerd Font"
+        format = "{:%H:%M}"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 554.0
+    cy = 563.5
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background = false
+        font_family = "JetBrainsMono Nerd Font"
+        format = "{:%d/%m/%Y}"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 32.0
+    box_width = 128.0
+    cx = 564.0
+    cy = 505.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        background = false
+        font_family = "JetBrainsMono Nerd Font"
+        format = "{:%A}"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000004]
+    box_height = 96.0
+    box_width = 544.0
+    cx = 564.0
+    cy = 672.0
+    flip_y = true
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000004.settings]
+        background = false
+        bands = 16
+        centered = false
+        color_2 = "primary"
+        mirrored = true
+        show_when_idle = true
+
+[dock]
+auto_hide = true
+enabled = true
+reserve_space = false
+show_dots = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 300.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 660.0
+
+[location]
+address = "Madrid, Spain"
+auto_locate = true
+
+[lockscreen]
+allow_empty_password = true
+fingerprint = false
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003",
+    "lockscreen-widget-0000000000000005",
+    "lockscreen-widget-0000000000000006"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 571.234375
+    cy = 720.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface"
+        background_opacity = 0.80000000000000004
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = false
+        show_login_button = false
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 224.0
+    box_width = 624.0
+    cx = 584.0
+    cy = 448.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        clock_style = "digital"
+        shadow = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 148.48828125
+    box_width = 201.294921875
+    cx = 671.8818359375
+    cy = 341.755859375
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        format = "{:%D}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 571.234375
+    cy = 545.5
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "label"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+        background = false
+        font_family = "JetBrainsMono Nerd Font"
+        title = "roziscoding"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+    box_height = 32.0
+    box_width = 128.0
+    cx = 728.0
+    cy = 280.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
+        background = false
+        font_family = "JetBrainsMono Nerd Font"
+        format = "{:%A}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000006]
+    box_height = 1456.0
+    box_width = 1952.0
+    cx = 2440.0
+    cy = 1432.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000006.settings]
+        background = false
+        inner_diameter = 1.0
+        visualization_mode = "all"
+
+[plugin_settings."aristides/udiskie"]
+manager_open_near_click = true
+manager_placement = "attached"
+
+[plugin_settings."blackbartblues/audio-switcher"]
+show_notification_on_switch = false
+
+[plugins]
+enabled = [
+    "noctalia/wallhaven",
+    "yuuto/arch-updater",
+    "aristides/udiskie",
+    "blackbartblues/audio-switcher",
+    "noctalia/world_clock",
+    "dotnetrob/cat"
+]
+
+[shell]
+avatar_path = "/home/roziscoding/Pictures/profile.jpg"
+clipboard_enabled = false
+polkit_agent = true
+settings_show_advanced = false
+
+    [shell.panel]
+    control_center_placement = "floating"
+    open_near_click_clipboard = true
+    open_near_click_control_center = true
+    open_near_click_session = true
+    open_near_click_wallpaper = true
+    transparency_mode = "glass"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "Alt+l"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    command = "hyprshutdown -p 'Logging out…'"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    command = "hyprshutdown -t 'Rebooting…' -p 'systemctl reboot'"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    command = "hyprshutdown -t 'Powering off…' -p 'systemctl poweroff'"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [shell.shadow]
+    direction = "down_left"
+
+[theme]
+community_palette = "Rosey AMOLED"
+custom_palette = "wallhaven-gw9rv3-rb"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-rainbow"
+
+    [theme.templates]
+    builtin_ids = [ "cava", "gtk3", "gtk4", "ghostty", "hyprland", "kcolorscheme", "qt", "starship" ]
+    community_ids = [
+        "spicetify",
+        "pywalfox",
+        "discord",
+        "telegram",
+        "neovim",
+        "vscode",
+        "steam",
+        "vicinae",
+        "hyprtoolkit",
+        "bat",
+        "yazi"
+    ]
+
+[wallpaper]
+directory = "/home/roziscoding/Pictures/Wallpapers"
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/roziscoding/Pictures/Wallpapers/wallhaven-3qwqkv.jpg"
+
+    [wallpaper.last]
+    path = "/home/roziscoding/Pictures/Wallpapers/wallhaven-3qwqkv.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/roziscoding/Pictures/Wallpapers/wallhaven-3qwqkv.jpg"
+
+[widget.audio_visualizer]
+centered = false
+color_2 = "on_primary"
+mirrored = false
+show_when_idle = true
+
+[widget.bar]
+type = "noctalia/world_clock:bar"
+
+[widget.cat]
+type = "noctalia/bongocat:cat"
+
+[widget.cat_2]
+poll_interval = 1
+run_threshold = 50
+show_cpu_percent = true
+type = "dotnetrob/cat:cat"
+
+[widget.center_separator_1]
+glyph = ""
+label = "|"
+type = "custom_button"
+
+[widget.center_separator_2]
+glyph = ""
+label = "|"
+type = "custom_button"
+
+[widget.clock]
+format = "{:%D %H:%M}"
+
+[widget.control-center]
+capsule_padding = 0
+glyph = "user-square"
+
+[widget.gpu_usage]
+type = "custom_button"
+
+[widget.media]
+capsule = true
+hide_when_no_media = true
+
+[widget.network]
+show_label = false
+
+[widget.privacy]
+capsule = true
+hide_inactive = true
+
+[widget.ram]
+display = "text"
+visualization = "none"
+
+[widget.status]
+hide_when_empty = true
+type = "aristides/udiskie:status"
+
+[widget.sysmon]
+stat = "gpu_vram"
+
+[widget.temp]
+display = "text"
+visualization = "none"
+
+[widget.username]
+glyph = "user-square"
+label = "roziscoding"
+type = "custom_button"
+
+    [widget.username.actions]
+    left = "exec noctalia msg panel-toggle control-center"
+
+[widget.wallhaven]
+glyph = "photo-search"
+type = "noctalia/wallhaven:wallhaven"
+
+[widget.widget]
+hide_on_empty = true
+type = "yuuto/arch-updater:widget"
+
+    [widget.widget.actions]
+    left = "exec ghostty -e paru"
+
+[widget.widget_2]
+type = "blackbartblues/audio-switcher:widget"
+
+[widget.workspaces]
+label_source = "name"
+max_label_chars = 20
