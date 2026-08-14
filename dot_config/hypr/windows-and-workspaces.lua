@@ -124,3 +124,9 @@ hl.on("workspace.active", function(ws)
 		hl.exec_cmd(BROWSER_LAUNCH_COMMAND)
 	end
 end)
+
+-- Float YAD windows
+hl.window_rule({
+	match = { class = "yad" },
+	float = true,
+})

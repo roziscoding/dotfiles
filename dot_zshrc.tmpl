@@ -238,4 +238,24 @@ alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-
 alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
 alias wal=hellwal
 
+
+# >>> pages-gateway skill cli >>>
+export PATH="$HOME/.local/bin:$PATH"
+# <<< pages-gateway skill cli <<<
+
+# >>> tela dock local bin >>>
+export PATH="$HOME/.local/bin:$PATH"
+# <<< tela dock local bin <<<
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# >>> tela dock cli >>>
+alias tela='bun run '"'"'$HOME/github.com/meistrari/tela-local/apps/tela-cli/src/index.ts'"'"''
+# <<< tela dock cli <<<
+
 eval "$(zoxide init zsh)"

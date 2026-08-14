@@ -1,4 +1,5 @@
 require("globals")
+require("notification")
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
@@ -122,3 +123,19 @@ hl.bind(
 
 -- Clipboard history with vicinae
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
+
+-- Rename current workspace
+hl.bind(mainMod .. "+ SHIFT + F2", function ()
+	local workspace = hl.get_active_workspace()
+	if not workspace then
+		Notification.error("No active workspace")
+		return
+	end
+
+	local yad_command = "yad --no-buttons --no-escape --borders 20 --entry"
+	local command = "hyprctl dispatch \"hl.dsp.workspace.rename({ workspace = " .. workspace.id .. ", name = \\\"$(" ..  yad_command .. ")\\\" })\""
+
+	print(yad_command)
+	print(command)
+	hl.exec_cmd(command)
+end)
