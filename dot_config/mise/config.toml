@@ -118,6 +118,7 @@ tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
+zed = "zeditor"
 
 [bootstrap.repos]
 "~/.local/share/zinit/zinit.git" = { url = "https://github.com/zdharma-continuum/zinit.git" }
