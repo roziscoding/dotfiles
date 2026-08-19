@@ -8,6 +8,8 @@ local mainMod = "ALT" -- Sets Alt key as main modifier
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(TERMINAL))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + Q", hl.dsp.window.signal({ signal = 15 })) -- SIGTERM
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
 hl.bind(mainMod .. " + F", function()
@@ -124,17 +126,41 @@ hl.bind(
 -- Clipboard history with vicinae
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
 
+-- Wraps a value in single quotes for safe interpolation into a shell command
+local function sh_quote(value)
+	return "'" .. (tostring(value):gsub("'", "'\\''")) .. "'"
+end
+
 -- Rename current workspace
-hl.bind(mainMod .. "+ SHIFT + F2", function ()
+hl.bind(mainMod .. "+ SHIFT + F2", function()
 	local workspace = hl.get_active_workspace()
 	if not workspace then
 		Notification.error("No active workspace")
 		return
 	end
 
-	local yad_command = "yad --no-buttons --borders 20 --entry"
-	local vars = "WORKSPACE_ID='" .. workspace.id .. "'; NEW_NAME=`" .. yad_command .. " || echo '" .. workspace.name .. "'`; FINAL_NAME=${NEW_NAME:-$WORKSPACE_ID};"
-	local command = vars .. "hyprctl dispatch \"hl.dsp.workspace.rename({ workspace = $WORKSPACE_ID, name = '$FINAL_NAME' })\""
+	-- yad opens pre-filled with the current name minus its "$WORKSPACE_ID: " prefix, so renaming
+	-- an already-named workspace edits the name instead of stacking prefixes. Cancelling keeps
+	-- the current name; confirming an empty entry falls back to the bare id.
+	local yad_command = 'yad --no-buttons --borders 20 --entry --entry-text="$PREFILL"'
+	local vars = "WORKSPACE_ID="
+		.. sh_quote(workspace.id)
+		.. "; "
+		.. "CURRENT_NAME="
+		.. sh_quote(workspace.name)
+		.. "; "
+		.. 'case "$CURRENT_NAME" in '
+		.. "\"$WORKSPACE_ID\") PREFILL='';; "
+		.. '"$WORKSPACE_ID: "*) PREFILL=${CURRENT_NAME#$WORKSPACE_ID: };; '
+		.. "*) PREFILL=$CURRENT_NAME;; esac; "
+		.. "if NEW_NAME=`"
+		.. yad_command
+		.. "`; then "
+		.. 'if [ -n "$NEW_NAME" ]; then FINAL_NAME="$WORKSPACE_ID: $NEW_NAME"; else FINAL_NAME="$WORKSPACE_ID"; fi; '
+		.. "else FINAL_NAME=$CURRENT_NAME; fi; "
+	-- [[ ]] rather than ' ' so a name containing an apostrophe survives the Lua string it lands in
+	local command = vars
+		.. 'hyprctl dispatch "hl.dsp.workspace.rename({ workspace = $WORKSPACE_ID, name = [[$FINAL_NAME]] })"'
 
 	hl.exec_cmd(command)
 end)
