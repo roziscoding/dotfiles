@@ -1,0 +1,49 @@
+personality = "pragmatic"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+approvals_reviewer = "user"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[projects."/home/tela"]
+trust_level = "trusted"
+
+[projects."/home/tela/github.com/meistrari/auth-api"]
+trust_level = "trusted"
+
+[projects."/home/tela/github.com/meistrari/pantry"]
+trust_level = "trusted"
+
+[projects."/home/tela/github.com/meistrari/k8s-apps"]
+trust_level = "trusted"
+
+[projects."/home/tela/github.com/meistrari/tela-local"]
+trust_level = "trusted"
+
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "current-dir",
+  "git-branch",
+  "permissions",
+  "approval-mode",
+  "context-remaining",
+  "five-hour-limit",
+  "weekly-limit",
+  "fast-mode",
+]
+status_line_use_colors = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 2
+
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"
+
+[mcp_servers.context7.http_headers]
+CONTEXT7_API_KEY = {{- onepasswordRead "op://Private/Context7/API Key" }}
+
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+oauth_resource = "https://mcp.figma.com/mcp"
