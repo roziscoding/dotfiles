@@ -132,10 +132,9 @@ hl.bind(mainMod .. "+ SHIFT + F2", function ()
 		return
 	end
 
-	local yad_command = "yad --no-buttons --no-escape --borders 20 --entry"
-	local command = "hyprctl dispatch \"hl.dsp.workspace.rename({ workspace = " .. workspace.id .. ", name = \\\"$(" ..  yad_command .. ")\\\" })\""
+	local yad_command = "yad --no-buttons --borders 20 --entry"
+	local vars = "WORKSPACE_ID='" .. workspace.id .. "'; NEW_NAME=`" .. yad_command .. " || echo '" .. workspace.name .. "'`; FINAL_NAME=${NEW_NAME:-$WORKSPACE_ID};"
+	local command = vars .. "hyprctl dispatch \"hl.dsp.workspace.rename({ workspace = $WORKSPACE_ID, name = '$FINAL_NAME' })\""
 
-	print(yad_command)
-	print(command)
 	hl.exec_cmd(command)
 end)
