@@ -47,6 +47,7 @@ usage = "latest"
 "github:meistrari/pantry-cli" = "latest"
 vault = "latest"
 "npm:skills" = "latest"
+codex = "latest"
 
 [env]
 DOCKER_HOST = ""
@@ -60,6 +61,7 @@ TESTCONTAINERS_RYUK_DISABLED = "true"
 SYSTEMD_COLORS = "false"
 SYSTEMD_PAGERSECURE = "true"
 SYSTEMD_PAGER = "bat -l syslog -p"
+PAGER = "bat"
 
 [settings]
 color = true
