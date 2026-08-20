@@ -83,12 +83,10 @@ hl.on("workspace.active", function(ws)
 	end
 
 	if player_window and not (player_window.workspace.id == 10) then
-		hl.dispatch(
-			hl.dsp.window.move({
-				window = player_window,
-				workspace = 10
-			})
-		)
+		hl.dispatch(hl.dsp.window.move({
+			window = player_window,
+			workspace = 10,
+		}))
 	end
 end)
 
@@ -129,4 +127,12 @@ end)
 hl.window_rule({
 	match = { class = "yad" },
 	float = true,
+})
+
+hl.window_rule({
+	match = { class = "openlogi-action-ring" },
+	float = true,
+	decorate = false,
+	rounding = 0,
+	no_blur = true
 })
