@@ -1,0 +1,31 @@
+[theme.templates]
+builtin_ids = [
+  "cava",
+  "gtk3",
+  "gtk4",
+  "ghostty",
+  "hyprland",
+  "kcolorscheme",
+  "qt",
+  "starship",
+]
+community_ids = [
+  "spicetify",
+  "pywalfox",
+  "discord",
+  "telegram",
+  "neovim",
+  "vscode",
+  "steam",
+  "vicinae",
+  "hyprtoolkit",
+  "bat",
+  "yazi",
+]
+enable_builtin_templates = true
+enable_community_templates = true
+
+[theme.templates.user.openrgb]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/openrgb"
+output_path = "$XDG_CONFIG_HOME/../.local/state/primary_color"
+post_hook = "openrgb --mode direct --color \"$(cat ~/.local/state/primary_color)\""

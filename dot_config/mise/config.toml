@@ -67,7 +67,7 @@ PAGER = "bat"
 [settings]
 color = true
 idiomatic_version_file_enable_tools = ["node"]
-minimum_release_age = "0s"
+minimum_release_age = "0"
 experimental = true
 
 [settings.npm]
