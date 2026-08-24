@@ -53,8 +53,6 @@ hl.window_rule({
 ---Fixed Workspaces
 
 --- Music
-local player_window_class = "spotify"
-local player_launch_command = "flatpak run com.spotify.Client"
 
 hl.workspace_rule({
 	workspace = "10",
@@ -68,19 +66,30 @@ hl.window_rule({
 	workspace = 10,
 })
 
+hl.window_rule({
+	name = "spotatui-on-workspace-10",
+	match = { class = "com.spotatui" },
+	workspace = 10,
+})
+
 --- If the player window is not open or on a different workspace, open it or bring it to workspace 10
 hl.on("workspace.active", function(ws)
 	if ws.id ~= 10 then
 		return
 	end
 
-	local player_window = hl.get_window("class:" .. player_window_class)
+	local player_window = hl.get_window("class:" .. PLAYER_WINDOW_CLASS)
+	local cava_window = hl.get_window("class:music.cava")
 
 	if not player_window then
-		Notification.info("Launching music player")
-		hl.exec_cmd(player_launch_command)
+		Notification.info("Launching music player with " .. PLAYER_LAUNCH_COMMAND, 1500)
+		hl.exec_cmd(PLAYER_LAUNCH_COMMAND)
+		if not cava_window then
+			hl.exec_cmd("ghostty --class=\"music.cava\" -e cava")
+		end
 		return
 	end
+
 
 	if player_window and not (player_window.workspace.id == 10) then
 		hl.dispatch(hl.dsp.window.move({

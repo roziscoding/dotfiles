@@ -770,32 +770,6 @@ pure_black_dark = false
 source = "wallpaper"
 wallpaper_scheme = "m3-rainbow"
 
-[theme.templates]
-builtin_ids = [
-  "cava",
-  "gtk3",
-  "gtk4",
-  "ghostty",
-  "hyprland",
-  "kcolorscheme",
-  "qt",
-  "starship",
-]
-community_ids = [
-  "spicetify",
-  "pywalfox",
-  "discord",
-  "telegram",
-  "neovim",
-  "vscode",
-  "steam",
-  "vicinae",
-  "hyprtoolkit",
-  "bat",
-  "yazi",
-]
-enable_builtin_templates = true
-enable_community_templates = true
 
 
 [wallpaper]
