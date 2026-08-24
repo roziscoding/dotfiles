@@ -72,6 +72,12 @@ hl.window_rule({
 	workspace = 10,
 })
 
+hl.window_rule({
+	name = "cava-on-workspace-10",
+	match = { class = "music.cava" },
+	workspace = 10,
+})
+
 --- If the player window is not open or on a different workspace, open it or bring it to workspace 10
 hl.on("workspace.active", function(ws)
 	if ws.id ~= 10 then
@@ -85,11 +91,10 @@ hl.on("workspace.active", function(ws)
 		Notification.info("Launching music player with " .. PLAYER_LAUNCH_COMMAND, 1500)
 		hl.exec_cmd(PLAYER_LAUNCH_COMMAND)
 		if not cava_window then
-			hl.exec_cmd("ghostty --class=\"music.cava\" -e cava")
+			hl.exec_cmd('ghostty --class="music.cava" -e cava')
 		end
 		return
 	end
-
 
 	if player_window and not (player_window.workspace.id == 10) then
 		hl.dispatch(hl.dsp.window.move({
@@ -143,5 +148,5 @@ hl.window_rule({
 	float = true,
 	decorate = false,
 	rounding = 0,
-	no_blur = true
+	no_blur = true,
 })

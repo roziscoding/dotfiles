@@ -10,4 +10,5 @@ require("globals")
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("noctalia")
+	hl.exec_cmd("noctalia msg templates-apply")
 end)
