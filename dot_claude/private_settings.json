@@ -15,10 +15,6 @@
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "datadog@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
-    "slack@claude-plugins-official": true,
-    "linear@claude-plugins-official": true,
     "github@claude-plugins-official": true,
     "i-have-adhd@i-have-adhd": true
   },
@@ -38,5 +34,6 @@
   "autoCompactEnabled": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
+  "respondToBashCommands": false,
   "hooks": {"SessionStart":[{"matcher":"*","hooks":[{"type":"command","command":"bash '/home/roziscoding/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
 }
