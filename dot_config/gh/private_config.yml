@@ -1,7 +1,7 @@
 # The current version of the config schema
 version: 1
 # What protocol to use when performing git operations. Supported values: ssh, https
-git_protocol: https
+git_protocol: ssh
 # What editor gh should run when creating issues, pull requests, etc. If blank, will refer to environment.
 editor:
 # When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
@@ -13,15 +13,49 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
+    watch-pr-check: |-
+        !f() {
+          if [ "$#" -ne 2 ]; then
+            echo "usage: gh watch-pr-check <pr> <check>" >&2
+            return 2
+          fi
+
+          pr=$1
+          check=$2
+
+          while :; do
+            state=$(
+              gh pr checks "$pr" --json name,state \
+                --jq ".[] | select(.name == \"$check\").state" 2>/dev/null
+            )
+
+            case "$state" in
+              SUCCESS)
+                echo "$check: SUCCESS"
+                return 0
+                ;;
+              ""|PENDING|EXPECTED|QUEUED|IN_PROGRESS|WAITING|REQUESTED)
+                echo "$check: ${state:-not found}; checking again in 30s"
+                sleep 30
+                ;;
+              *)
+                echo "$check: $state" >&2
+                return 1
+                ;;
+            esac
+          done
+        }
+
+        f "$@"
 # The path to a unix socket through which to send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
 browser: open
 # Whether to display labels using their RGB hex color codes in terminals that support truecolor. Supported values: enabled, disabled
-color_labels: disabled
+color_labels: enabled
 # Whether customizable, 4-bit accessible colors should be used. Supported values: enabled, disabled
 accessible_colors: disabled
 # Whether an accessible prompter should be used. Supported values: enabled, disabled
 accessible_prompter: disabled
-# Whether to use an animated spinner as a progress indicator. If disabled, a textual progress indicator is used instead. Supported values: enabled, disabled
+# Whether to use a animated spinner as a progress indicator. If disabled, a textual progress indicator is used instead. Supported values: enabled, disabled
 spinner: enabled
