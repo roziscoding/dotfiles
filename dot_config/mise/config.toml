@@ -48,7 +48,6 @@ usage = "latest"
 vault = "latest"
 "npm:skills" = "latest"
 codex = "latest"
-herdr = "latest"
 
 [env]
 DOCKER_HOST = ""
