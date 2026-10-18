@@ -28,7 +28,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "skills"]
+disable = ["containers", "skills", "heml", "rustup", "neovim"]
 
 # Run these steps before all others
 # first = ["chezmoi"]
