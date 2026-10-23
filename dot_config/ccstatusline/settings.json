@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "lines": [
     [
       {
@@ -81,8 +81,8 @@
         "rawValue": false,
         "merge": true,
         "metadata": {
-          "hideNoGit": "true",
-          "linkToGitHub": "true"
+          "linkToGitHub": "true",
+          "hide": "no-git"
         }
       },
       {
@@ -90,7 +90,7 @@
         "type": "git-changes",
         "backgroundColor": "bgRed",
         "metadata": {
-          "hideNoGit": "true"
+          "hide": "no-git"
         },
         "merge": true
       },
@@ -100,7 +100,7 @@
         "color": "brightGreen",
         "rawValue": false,
         "metadata": {
-          "hideNoGit": "true"
+          "hide": "no-git,no-upstream,zero"
         }
       }
     ],
