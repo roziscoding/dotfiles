@@ -3,11 +3,9 @@ CLAUDE.md
 install.sh
 {{ if eq .chezmoi.os "darwin" -}}
   backup_packages.sh
-  .config/i3
-  .config/rofi
-  .config/polybar
-  .config/dunst
-  .config/picom
+  .config/hypr
+  .config/noctalia
+  .config/paru
   .config/systemd
   .local/bin/keyring-yubikey-unlock
   .local/bin/keyring-yubikey-enroll
@@ -17,3 +15,5 @@ install.sh
   private_library
 {{ end }}
 ~/.config/nvim/lazy-lock.json
+.config/atuin/atuin-receipt.json
+.codex/vendor_imports

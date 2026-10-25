@@ -5,19 +5,19 @@ approvals_reviewer = "user"
 approval_policy = "never"
 sandbox_mode = "danger-full-access"
 
-[projects."/home/tela"]
+[projects."{{ .chezmoi.homeDir }}"]
 trust_level = "trusted"
 
-[projects."/home/tela/github.com/meistrari/auth-api"]
+[projects."{{ .chezmoi.homeDir }}/github.com/meistrari/auth-api"]
 trust_level = "trusted"
 
-[projects."/home/tela/github.com/meistrari/pantry"]
+[projects."{{ .chezmoi.homeDir }}/github.com/meistrari/pantry"]
 trust_level = "trusted"
 
-[projects."/home/tela/github.com/meistrari/k8s-apps"]
+[projects."{{ .chezmoi.homeDir }}/github.com/meistrari/k8s-apps"]
 trust_level = "trusted"
 
-[projects."/home/tela/github.com/meistrari/tela-local"]
+[projects."{{ .chezmoi.homeDir }}/github.com/meistrari/tela-local"]
 trust_level = "trusted"
 
 [tui]
