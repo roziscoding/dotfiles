@@ -123,6 +123,7 @@ dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exc
 
 [bootstrap.repos]
 "~/.local/share/zinit/zinit.git" = { url = "https://github.com/zdharma-continuum/zinit.git" }
+{{- if eq .chezmoi.os "linux" }}
 
 [bootstrap.packages]
 "pacman:hyprland" = "latest"
@@ -139,7 +140,6 @@ dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exc
 "pacman:flatpak" = "latest"
 "pacman:cliphist" = "latest"
 "pacman:wl-clip-persist" = "latest"
-{{- if eq .chezmoi.os "linux" }}
 "pacman:libfido2" = "latest"
 {{- end }}
 
@@ -149,8 +149,10 @@ login_shell = "/usr/bin/zsh"
 [tasks.bootstrap]
 run = [
   'test -f ~/.ssh/id_ed25519 || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -C ""',
+{{- if eq .chezmoi.os "linux" }}
   'paru -S --needed --noconfirm noctalia vicinae-bin || true',
   'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service || true',
+{{- end }}
   'chezmoi init roziscoding --apply',
 {{- if eq .chezmoi.os "linux" }}
   'systemctl --user enable keyring-yubikey-unlock.service || true',
