@@ -54,7 +54,7 @@ EDITOR = "nvim"
 ELECTRON_OZONE_PLATFORM_HINT = "auto"
 LANG = "en_US.UTF-8"
 LC_ALL = "en_US.UTF-8"
-PNPM_HOME = "{{env.HOME}}/pnpm"
+PNPM_HOME = "{{ "{{env.HOME}}" }}/pnpm"
 TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/home/roziscoding/.colima/docker.sock"
 TESTCONTAINERS_RYUK_DISABLED = "true"
 SYSTEMD_COLORS = "false"
@@ -139,6 +139,9 @@ dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exc
 "pacman:flatpak" = "latest"
 "pacman:cliphist" = "latest"
 "pacman:wl-clip-persist" = "latest"
+{{- if eq .chezmoi.os "linux" }}
+"pacman:libfido2" = "latest"
+{{- end }}
 
 [bootstrap.user]
 login_shell = "/usr/bin/zsh"
@@ -149,4 +152,8 @@ run = [
   'paru -S --needed --noconfirm noctalia vicinae-bin || true',
   'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service || true',
   'chezmoi init roziscoding --apply',
+{{- if eq .chezmoi.os "linux" }}
+  'systemctl --user enable keyring-yubikey-unlock.service || true',
+  'test -f ~/.local/share/keyring-yubikey/password.enc || ~/.local/bin/keyring-yubikey-enroll || true',
+{{- end }}
 ]

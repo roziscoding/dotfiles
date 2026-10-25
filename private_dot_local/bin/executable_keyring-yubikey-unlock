@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Destranca o login keyring usando a YubiKey cadastrada pelo
+# keyring-yubikey-enroll. Não faz nada se o keyring já estiver destrancado.
+set -euo pipefail
+
+DIR="${XDG_DATA_HOME:-$HOME/.local/share}/keyring-yubikey"
+RP_ID="keyring-yubikey"
+COLLECTION=/org/freedesktop/secrets/collection/login
+# O PATH do systemd --user não inclui os shims do mise
+BUN=$(command -v bun || echo "$HOME/.local/share/mise/installs/bun/latest/bin/bun")
+
+locked() {
+  [[ $(busctl --user get-property org.freedesktop.secrets "$COLLECTION" \
+    org.freedesktop.Secret.Collection Locked) == "b true" ]]
+}
+
+notify() { notify-send -a "Keyring" "$@" || true; }
+
+locked || exit 0
+[[ -f "$DIR/password.enc" ]] || { echo "Sem cadastro em $DIR" >&2; exit 1; }
+
+dev=$(fido2-token -L | awk -F: '/Yubico/ { print $1; exit }')
+[[ -n "$dev" ]] || { echo "YubiKey não encontrada" >&2; exit 0; }
+
+for attempt in 1 2 3; do
+  notify -u critical "Toque a YubiKey para destrancar o keyring"
+  if key=$({
+    head -c32 /dev/urandom | base64 -w0; echo
+    echo "$RP_ID"
+    cat "$DIR/cred_id"
+    cat "$DIR/salt"; echo
+  } | fido2-assert -G -h -t up=true "$dev" | sed -n 5p) && [[ -n "$key" ]]; then
+    break
+  fi
+  key=""
+done
+[[ -n "$key" ]] || { notify "Keyring continua trancado (sem toque)"; exit 1; }
+
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass fd:3 \
+  -in "$DIR/password.enc" 3< <(printf '%s' "$key") \
+  | "$BUN" "$HOME/.local/bin/gnome-keyring-control-unlock.ts"
+unset key
+
+if locked; then
+  notify "Falha ao destrancar o keyring"
+  exit 1
+fi
+notify "Keyring destrancado"

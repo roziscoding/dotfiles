@@ -8,6 +8,10 @@ install.sh
   .config/polybar
   .config/dunst
   .config/picom
+  .config/systemd
+  .local/bin/keyring-yubikey-unlock
+  .local/bin/keyring-yubikey-enroll
+  .local/bin/gnome-keyring-control-unlock.ts
 {{ end }}
 {{ if eq .chezmoi.os "linux" -}}
   private_library

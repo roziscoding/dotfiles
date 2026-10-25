@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Cadastra a YubiKey para destrancar o login keyring do gnome-keyring.
+# Cria uma credencial FIDO2 com hmac-secret e guarda a senha do keyring
+# criptografada com o segredo que só a chave consegue gerar.
+set -euo pipefail
+
+DIR="${XDG_DATA_HOME:-$HOME/.local/share}/keyring-yubikey"
+RP_ID="keyring-yubikey"
+
+dev=$(fido2-token -L | awk -F: '/Yubico/ { print $1; exit }')
+[[ -n "$dev" ]] || { echo "YubiKey não encontrada" >&2; exit 1; }
+
+read -rsp "Senha do login keyring: " pw; echo
+read -rsp "Confirme a senha: " pw2; echo
+[[ "$pw" == "$pw2" ]] || { echo "As senhas não batem" >&2; exit 1; }
+unset pw2
+
+umask 077
+mkdir -p "$DIR"
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+
+echo "Toque a YubiKey para criar a credencial..."
+{
+  head -c32 /dev/urandom | base64 -w0; echo
+  echo "$RP_ID"
+  echo "$USER"
+  head -c32 /dev/urandom | base64 -w0; echo
+} | fido2-cred -M -h "$dev" > "$tmp/cred"
+# Saída do -M: cdh, rp id, fmt, authdata, credential id, ...
+sed -n 5p "$tmp/cred" > "$tmp/cred_id"
+head -c32 /dev/urandom | base64 -w0 > "$tmp/salt"
+
+echo "Toque a YubiKey de novo para derivar a chave..."
+{
+  head -c32 /dev/urandom | base64 -w0; echo
+  echo "$RP_ID"
+  cat "$tmp/cred_id"
+  cat "$tmp/salt"; echo
+} | fido2-assert -G -h -t up=true "$dev" > "$tmp/assert"
+# Saída do -G com -h: cdh, rp id, authdata, signature, hmac-secret
+key=$(sed -n 5p "$tmp/assert")
+[[ -n "$key" ]] || { echo "A chave não devolveu hmac-secret" >&2; exit 1; }
+
+printf '%s' "$pw" | openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt \
+  -pass fd:3 -out "$tmp/password.enc" 3< <(printf '%s' "$key")
+unset pw key
+
+mv "$tmp/cred_id" "$tmp/salt" "$tmp/password.enc" "$DIR/"
+echo "Pronto. Dados em $DIR"

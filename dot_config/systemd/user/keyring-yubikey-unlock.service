@@ -1,0 +1,11 @@
+[Unit]
+Description=Destranca o login keyring com a YubiKey
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/keyring-yubikey-unlock
+
+[Install]
+WantedBy=graphical-session.target
