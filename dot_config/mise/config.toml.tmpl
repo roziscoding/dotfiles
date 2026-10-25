@@ -51,16 +51,20 @@ codex = "latest"
 [env]
 DOCKER_HOST = ""
 EDITOR = "nvim"
-ELECTRON_OZONE_PLATFORM_HINT = "auto"
 LANG = "en_US.UTF-8"
 LC_ALL = "en_US.UTF-8"
 PNPM_HOME = "{{ "{{env.HOME}}" }}/pnpm"
-TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/home/roziscoding/.colima/docker.sock"
 TESTCONTAINERS_RYUK_DISABLED = "true"
+PAGER = "bat"
+{{- if eq .chezmoi.os "darwin" }}
+TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "{{ .chezmoi.homeDir }}/.colima/docker.sock"
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
 SYSTEMD_COLORS = "false"
 SYSTEMD_PAGERSECURE = "true"
 SYSTEMD_PAGER = "bat -l syslog -p"
-PAGER = "bat"
+{{- end }}
 
 [settings]
 color = true
@@ -103,23 +107,25 @@ mkpr = 'gh pr create -a @me -f -B dev'
 mongo = 'docker exec -it mongodb mongo'
 nodeclear = 'find . -name "node_modules" -type d -prune -exec rm -rf "{}" + && rm -f ./pnpm-lock.yaml'
 p = 'pulumi'
-pbcopy = 'xclip -selection clipboard -in'
 pk = 'pakku-mc'
 psql = 'docker run --rm -it --network=host postgres psql'
 pup = 'pulumi up'
-randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
 spt = 'spotify_player'
-unlock = 'pkill -USR1 hyprlock'
-yayy = 'yay --noconfirm'
-fp = 'flatpak'
 l1 = 'ls -1'
 l1a = 'ls -1a'
-flms = "flameshot"
 tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
+{{- if eq .chezmoi.os "linux" }}
+pbcopy = 'xclip -selection clipboard -in'
+randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
+unlock = 'pkill -USR1 hyprlock'
+yayy = 'yay --noconfirm'
+fp = 'flatpak'
+flms = "flameshot"
 dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exclude-type devtmpfs -h"
+{{- end }}
 
 [bootstrap.repos]
 "~/.local/share/zinit/zinit.git" = { url = "https://github.com/zdharma-continuum/zinit.git" }
@@ -144,7 +150,7 @@ dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exc
 {{- end }}
 
 [bootstrap.user]
-login_shell = "/usr/bin/zsh"
+login_shell = "{{ if eq .chezmoi.os "darwin" }}/bin/zsh{{ else }}/usr/bin/zsh{{ end }}"
 
 [tasks.bootstrap]
 run = [
