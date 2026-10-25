@@ -56,9 +56,6 @@ LC_ALL = "en_US.UTF-8"
 PNPM_HOME = "{{ "{{env.HOME}}" }}/pnpm"
 TESTCONTAINERS_RYUK_DISABLED = "true"
 PAGER = "bat"
-{{- if eq .chezmoi.os "darwin" }}
-TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "{{ .chezmoi.homeDir }}/.colima/docker.sock"
-{{- end }}
 {{- if eq .chezmoi.os "linux" }}
 ELECTRON_OZONE_PLATFORM_HINT = "auto"
 SYSTEMD_COLORS = "false"
