@@ -529,6 +529,9 @@ manager_placement = "attached"
 [plugin_settings."blackbartblues/audio-switcher"]
 show_notification_on_switch = false
 
+[plugin_settings."yuuto/arch-updater"]
+auto_check_hours = 8
+
 [plugins]
 auto_update = "all"
 enabled = [
