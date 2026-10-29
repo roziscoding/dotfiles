@@ -85,14 +85,10 @@ hl.on("workspace.active", function(ws)
 	end
 
 	local player_window = hl.get_window("class:" .. PLAYER_WINDOW_CLASS)
-	local cava_window = hl.get_window("class:music.cava")
 
 	if not player_window then
 		Notification.info("Launching music player", 1500)
 		hl.exec_cmd(PLAYER_LAUNCH_COMMAND)
-		if not cava_window then
-			hl.exec_cmd('ghostty --class="music.cava" -e cava')
-		end
 		return
 	end
 

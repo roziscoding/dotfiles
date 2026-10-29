@@ -713,6 +713,16 @@ label = ""
 shortcut = "5"
 variant = "destructive"
 
+[[shell.session.actions]]
+action = "command"
+command = '''ghostty --title='Update and shutdown' -e sh -c "topgrade -y; setsid -f hyprshutdown -t 'Powering off…' -p 'systemctl poweroff'"'''
+countdown_seconds = 0.0
+enabled = true
+glyph = "package"
+label = "Update and shutdown"
+shortcut = "6"
+variant = "destructive"
+
 [shell.shadow]
 alpha = 0.55000001192092896
 direction = "down_left"
