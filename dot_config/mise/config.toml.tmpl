@@ -159,6 +159,7 @@ run = [
   'chezmoi init roziscoding --apply',
 {{- if eq .chezmoi.os "linux" }}
   'systemctl --user enable keyring-yubikey-unlock.service || true',
+  'systemctl --user enable steam-flatpak-shortcuts.path steam-flatpak-shortcuts.service || true',
   'test -f ~/.local/share/keyring-yubikey/password.enc || ~/.local/bin/keyring-yubikey-enroll || true',
 {{- end }}
 ]
