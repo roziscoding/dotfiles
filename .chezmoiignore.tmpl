@@ -14,6 +14,9 @@ install.sh
 {{ if eq .chezmoi.os "linux" -}}
   private_library
 {{ end }}
+{{ if not (lookPath "uwsm") -}}
+  .config/uwsm/env
+{{ end }}
 ~/.config/nvim/lazy-lock.json
 .config/atuin/atuin-receipt.json
 .codex/vendor_imports

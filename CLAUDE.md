@@ -24,7 +24,7 @@ chezmoi execute-template '{{ .chezmoi.os }}'   # Evaluate an inline expression
 
 - `.tmpl` files use Go text/template syntax with chezmoi functions. `.chezmoi.os` (`"darwin"` or `"linux"`) drives OS-conditional logic: `{{ if eq .chezmoi.os "darwin" }}` / `{{ if eq .chezmoi.os "linux" }}`.
 - One data variable is prompted on `chezmoi init` (`.chezmoi.yaml.tmpl`): `email`.
-- `.chezmoiignore.tmpl` excludes files per-OS: on macOS it skips Linux-only WM configs (i3, rofi, polybar, dunst, picom); on Linux it skips `private_library`. It also always ignores `LICENSE`, `CLAUDE.md`, `install.sh`, and `nvim/lazy-lock.json`.
+- `.chezmoiignore.tmpl` excludes files per-OS: on macOS it skips Linux-only WM configs (i3, rofi, polybar, dunst, picom); on Linux it skips `private_library`. It skips `.config/uwsm/env` when `uwsm` is not on `PATH`. It also always ignores `LICENSE`, `CLAUDE.md`, `install.sh`, and `nvim/lazy-lock.json`.
 
 ## Package Management
 

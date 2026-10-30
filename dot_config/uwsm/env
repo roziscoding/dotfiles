@@ -1,0 +1,7 @@
+# Sourced by uwsm at session start and exported to the systemd user manager,
+# so apps opened outside a terminal get these too.
+
+# Bun picks its global dir from BUN_INSTALL, else $XDG_CACHE_HOME/.bun, else
+# ~/.bun. Pin it so every process installs to the same place, outside $HOME.
+export BUN_INSTALL="${XDG_CACHE_HOME:-$HOME/.cache}/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
