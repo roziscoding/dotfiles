@@ -38,6 +38,7 @@ disable = [
   "node",
   "pnpm",
   "pip3",
+  "chezmoi",
 ]
 
 # Run these steps before all others

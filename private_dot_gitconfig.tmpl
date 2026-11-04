@@ -112,13 +112,16 @@
 [core]
   excludesFile = "~/.gitignore"
 	whitespace = cr-at-eol
-[url "git@github.com:"]
-    insteadOf = https://github.com/
-[url "git@gist.github.com:"]
-    insteadOf = https://gist.github.com/
+	sshCommand = ssh -o IdentitiesOnly=yes
 [merge]
   conflictStyle = diff3
 [merge "identical"]
     name = Automatically resolve if files are textually identical (ignoring whitespace)
     driver = ~/.git-merge-drivers/identical.sh %A %B %A
 
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
