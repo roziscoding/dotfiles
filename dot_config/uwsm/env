@@ -5,3 +5,7 @@
 # ~/.bun. Pin it so every process installs to the same place, outside $HOME.
 export BUN_INSTALL="${XDG_CACHE_HOME:-$HOME/.cache}/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# GTK 4.20+ leaves composition to the compositor's text input protocol, so dead
+# keys (à, â, ê, ô) do nothing without an IME. This one forces GTK's own composer.
+export GTK_IM_MODULE=simple
