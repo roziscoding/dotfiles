@@ -4,15 +4,14 @@ require("notification")
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = MAIN_MOD
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(TERMINAL))
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(mainMod .. " + Q", hl.dsp.window.signal({ signal = 15 })) -- SIGTERM
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
-hl.bind(mainMod .. " + F", function()
+hl.bind(MAIN_MOD .. " + Return", hl.dsp.exec_cmd(TERMINAL))
+hl.bind(MAIN_MOD .. " + C", hl.dsp.window.close())
+hl.bind(MAIN_MOD .. " + Q", hl.dsp.window.signal({ signal = 15 })) -- SIGTERM
+hl.bind(MAIN_MOD .. " + SHIFT + Q", hl.dsp.window.kill())
+hl.bind(MAIN_MOD .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown"))
+hl.bind(MAIN_MOD .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
+hl.bind(MAIN_MOD .. " + F", function()
 	local win = hl.get_active_window()
 	if not win then
 		return
@@ -25,41 +24,42 @@ hl.bind(mainMod .. " + F", function()
 		hl.dispatch(hl.dsp.window.fullscreen({ mode = "maximized", action = "set" }))
 	end
 end)
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(LAUNCHER_COMMAND))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(MAIN_MOD .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(MAIN_MOD .. " + Space", hl.dsp.exec_cmd(LAUNCHER_COMMAND))
+hl.bind(MAIN_MOD .. " + P", hl.dsp.window.pseudo())
+hl.bind(MAIN_MOD .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+-- Move focus with MAIN_MOD + arrow keys
+hl.bind(MAIN_MOD .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(MAIN_MOD .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(MAIN_MOD .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(MAIN_MOD .. " + down", hl.dsp.focus({ direction = "down" }))
 
--- Move windows with mainMod + arrow keys
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
+-- Move windows with MAIN_MOD + arrow keys
+hl.bind(MAIN_MOD .. " + SHIFT + left", hl.dsp.window.move({ direction = "left" }))
+hl.bind(MAIN_MOD .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(MAIN_MOD .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(MAIN_MOD .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
 
--- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
+-- Switch workspaces with MAIN_MOD + [0-9]
+-- Move active window to a workspace with MAIN_MOD + SHIFT + [0-9]
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(MAIN_MOD .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(MAIN_MOD .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Go to fixed workspaces
-hl.bind(mainMod .. " + m", hl.dsp.focus({ workspace = "10" }))
-hl.bind(mainMod .. " + b", hl.dsp.focus({ workspace = "9" }))
+hl.bind(MAIN_MOD .. " + m", hl.dsp.focus({ workspace = "10" }))
+hl.bind(MAIN_MOD .. " + b", hl.dsp.focus({ workspace = "9" }))
 
--- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Move/resize windows with MAIN_MOD + LMB/RMB and dragging
+hl.bind(MAIN_MOD .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Lock screen
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
+hl.bind(MAIN_MOD .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 
 -----------------------------
 ---- SCREENSHOT BINDINGS ----
@@ -77,11 +77,11 @@ local function screenshot(modes)
 end
 
 -- Selection
-hl.bind(mainMod .. " + SHIFT + CONTROL + 4", screenshot({ "region" }))
+hl.bind(MAIN_MOD .. " + SHIFT + CONTROL + 4", screenshot({ "region" }))
 -- Window
-hl.bind(mainMod .. " + SHIFT + CONTROL + 3", screenshot({ "window" }))
+hl.bind(MAIN_MOD .. " + SHIFT + CONTROL + 3", screenshot({ "window" }))
 -- Screen
-hl.bind(mainMod .. " + SHIFT + CONTROL + 2", screenshot({ "output", "active" }))
+hl.bind(MAIN_MOD .. " + SHIFT + CONTROL + 2", screenshot({ "output", "active" }))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -115,12 +115,12 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 -- Recent VSCode projects with vicinae
 hl.bind(
-	mainMod .. "+ SHIFT + C",
+	MAIN_MOD .. "+ SHIFT + C",
 	hl.dsp.exec_cmd("vicinae vicinae://launch/@ShyAssassin/store.vicinae.vscode-recents/open-recents")
 )
 
 -- Clipboard history with vicinae
-hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
+hl.bind(MAIN_MOD .. "+ SHIFT + V", hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
 
 -- Wraps a value in single quotes for safe interpolation into a shell command
 local function sh_quote(value)
@@ -128,7 +128,7 @@ local function sh_quote(value)
 end
 
 -- Rename current workspace
-hl.bind(mainMod .. "+ SHIFT + F2", function()
+hl.bind(MAIN_MOD .. "+ SHIFT + F2", function()
 	local workspace = hl.get_active_workspace()
 	if not workspace then
 		Notification.error("No active workspace")

@@ -18,4 +18,4 @@ require("input") -- keyboard/mouse/touchpad: layout, follow-mouse, sensitivity, 
 require("windows-and-workspaces") -- window rules: suppress-maximize, xwayland drag fix, hyprland-run placement
 
 require("noctalia").apply_theme() -- applies noctalia color theme to window/group borders
-require("keybindings") -- all key binds (mainMod = ALT)
+require("keybindings") -- all key binds (MAIN_MOD = ALT)
