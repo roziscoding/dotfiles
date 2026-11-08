@@ -1,5 +1,6 @@
 require("notification")
 
+MAIN_MOD = "ALT" -- Sets Alt key as main modifier
 TERMINAL = "ghostty"
 FILE_MANAGER = "nautilus"
 LAUNCHER_COMMAND = "vicinae toggle"

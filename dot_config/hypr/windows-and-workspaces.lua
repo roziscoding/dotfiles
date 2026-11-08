@@ -146,3 +146,11 @@ hl.window_rule({
 	rounding = 0,
 	no_blur = true,
 })
+
+-- Scratchpad
+hl.bind(MAIN_MOD .. " + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(MAIN_MOD .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+-- Toggleable workspace
+hl.bind(MAIN_MOD .. " + T", hl.dsp.workspace.toggle_special("toggleable"))
+hl.bind(MAIN_MOD .. " + SHIFT + T", hl.dsp.window.move({ workspace = "special:toggleable" }))

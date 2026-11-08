@@ -4,7 +4,7 @@ require("notification")
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = "ALT" -- Sets Alt key as main modifier
+local mainMod = MAIN_MOD
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(TERMINAL))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
@@ -53,10 +53,6 @@ end
 -- Go to fixed workspaces
 hl.bind(mainMod .. " + m", hl.dsp.focus({ workspace = "10" }))
 hl.bind(mainMod .. " + b", hl.dsp.focus({ workspace = "9" }))
-
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
