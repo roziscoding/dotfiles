@@ -12,9 +12,10 @@
 {{- end -}}
 {{- $onePasswordSigningKey := "" -}}
 {{- $onePasswordSigningKeyRef := "op://Private/main - id_ed25519/public key" -}}
+{{- $onePasswordAccount := "mafagafos.1password.com" -}}
 {{- $op := lookPath "op" -}}
 {{- if and (not $onePasswordSigningKey) $onePasswordSigningKeyRef $op -}}
-{{- $onePasswordSigningKey = output "sh" "-c" "\"$1\" read \"$2\" 2>/dev/null || true" "sh" $op $onePasswordSigningKeyRef | trim -}}
+{{- $onePasswordSigningKey = output "sh" "-c" "\"$1\" read --account \"$3\" \"$2\" 2>/dev/null || true" "sh" $op $onePasswordSigningKeyRef $onePasswordAccount | trim -}}
 {{- end -}}
 {{- if and (not $onePasswordSigningKey) $sshPubKeyContents -}}
 {{- $onePasswordSigningKey = $sshPubKeyContents -}}
@@ -63,7 +64,7 @@
 	# WARNING: Git signing is intentionally broken.
 	# Reason: no local {{ $sshPrivateKey }} private key exists, and chezmoi could not resolve a public signing key from {{ $onePasswordSigningKeyRef }}.
 	# Fix: install 1Password CLI and the 1Password desktop app, sign in, enable the SSH agent, and verify:
-	#   op read {{ $onePasswordSigningKeyRef }}
+	#   op read --account {{ $onePasswordAccount }} {{ $onePasswordSigningKeyRef }}
 	# Alternative fix: create {{ $sshPrivateKey }} and {{ $sshPubKey }} locally, then re-run chezmoi apply.
 	signingkey = CHEZMOI_MISSING_GIT_SIGNING_KEY
 [gpg]
