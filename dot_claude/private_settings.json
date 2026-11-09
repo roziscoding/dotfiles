@@ -7,6 +7,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "respondToBashCommands": false,
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
@@ -27,12 +28,11 @@
     }
   },
   "effortLevel": "high",
-  "tui": "default",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "editorMode": "normal",
   "autoCompactEnabled": false,
   "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
-  "respondToBashCommands": false
+  "agentPushNotifEnabled": true
 }
