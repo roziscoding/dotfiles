@@ -937,6 +937,7 @@ label = "roziscoding"
 type = "custom_button"
 
 [widget.special_workspaces]
+always_show = ["magic", "toggleable"]
 glyphs = { magic = "sparkles", toggleable = "layers-subtract" }
 style = "pills"
 type = "roz/special-workspaces:widget"
