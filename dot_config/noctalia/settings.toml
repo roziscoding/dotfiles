@@ -49,7 +49,7 @@ scale = 1.0
 shadow = true
 show_on_workspace_switch = true
 smart_auto_hide = false
-start = ["workspaces", "wallpaper", "wallhaven", "audio_visualizer"]
+start = ["workspaces", "special_workspaces", "wallpaper", "wallhaven", "audio_visualizer"]
 thickness = 34
 widget_spacing = 6
 
@@ -541,6 +541,7 @@ enabled = [
   "blackbartblues/audio-switcher",
   "noctalia/world_clock",
   "dotnetrob/cat",
+  "roz/special-workspaces",
 ]
 
 [[plugins.source]]
@@ -934,6 +935,11 @@ show_glyph = true
 glyph = "user-square"
 label = "roziscoding"
 type = "custom_button"
+
+[widget.special_workspaces]
+glyphs = { magic = "sparkles", toggleable = "layers-subtract" }
+style = "pills"
+type = "roz/special-workspaces:widget"
 
 [widget.username.actions]
 left = "exec noctalia msg panel-toggle control-center"

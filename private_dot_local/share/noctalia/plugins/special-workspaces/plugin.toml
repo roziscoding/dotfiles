@@ -1,0 +1,67 @@
+id          = "roz/special-workspaces"
+name        = "Special Workspaces"
+version     = "1.0.0"
+plugin_api  = 32
+author      = "roz"
+license     = "MIT"
+icon        = "sparkles"
+description = "Shows Hyprland special workspaces, which the built-in workspaces widget hides, and toggles them on click."
+dependencies = ["hyprctl", "socat"]
+tags        = ["hyprland", "workspaces", "bar"]
+
+[[widget]]
+id    = "widget"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key             = "poll_interval_ms"
+  type            = "int"
+  label_key       = "settings.poll_interval_ms.label"
+  description_key = "settings.poll_interval_ms.description"
+  default         = 150
+  min             = 50
+  max             = 2000
+  step            = 50
+
+  [[widget.setting]]
+  key             = "style"
+  type            = "select"
+  label_key       = "settings.style.label"
+  description_key = "settings.style.description"
+  default         = "plain"
+  options = [
+    { value = "plain", label_key = "settings.style.options.plain" },
+    { value = "pills", label_key = "settings.style.options.pills" },
+  ]
+
+  [[widget.setting]]
+  key             = "display"
+  type            = "select"
+  label_key       = "settings.display.label"
+  description_key = "settings.display.description"
+  default         = "glyph"
+  options = [
+    { value = "glyph", label_key = "settings.display.options.glyph" },
+    { value = "name", label_key = "settings.display.options.name" },
+    { value = "both", label_key = "settings.display.options.both" },
+  ]
+
+  [[widget.setting]]
+  key             = "always_show"
+  type            = "string_list"
+  label_key       = "settings.always_show.label"
+  description_key = "settings.always_show.description"
+  default         = []
+
+  [[widget.setting]]
+  key             = "glyphs"
+  type            = "string_map"
+  label_key       = "settings.glyphs.label"
+  description_key = "settings.glyphs.description"
+  default         = { magic = "sparkles" }
+
+  [[widget.setting]]
+  key             = "default_glyph"
+  type            = "glyph"
+  label_key       = "settings.default_glyph.label"
+  default         = "app-window"

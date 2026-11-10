@@ -1,0 +1,41 @@
+{
+  "settings": {
+    "poll_interval_ms": {
+      "label": "Polling interval (ms)",
+      "description": "Used only while Hyprland's event socket is unavailable."
+    },
+    "style": {
+      "label": "Style",
+      "description": "Pills reuse the colors and sizes of the built-in workspaces widget.",
+      "options": {
+        "plain": "Plain",
+        "pills": "Pills"
+      }
+    },
+    "display": {
+      "label": "Display",
+      "description": "What each special workspace shows in the bar.",
+      "options": {
+        "glyph": "Glyph",
+        "name": "Name",
+        "both": "Glyph and name"
+      }
+    },
+    "always_show": {
+      "label": "Always show",
+      "description": "Special workspace names (without the special: prefix) to show even when empty."
+    },
+    "glyphs": {
+      "label": "Glyphs",
+      "description": "Glyph for each special workspace name."
+    },
+    "default_glyph": {
+      "label": "Default glyph"
+    }
+  },
+  "tooltip": {
+    "open": "open",
+    "closed": "closed",
+    "windows": "windows"
+  }
+}
