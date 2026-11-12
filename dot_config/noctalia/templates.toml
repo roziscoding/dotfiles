@@ -28,4 +28,4 @@ enable_community_templates = true
 [theme.templates.user.openrgb]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/openrgb"
 output_path = "$XDG_CONFIG_HOME/../.local/state/primary_color"
-post_hook = "hyprctl notify 1 5000 0 'Aplicando paleta'; ~/.local/share/mise/shims/akko-rgb color \"$(cat ~/.local/state/primary_color)\"; openrgb --mode direct --color \"$(cat ~/.local/state/primary_color)\""
+post_hook = "~/.local/share/mise/shims/akko-rgb color \"$(cat ~/.local/state/primary_color)\"; openrgb --mode direct --color \"$(cat ~/.local/state/primary_color)\""
