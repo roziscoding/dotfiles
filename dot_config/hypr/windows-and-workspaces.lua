@@ -139,6 +139,58 @@ hl.window_rule({
 	float = true,
 })
 
+-- Android emulator: tiled, the device screen gets cut off. The side toolbar and extended controls
+-- float; the device window is pseudotiled (it keeps its own size inside the slot it reserves).
+hl.window_rule({
+	name = "float-android-emulator",
+	match = { class = "^Emulator$", title = "^(Emulator|Extended Controls.*)$" },
+	float = true,
+})
+
+-- Sizes the device window's tile to its own width plus room for the toolbar, which the emulator
+-- puts on its right. Only for the common case of a side-by-side split with one other window.
+local function fit_emulator_split(window, width)
+	local workspace = window.workspace
+	local monitor = workspace and workspace.monitor
+	if not monitor then
+		return
+	end
+	local others, toolbar = {}, nil
+	for _, other in ipairs(hl.get_windows({ workspace = workspace.id })) do
+		if other.class == "Emulator" and other.title == "Emulator" then
+			toolbar = other
+		elseif other.address ~= window.address and not other.floating then
+			others[#others + 1] = other
+		end
+	end
+	if #others ~= 1 then
+		return
+	end
+
+	local outer = hl.get_config("general.gaps_out")
+	local inner = hl.get_config("general.gaps_in").right
+	local area = monitor.width - monitor.reserved.left - monitor.reserved.right - outer.left - outer.right
+	-- The device is centered in its tile, so leave the toolbar's room on both sides.
+	local slot = width + 2 * ((toolbar and toolbar.size.x or 0) + inner) + 2 * inner
+	local share = slot / area
+	-- The ratio sizes the first child of the split: area * ratio / 2.
+	local ratio = window.at.x < others[1].at.x and 2 * share or 2 - 2 * share
+	hl.dispatch(hl.dsp.focus({ window = window }))
+	hl.dispatch(hl.dsp.layout(string.format("splitratio %.4f exact", math.max(0.1, math.min(1.9, ratio)))))
+end
+
+-- Both windows open titled "Emulator" and the device window is renamed afterwards, so the rule
+-- above floats it too: tile and pseudotile it once its real title shows up.
+hl.on("window.title", function(window)
+	if not window or window.class ~= "Emulator" or not window.floating or not window.title:match("^Android Emulator") then
+		return
+	end
+	local width = window.size.x
+	hl.dispatch(hl.dsp.window.float({ action = "disable", window = window }))
+	hl.dispatch(hl.dsp.window.pseudo({ window = window }))
+	fit_emulator_split(window, width)
+end)
+
 hl.window_rule({
 	match = { class = "openlogi-action-ring" },
 	float = true,
