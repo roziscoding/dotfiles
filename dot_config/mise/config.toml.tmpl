@@ -48,6 +48,7 @@ vault = "latest"
 codex = "latest"
 "github:patriceckhart/zot" = "latest"
 "github:roziscoding/akko-5075-rgb" = "latest"
+"npm:@openai/codex-security" = "latest"
 
 [env]
 DOCKER_HOST = ""
@@ -115,6 +116,7 @@ tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
+cs = "command cs scan --model gpt-daybreak-blue-latest --cyber-access-program daybreak_blue"
 {{- if eq .chezmoi.os "linux" }}
 pbcopy = 'xclip -selection clipboard -in'
 randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
