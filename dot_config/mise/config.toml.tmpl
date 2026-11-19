@@ -116,7 +116,7 @@ tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
-cs = "command cs scan --model gpt-daybreak-blue-latest --cyber-access-program daybreak_blue"
+cscan = "command cs scan --model gpt-daybreak-blue-latest --cyber-access-program daybreak_blue"
 {{- if eq .chezmoi.os "linux" }}
 pbcopy = 'xclip -selection clipboard -in'
 randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
