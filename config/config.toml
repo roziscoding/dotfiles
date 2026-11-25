@@ -4,7 +4,6 @@ node = "latest"
 deno = "latest"
 github-cli = "latest"
 jq = "latest"
-"npm:pino-pretty" = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 kubectl = "latest"
 "npm:agent-browser" = "latest"
@@ -15,6 +14,7 @@ starship = "latest"
 atuin = "latest"
 bat = "latest"
 caddy = "latest"
+chezmoi = "latest"
 cloudflared = "latest"
 cmake = "latest"
 coreutils = "latest"
@@ -38,32 +38,33 @@ argocd = "latest"
 "npm:ccstatusline" = "latest"
 go = "latest"
 "npm:greptile" = "latest"
-#codex = "latest"
 tmux = "latest"
 "npm:ctx7" = "latest"
+"npm:@oh-my-pi/pi-coding-agent" = "latest"
 usage = "latest"
+"github:meistrari/telactl" = "latest"
 vault = "latest"
-"npm:skills" = "latest"
-codex = "latest"
-"github:patriceckhart/zot" = "latest"
-"github:roziscoding/akko-5075-rgb" = "latest"
-"npm:hyperframes" = "latest"
-"npm:@openai/codex-security" = "latest"
-"npm:@meistrari/remy-cli" = "latest"
+"npm:localtunnel" = "latest"
+"github:meistrari/create-plate" = "latest"
 
 [env]
 DOCKER_HOST = ""
 EDITOR = "nvim"
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
 LANG = "en_US.UTF-8"
 LC_ALL = "en_US.UTF-8"
 PNPM_HOME = "{{env.HOME}}/pnpm"
+TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/home/roziscoding/.colima/docker.sock"
 TESTCONTAINERS_RYUK_DISABLED = "true"
+SYSTEMD_COLORS = "false"
+SYSTEMD_PAGERSECURE = "true"
+SYSTEMD_PAGER = "bat -l syslog -p"
 PAGER = "bat"
 
 [settings]
 color = true
 idiomatic_version_file_enable_tools = ["node"]
-minimum_release_age = "0"
+minimum_release_age = "0s"
 experimental = true
 
 [settings.npm]
@@ -78,6 +79,8 @@ als = 'atuin dotfiles alias set'
 at = 'atuin'
 cat = 'bat'
 claudio = 'claude --dangerously-skip-permissions'
+cm = 'chezmoi'
+cme = 'cm edit --apply'
 createdb = 'docker run --rm -it --network=host postgres createdb'
 db = 'devbox'
 dbr = 'devbox run'
@@ -102,74 +105,46 @@ p = 'pulumi'
 pk = 'pakku-mc'
 psql = 'docker run --rm -it --network=host postgres psql'
 pup = 'pulumi up'
+randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
 spt = 'spotify_player'
+unlock = 'pkill -USR1 hyprlock'
+yayy = 'yay --noconfirm'
+fp = 'flatpak'
 l1 = 'ls -1'
 l1a = 'ls -1a'
+flms = "flameshot"
 tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
-cscan = "command cs scan --model gpt-daybreak-blue-latest --cyber-access-program daybreak_blue"
-
-# Platform-specific settings live in config.linux.toml and config.macos.toml,
-# loaded through `auto_env = true` in miserc.toml.
-
-[vars]
-# Fallback commit email for ~/.gitconfig when the SSH key comment has none.
-# Answer once per machine with `mise vars prompt email`.
-email = { prompt = "Git email", default = "" }
+npx = "echo use bunx instead. if you MUST use npx, do 'command npx <...args>'"
 
 [bootstrap.repos]
 "~/.local/share/zinit/zinit.git" = { url = "https://github.com/zdharma-continuum/zinit.git" }
 
-[bootstrap.hooks]
-# Runs before the dotfiles step: the ~/.gitconfig template picks the signing key from this file.
-pre-dotfiles = 'test -f ~/.ssh/id_ed25519 || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -C ""'
+[bootstrap.packages]
+"pacman:hyprland" = "latest"
+"pacman:hyprlock" = "latest"
+"pacman:ghostty" = "latest"
+"pacman:nautilus" = "latest"
+"pacman:openrgb" = "latest"
+"pacman:brightnessctl" = "latest"
+"pacman:playerctl" = "latest"
+"pacman:wireplumber" = "latest"
+"pacman:wl-clipboard" = "latest"
+"pacman:satty" = "latest"
+"pacman:xclip" = "latest"
+"pacman:flatpak" = "latest"
+"pacman:cliphist" = "latest"
+"pacman:wl-clip-persist" = "latest"
 
-# Saves tracked files as they change.
-[bootstrap.services.mise-history]
-builtin = "history-watch"
+[bootstrap.user]
+login_shell = "/usr/bin/zsh"
 
-[dotfiles]
-# Rendered from Tera sources. Edit the source with `mise dot edit <target>`.
-"~/.zshrc" = { source = "dotfiles/zshrc.tera", mode = "template" }
-"~/.gitconfig" = { source = "dotfiles/gitconfig.tera", mode = "template", permissions = "0600" }
-
-# Codex rewrites its own config, so only the keys in these sources are managed.
-# `managed` wins over what the app wrote; `defaults` only fills keys that are missing.
-"~/.codex/config.toml/managed" = { source = "dotfiles/codex-managed.toml.tera", merge = true, template = "tera", permissions = "0600" }
-"~/.codex/config.toml/defaults" = { source = "dotfiles/codex-defaults.toml.tera", merge = "missing", template = "tera", permissions = "0600" }
-
-# Noctalia regenerates [palettes.noctalia] in place, so the palette is only a fallback.
-"~/.config/starship.toml/managed" = { source = "dotfiles/starship.toml", merge = true }
-"~/.config/starship.toml/noctalia-fallback" = { source = "dotfiles/starship-noctalia-fallback.toml", merge = "missing" }
-
-# Tracked in place: the live file is the source, saved to the mise history.
-"~/.config/mise" = { mode = "track" }
-"~/.claude/settings.json" = { mode = "track" }
-"~/.config/OpenRGB/OpenRGB.json" = { mode = "track" }
-"~/.config/asimeow/config.yaml" = { mode = "track" }
-"~/.config/atuin" = { mode = "track", include = ["config.toml", "themes/catppuccin-mocha-blue.toml"] }
-"~/.config/cava/config" = { mode = "track" }
-"~/.config/ccstatusline/settings.json" = { mode = "track" }
-"~/.config/gh/config.yml" = { mode = "track" }
-"~/.config/ghostty/config.ghostty" = { mode = "track" }
-"~/.config/nvim" = { mode = "track", include = [".neoconf.json", "init.lua", "lazyvim.json", "stylua.toml", "lua/config/**", "lua/plugins/avante.lua", "lua/plugins/lspconfig.lua", "lua/plugins/neotree.lua", "lua/plugins/telescope.lua"] }
-"~/.config/topgrade.toml" = { mode = "track" }
-"~/.envs.sh" = { mode = "track" }
-"~/.git-merge-drivers" = { mode = "track" }
-"~/.local/bin/steam-flatpak-shortcuts.ts" = { mode = "track" }
-"~/.local/share/noctalia/plugins/special-workspaces" = { mode = "track" }
-"~/.screenrc" = { mode = "track" }
-"~/.ssh/allowed_signers" = { mode = "track" }
-"~/.tmux.conf" = { mode = "track" }
-"~/.vimrc" = { mode = "track" }
-"~/.zprofile" = { mode = "track" }
-
-# Linux only: other platforms skip these paths.
-"~/.config/hypr" = { mode = "track", variants = [{ os = "linux" }], include = [".luarc.json", "autostart.lua", "globals.lua", "hyprland.lua", "input.lua", "keybindings.lua", "look-and-feel.lua", "monitors.lua", "noctalia-config.lua", "notification.lua", "windows-and-workspaces.lua"] }
-"~/.config/noctalia" = { mode = "track", variants = [{ os = "linux" }], include = ["settings.toml", "templates.toml", "templates/openrgb"] }
-"~/.config/paru/paru.conf" = { mode = "track", variants = [{ os = "linux" }] }
-"~/.config/systemd/user/steam-flatpak-shortcuts.path" = { mode = "track", variants = [{ os = "linux" }] }
-"~/.config/systemd/user/steam-flatpak-shortcuts.service" = { mode = "track", variants = [{ os = "linux" }] }
-"~/.config/uwsm/env" = { mode = "track", variants = [{ os = "linux" }] }
+[tasks.bootstrap]
+run = [
+  'test -f ~/.ssh/id_ed25519 || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -C ""',
+  'paru -S --needed --noconfirm noctalia vicinae-bin || true',
+  'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service || true',
+  'chezmoi init roziscoding --apply',
+]

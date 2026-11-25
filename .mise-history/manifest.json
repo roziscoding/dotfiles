@@ -244,7 +244,6 @@
   "permissions": {
     "home/.claude/settings.json": 384,
     "home/.config/gh/config.yml": 384,
-    "home/.local": 448,
     "home/.ssh": 448,
     "home/.ssh/allowed_signers": 384
   }

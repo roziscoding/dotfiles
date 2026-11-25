@@ -7,7 +7,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-2",
   "respondToBashCommands": false,
   "statusLine": {
     "type": "command",
@@ -17,8 +16,8 @@
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
     "i-have-adhd@i-have-adhd": true,
-    "figma@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
@@ -30,12 +29,7 @@
     }
   },
   "effortLevel": "high",
-  "modelSettings": {
-    "claude-fable-5-2": {
-      "effortLevel": "medium"
-    }
-  },
-  "tui": "fullscreen",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "editorMode": "normal",

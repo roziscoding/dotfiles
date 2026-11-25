@@ -1,2 +1,0 @@
-# Loads config.<os>.toml (config.linux.toml, config.macos.toml) next to config.toml.
-auto_env = true
