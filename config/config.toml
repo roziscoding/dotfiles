@@ -112,6 +112,7 @@ tmx = "tmux new"
 tmxl = "tmux ls"
 tmxn = "_(){ screen -S $1 -t $1 }; _"
 claude = "claude --allow-dangerously-skip-permissions"
+cscan = "command cs scan --model gpt-daybreak-blue-latest --cyber-access-program daybreak_blue"
 
 # Platform-specific settings live in config.linux.toml and config.macos.toml,
 # loaded through `auto_env = true` in miserc.toml.
