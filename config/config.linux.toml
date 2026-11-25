@@ -31,6 +31,8 @@ dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exc
 "pacman:libfido2" = "latest"
 "pacman:noctalia" = "latest"
 "aur:vicinae-bin" = "latest"
+"aur:1password" = "latest"
+"aur:1password-cli" = "latest"
 
 [bootstrap.user]
 login_shell = "/usr/bin/zsh"
