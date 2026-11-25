@@ -253,5 +253,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 # >>> tela dock cli >>>
-alias tela='/home/tela/.bun/bin/tela'
+alias tela="$HOME/.bun/bin/tela"
 # <<< tela dock cli <<<
