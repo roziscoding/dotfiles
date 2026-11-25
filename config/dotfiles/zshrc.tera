@@ -189,8 +189,6 @@ function aws-login() {
 alias tar=$(which gtar)
 {%- endif %}
 
-eval "$(direnv hook zsh)"
-
 source <(fzf --zsh)
 
 # pnpm
