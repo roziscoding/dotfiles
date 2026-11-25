@@ -1,2 +1,14 @@
 [bootstrap.user]
 login_shell = "/bin/zsh"
+
+[tools]
+vault = "latest"
+go = "latest"
+infisical = "latest"
+helm = "latest"
+argocd = "latest"
+k9s = "latest"
+pulumi = "latest"
+aws-cli = { version = "latest", symlink_bins = "true" }
+kubectl = "latest"
+"npm:@meistrari/remy-cli" = "latest"
