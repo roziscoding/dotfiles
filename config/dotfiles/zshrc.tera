@@ -184,9 +184,6 @@ function aws-login() {
   fi
   eval "$creds"
 }
-
-alias cme="chezmoi edit --apply"
-alias cm="chezmoi"
 {%- if os() == "macos" %}
 
 alias tar=$(which gtar)

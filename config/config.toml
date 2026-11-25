@@ -15,7 +15,6 @@ starship = "latest"
 atuin = "latest"
 bat = "latest"
 caddy = "latest"
-chezmoi = "latest"
 cloudflared = "latest"
 cmake = "latest"
 coreutils = "latest"
@@ -79,8 +78,6 @@ als = 'atuin dotfiles alias set'
 at = 'atuin'
 cat = 'bat'
 claudio = 'claude --dangerously-skip-permissions'
-cm = 'chezmoi'
-cme = 'cm edit --watch'
 createdb = 'docker run --rm -it --network=host postgres createdb'
 db = 'devbox'
 dbr = 'devbox run'
