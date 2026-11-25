@@ -1,0 +1,68 @@
+personality = "pragmatic"
+model = "gpt-6.2-sol"
+model_reasoning_effort = "medium"
+approvals_reviewer = "user"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+daybreak = false
+
+[features]
+cli_daybreak = true
+
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "current-dir",
+  "git-branch",
+  "permissions",
+  "approval-mode",
+  "context-remaining",
+  "five-hour-limit",
+  "weekly-limit",
+  "fast-mode",
+]
+status_line_use_colors = true
+sidebar_width_percent = 29
+
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"
+
+[mcp_servers.context7.http_headers]
+{#- Read from 1Password. Empty when `op` is missing or signed out, so the apply never fails;
+    the result is cached for a day, so after signing in run `rm -rf ~/.cache/mise/exec && mise dot apply`. #}
+CONTEXT7_API_KEY = "{{ exec(command=`op read --account mafagafos.1password.com "op://Private/Context7/API Key" 2>/dev/null || true`, cache_key="codex-context7-api-key", cache_duration="1d") }}"
+
+[mcp_servers.pantry]
+url = "https://pantry-api.tela.tools/mcp"
+http_headers_helper = "tela mcp headers pantry"
+
+[desktop]
+followUpQueueMode = "steer"
+selected-avatar-id = "pet_6ace45eb51d081919729ad8e890993a3"
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true

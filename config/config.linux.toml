@@ -1,0 +1,41 @@
+[env]
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
+SYSTEMD_COLORS = "false"
+SYSTEMD_PAGERSECURE = "true"
+SYSTEMD_PAGER = "bat -l syslog -p"
+
+[shell_alias]
+pbcopy = 'xclip -selection clipboard -in'
+randomwall = 'wal -i $(find ~/Pictures/Wallpapers -type f | shuf -n 1) && walogram'
+unlock = 'pkill -USR1 hyprlock'
+yayy = 'yay --noconfirm'
+fp = 'flatpak'
+flms = "flameshot"
+dfh = "df --exclude-type tmpfs --exclude-type vfat --exclude-type efivarfs --exclude-type devtmpfs -h"
+
+[bootstrap.packages]
+"pacman:hyprland" = "latest"
+"pacman:hyprlock" = "latest"
+"pacman:ghostty" = "latest"
+"pacman:nautilus" = "latest"
+"pacman:openrgb" = "latest"
+"pacman:brightnessctl" = "latest"
+"pacman:playerctl" = "latest"
+"pacman:wireplumber" = "latest"
+"pacman:wl-clipboard" = "latest"
+"pacman:satty" = "latest"
+"pacman:xclip" = "latest"
+"pacman:flatpak" = "latest"
+"pacman:cliphist" = "latest"
+"pacman:wl-clip-persist" = "latest"
+"pacman:libfido2" = "latest"
+"pacman:noctalia" = "latest"
+"aur:vicinae-bin" = "latest"
+"aur:1password" = "latest"
+"aur:1password-cli" = "latest"
+
+[bootstrap.user]
+login_shell = "/usr/bin/zsh"
+
+[bootstrap.hooks]
+final = 'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service steam-flatpak-shortcuts.path steam-flatpak-shortcuts.service || true'

@@ -1,0 +1,108 @@
+{#- Signing key fallback chain: a local ~/.ssh/id_ed25519 private key first,
+    else a public key read from 1Password and signed through op-ssh-sign.
+    When neither resolves, signing is rendered broken on purpose.
+    The commit email comes from the key comment when it has an @, else from the `email` var. -#}
+{%- set ssh_priv = env.HOME ~ "/.ssh/id_ed25519" -%}
+{%- set ssh_pub = ssh_priv ~ ".pub" -%}
+{%- set op_ref = "op://Private/main - id_ed25519/public key" -%}
+{%- set op_account = "mafagafos.1password.com" -%}
+{%- if os() == "macos" -%}
+{%- set op_sign = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" -%}
+{%- else -%}
+{%- set op_sign = "/opt/1Password/op-ssh-sign" -%}
+{%- endif -%}
+{#- 1Password is only asked when there is no local private key or no public key. -#}
+{%- set info = exec(command=`p=$(cat "$HOME/.ssh/id_ed25519.pub" 2>/dev/null || true); o=""; if [ ! -f "$HOME/.ssh/id_ed25519" ] || [ -z "$p" ]; then o=$(op read --account mafagafos.1password.com "op://Private/main - id_ed25519/public key" 2>/dev/null || true); fi; k="${o:-$p}"; s="${p:-$o}"; e=""; for f in $s; do case "$f" in *@*) e="$f" ;; esac; done; echo "KEY:$k"; printf "EMAIL:%s" "$e"`) | split(pat="
+") -%}
+{%- set sign_key = info[0] | replace(from="KEY:", to="") -%}
+{%- set email = info[1] | replace(from="EMAIL:", to="") -%}
+{%- if email == "" -%}
+{%- set email = vars.email -%}
+{%- endif -%}
+# This is Git's per-user configuration file.
+[user]
+	name = Roz
+	email = "{{ email }}"
+{%- if ssh_priv is exists %}
+	signingkey = {{ ssh_priv }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+{%- elif sign_key != "" %}
+	signingkey = {{ sign_key }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+	program = {{ op_sign }}
+[commit]
+	gpgsign = true
+{%- else %}
+	# WARNING: Git signing is intentionally broken.
+	# Reason: no local {{ ssh_priv }} private key exists, and no public signing key could be read from {{ op_ref }}.
+	# Fix: install 1Password CLI and the 1Password desktop app, sign in, enable the SSH agent, and verify:
+	#   op read --account {{ op_account }} {{ op_ref }}
+	# Alternative fix: create {{ ssh_priv }} and {{ ssh_pub }} locally, then re-run mise dot apply.
+	signingkey = MISE_MISSING_GIT_SIGNING_KEY
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+	program = {{ op_sign }}
+[commit]
+	gpgsign = true
+{%- endif %}
+[push]
+  default = current
+  followTags = true
+[alias]
+  prunef = "!git fetch --all --prune && git branch -vv | awk '{print $1,$4}' | grep 'gone]' | awk '{print $1}' | xargs git branch -D"
+  prune = "!git fetch --all --prune && git branch -vv | awk '{print $1,$4}' | grep 'gone]' | awk '{print $1}' | xargs git branch -d"
+  graph = log --all --graph --decorate --oneline --abbrev-commit
+  gone = "!git branch -vv | awk '{print $1,$4}' | grep 'gone]' | awk '{print $1}'"
+  amend = "commit --amend --no-edit"
+  shove = "push --force-with-lease"
+  co = "switch"
+  cb = "checkout -B"
+  c = "commit"
+  cm = "commit -m"
+  publish = "push -u origin HEAD"
+  wipe = "!git checkout . && git clean -fd"
+  nuke = "clean -fdx -e ai_docs"
+  prenuke = "clean -fdxn -e ai_docs"
+  uncommit = "!git reset --soft HEAD~1 && git reset"
+  rh = reset --hard
+  rs = reset --soft
+	psf = push --force-with-lease
+  apsf = !git amend && git psf
+  ps = push -u
+  pl = pull
+	aa = add --all
+  ai = add -i
+  ap = add -p
+	st = status
+	l = log
+  lo = log --oneline
+  s = switch
+  wt = worktree
+[init]
+  defaultBranch = main
+[core]
+  excludesFile = "~/.gitignore"
+	whitespace = cr-at-eol
+	sshCommand = ssh -o IdentitiesOnly=yes
+[merge]
+  conflictStyle = diff3
+[merge "identical"]
+    name = Automatically resolve if files are textually identical (ignoring whitespace)
+    driver = ~/.git-merge-drivers/identical.sh %A %B %A
+
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential

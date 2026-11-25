@@ -1,32 +1,31 @@
 export PATH=$HOME/.local/bin:$PATH
 
 # 1Password SSH agent
-{{- if eq "darwin" .chezmoi.os }}
+{%- if os() == "macos" %}
 OP_SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-{{- else }}
+{%- else %}
 OP_SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
-{{- end }}
+{%- endif %}
 if [ -S "$OP_SSH_AUTH_SOCK" ]; then
   export SSH_AUTH_SOCK="$OP_SSH_AUTH_SOCK"
 fi
 unset OP_SSH_AUTH_SOCK
+{%- if os() == "macos" %}
 
-{{ if eq "darwin" .chezmoi.os }}
 export PATH=/opt/homebrew/bin:$PATH
-{{ end }}
+{%- endif %}
 
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)";
 fi;
 
 eval "$(starship init zsh)"
-
-{{- if eq "linux" .chezmoi.os }}
+{%- if os() == "linux" %}
 
 # Flatpak environment
 FLATPAK_DATA_DIRS=/var/lib/flatpak/exports/share:${XDG_DATA_HOME}/flatpak/exports/share
 XDG_DATA_DIRS=$FLATPAK_DATA_DIRS${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}
-{{- end }}
+{%- endif %}
 
 # Fixing completions
 setopt automenu nolistambiguous
@@ -68,11 +67,11 @@ bindkey "^[[3~" delete-char
 
 # install other completions
 fpath=(~/.zsh/completion $fpath)
-{{ if eq "darwin" .chezmoi.os }}
+{%- if os() == "macos" %}
 
 # install docker desktop completions
 fpath=($HOME/.docker/completions $fpath)
-{{ end }}
+{%- endif %}
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
@@ -140,14 +139,13 @@ function telatun () {
 # function secrets () {
 #   eval "$(op inject -i ~/.envs.sh)"
 # }
-
-{{- if eq "linux" .chezmoi.os }}
+{%- if os() == "linux" %}
 
 function wreboot () {
         sudo efibootmgr -n 0
         sudo reboot
 }
-{{- end }}
+{%- endif %}
 
 function rd () {
     echo -n "Deleting $@. Continue? [y/n] "
@@ -187,15 +185,12 @@ function aws-login() {
   eval "$creds"
 }
 
-
 alias cme="chezmoi edit --apply"
 alias cm="chezmoi"
+{%- if os() == "macos" %}
 
-
-{{ if eq "darwin" .chezmoi.os }}
 alias tar=$(which gtar)
-{{ end }}
-
+{%- endif %}
 
 eval "$(direnv hook zsh)"
 
@@ -207,7 +202,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
 
 # if [ -f ~/.config/op/plugins.sh ]; then
 #   source ~/.config/op/plugins.sh
@@ -234,22 +228,19 @@ elif command -v fzf >/dev/null 2>&1; then
   zle -N fzf-history-widget
 fi
 
-{{/* # export NTFY_ACCESS_TOKEN={{ onepasswordRead "op://Private/ntfy/access token" "mafagafos.1password.com" }} */}}
-
 export PATH=$PATH:$HOME/.spicetify
+{%- if os() == "linux" %}
 
-{{ if eq "linux" .chezmoi.os }}
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 alias wal=hellwal
-{{ end }}
+{%- endif %}
 
 alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
 alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
 
-
-# >>> pages-gateway skill cli >>>
+# >>> tela-pages skill cli >>>
 export PATH="$HOME/.local/bin:$PATH"
-# <<< pages-gateway skill cli <<<
+# <<< tela-pages skill cli <<<
 
 # >>> tela dock local bin >>>
 export PATH="$HOME/.local/bin:$PATH"
@@ -262,8 +253,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# >>> tela dock cli >>>
-alias tela='bun run '"'"'$HOME/github.com/meistrari/tela-local/apps/tela-cli/src/index.ts'"'"''
-# <<< tela dock cli <<<
-
 eval "$(zoxide init zsh)"
+
+# >>> tela dock cli >>>
+alias tela='/home/tela/.bun/bin/tela'
+# <<< tela dock cli <<<
