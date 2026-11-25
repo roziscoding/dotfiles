@@ -39,7 +39,7 @@ mise bootstrap --dry-run     # preview packages, services, hooks and dotfiles
 ## History and repository
 
 - The `dev.mise.mise-history` user service saves a checkpoint a few seconds after a tracked file changes. History is a Git repository in `~/.local/state/mise/history`.
-- The origin is the `main` branch of `roziscoding/dotfiles`, a public repository. Sync mode is `manual`: nothing is published until `mise dot sync` runs.
+- The origin is the `main` branch of `roziscoding/dotfiles`, a public repository. Sync mode is `sync`: the watcher pushes within 5 minutes of a save, fetches every 15 minutes, and writes incoming changes when there is no conflict. Every edit to a tracked file ends up public without a review step.
 - mise writes that branch. Tracked paths are stored under `home/`, `home@linux/` and `config/`.
 - Never rebase, squash or force-push it. mise matches machines by commit ancestry and refuses to sync with a rewritten history.
 - A file changed on two machines in the same lines is a conflict and pauses sync for every file. Inspect it with `mise dot conflicts`, then resolve with `mise dot pull --keep-local <path>` or `--take-remote <path>`.

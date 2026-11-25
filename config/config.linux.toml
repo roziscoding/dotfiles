@@ -39,3 +39,7 @@ login_shell = "/usr/bin/zsh"
 
 [bootstrap.hooks]
 final = 'systemctl --user enable cliphist.service wl-clip-persist.service vicinae.service steam-flatpak-shortcuts.path steam-flatpak-shortcuts.service || true'
+
+[tools]
+"github:roziscoding/akko-5075-rgb" = "latest"
+"npm:hyperframes" = "latest"
