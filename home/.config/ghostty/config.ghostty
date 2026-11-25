@@ -1,5 +1,5 @@
 background-opacity = 0.95
-gtk-titlebar = true
+gtk-titlebar = false
 gtk-toolbar-style = raised-border
 font-family = JetBrainsMono NF
 clipboard-read = allow
@@ -9,3 +9,4 @@ shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo,path
 config-file = ?auto/theme.ghostty
 maximize = true
 theme = noctalia
+keybind = ctrl+enter=unbind
