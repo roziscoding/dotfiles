@@ -1,0 +1,260 @@
+export PATH=$HOME/.local/bin:$PATH
+
+# 1Password SSH agent
+{%- if os() == "macos" %}
+OP_SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{%- else %}
+OP_SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+{%- endif %}
+if [ -S "$OP_SSH_AUTH_SOCK" ]; then
+  export SSH_AUTH_SOCK="$OP_SSH_AUTH_SOCK"
+fi
+unset OP_SSH_AUTH_SOCK
+{%- if os() == "macos" %}
+
+export PATH=/opt/homebrew/bin:$PATH
+{%- endif %}
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)";
+fi;
+
+eval "$(starship init zsh)"
+{%- if os() == "linux" %}
+
+# Flatpak environment
+FLATPAK_DATA_DIRS=/var/lib/flatpak/exports/share:${XDG_DATA_HOME}/flatpak/exports/share
+XDG_DATA_DIRS=$FLATPAK_DATA_DIRS${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}
+{%- endif %}
+
+# Fixing completions
+setopt automenu nolistambiguous
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd beep extendedglob nomatch notify
+# End of lines configured by zsh-newuser-install
+
+# Use emacs keymap as the baseline, then layer custom bindings on top
+bindkey -e
+
+# Home / End (cover the common terminal escape-sequence variants)
+bindkey "^[[H"  beginning-of-line   # xterm
+bindkey "^[OH"  beginning-of-line   # application/cursor-key mode (kitty, etc.)
+bindkey "^[[1~" beginning-of-line   # linux console / rxvt
+bindkey "^[[F"  end-of-line         # xterm
+bindkey "^[OF"  end-of-line         # application/cursor-key mode
+bindkey "^[[4~" end-of-line         # linux console / rxvt
+
+# Line navigation with Alt+Left / Alt+Right (macOS Cmd+arrow muscle memory)
+bindkey "^[[1;3D" beginning-of-line # Alt+Left
+bindkey "^[[1;3C" end-of-line       # Alt+Right
+bindkey "^[^[[D"  beginning-of-line # Alt+Left (meta-prefixed variant)
+bindkey "^[^[[C"  end-of-line       # Alt+Right (meta-prefixed variant)
+
+# Word navigation with Ctrl+Left / Ctrl+Right
+bindkey "^[[1;5D" backward-word     # Ctrl+Left
+bindkey "^[[1;5C" forward-word      # Ctrl+Right
+bindkey "^[Od"    backward-word     # rxvt Ctrl+Left
+bindkey "^[Oc"    forward-word      # rxvt Ctrl+Right
+
+# Delete key
+bindkey "^[[3~" delete-char
+
+# install other completions
+fpath=(~/.zsh/completion $fpath)
+{%- if os() == "macos" %}
+
+# install docker desktop completions
+fpath=($HOME/.docker/completions $fpath)
+{%- endif %}
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+# Sets default editor to vim
+
+#  atload'bindkey "^[[A" history-substring-search-up; bindkey "^[[B" history-substring-search-down;' zsh-users/zsh-history-substring-search \
+# Loads plugins
+zinit wait lucid for \
+  atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay' \
+    zdharma-continuum/fast-syntax-highlighting \
+  blockf \
+    zsh-users/zsh-completions \
+  atload'!_zsh_autosuggest_start' \
+    zsh-users/zsh-autosuggestions \
+  hlissner/zsh-autopair \
+  zpm-zsh/colorize \
+  Tarrasch/zsh-command-not-found \
+  zpm-zsh/ls \
+  atload'alias python=python3' amstrad/oh-my-matrix \
+  reegnz/jq-zsh-plugin \
+  Tarrasch/zsh-colors #\
+#  Aloxaf/fzf-tab
+
+# Aliases
+function mkcommit () {
+  claude -p 'check staged changes and create a conventional commit message. print only the message, no additional output, so it can be passed directly to git'
+}
+
+function cz () {
+  code $(z -e $1)
+}
+
+function cfz () {
+  code $(fzf)
+}
+
+function mkd () {
+  mkdir -p $1 && cd $1
+}
+
+function telatun () {
+  cloudflared tunnel run --url $1 roz-dev-tunnel
+}
+
+# function ghc () {
+#   OWNER=$(basename $(pwd))
+#   op plugin run -- gh repo clone $OWNER/$1
+# }
+
+# function secrets () {
+#   eval "$(op inject -i ~/.envs.sh)"
+# }
+{%- if os() == "linux" %}
+
+function wreboot () {
+        sudo efibootmgr -n 0
+        sudo reboot
+}
+{%- endif %}
+
+function rd () {
+    echo -n "Deleting $@. Continue? [y/n] "
+    read REPLY
+    case $REPLY in
+      [Yy]) rm -rf $@ ;;
+    esac
+}
+
+function yy () {
+ local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" 
+ yazi "$@" --cwd-file="$tmp"
+ if cwd="$(cat -- "$tmp")"  && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]
+ then
+  cd -- "$cwd" || return
+ fi
+ rm -f -- "$tmp"
+}
+
+function ssh() {
+  [ "$TERM" = "xterm-kitty" ] && command kitten ssh "$@" || command ssh "$@";
+}
+
+function cdtemp() {
+  local tmp="$(mktemp -d $@)"
+  cd $tmp
+}
+
+# Usage `aws-login <PROFILE>`
+function aws-login() {
+  local creds
+  creds=$(aws configure export-credentials --profile $1 --format env 2>/dev/null)
+  if [ $? -ne 0 ]; then
+    aws sso login --profile $1
+    creds=$(aws configure export-credentials --profile $1 --format env)
+  fi
+  eval "$creds"
+}
+
+alias cme="chezmoi edit --apply"
+alias cm="chezmoi"
+{%- if os() == "macos" %}
+
+alias tar=$(which gtar)
+{%- endif %}
+
+eval "$(direnv hook zsh)"
+
+source <(fzf --zsh)
+
+# pnpm
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# if [ -f ~/.config/op/plugins.sh ]; then
+#   source ~/.config/op/plugins.sh
+# fi;
+
+export PATH="$PATH:$HOME/pnpm"
+export PATH="$PATH:$HOME/.local/bin"
+
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
+elif command -v zinit >/dev/null 2>&1; then
+  zinit light zsh-users/zsh-history-substring-search
+  bindkey "^[[A" history-substring-search-up
+  bindkey "^[[B" history-substring-search-down
+elif command -v fzf >/dev/null 2>&1; then
+  # Basic Ctrl+R binding for fzf history search
+  bindkey '^R' fzf-history-widget
+  fzf-history-widget() {
+    local selected
+    selected=$(history | fzf +s --tac --reverse | sed 's/ *[0-9]* *//')
+    LBUFFER+=$selected
+    zle redisplay
+  }
+  zle -N fzf-history-widget
+fi
+
+export PATH=$PATH:$HOME/.spicetify
+{%- if os() == "linux" %}
+
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+alias wal=hellwal
+{%- endif %}
+
+alias lint-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint"}'\'' | pnpx lint-staged --config -'
+alias fix-staged='echo '\''{"*.{ts,js,vue,md,json}": "eslint --fix"}'\'' | pnpx lint-staged --config -'
+
+# >>> tela-pages skill cli >>>
+export PATH="$HOME/.local/bin:$PATH"
+# <<< tela-pages skill cli <<<
+
+# >>> tela dock local bin >>>
+export PATH="$HOME/.local/bin:$PATH"
+# <<< tela dock local bin <<<
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(zoxide init zsh)"
+
+# >>> tela dock cli >>>
+alias tela='/home/tela/.bun/bin/tela'
+# <<< tela dock cli <<<

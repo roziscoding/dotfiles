@@ -1,0 +1,9 @@
+[Unit]
+Description=Espelha os atalhos do Steam flatpak para fora da sandbox
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/share/mise/installs/bun/latest/bin/bun %h/.local/bin/steam-flatpak-shortcuts.ts
+
+[Install]
+WantedBy=default.target

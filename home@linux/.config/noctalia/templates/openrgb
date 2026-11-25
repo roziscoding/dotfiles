@@ -1,0 +1,1 @@
+{{ colors.primary.default.hex_stripped | set_saturation 100 | darken 30 }}

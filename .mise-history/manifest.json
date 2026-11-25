@@ -1,0 +1,251 @@
+{
+  "format": 1,
+  "enrollment": [
+    {
+      "path": "config",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.claude/settings.json",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/OpenRGB/OpenRGB.json",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/asimeow/config.yaml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/atuin",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [],
+      "include": [
+        "config.toml",
+        "themes/catppuccin-mocha-blue.toml"
+      ]
+    },
+    {
+      "path": "home/.config/cava/config",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/ccstatusline/settings.json",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/gh/config.yml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/ghostty/config.ghostty",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/hypr",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [
+            "linux"
+          ],
+          "profile": null,
+          "default": false
+        }
+      ],
+      "include": [
+        ".luarc.json",
+        "autostart.lua",
+        "globals.lua",
+        "hyprland.lua",
+        "input.lua",
+        "keybindings.lua",
+        "look-and-feel.lua",
+        "monitors.lua",
+        "noctalia-config.lua",
+        "notification.lua",
+        "windows-and-workspaces.lua"
+      ]
+    },
+    {
+      "path": "home/.config/noctalia",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [
+            "linux"
+          ],
+          "profile": null,
+          "default": false
+        }
+      ],
+      "include": [
+        "settings.toml",
+        "templates.toml",
+        "templates/openrgb"
+      ]
+    },
+    {
+      "path": "home/.config/nvim",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [],
+      "include": [
+        ".neoconf.json",
+        "init.lua",
+        "lazyvim.json",
+        "stylua.toml",
+        "lua/config/**",
+        "lua/plugins/avante.lua",
+        "lua/plugins/lspconfig.lua",
+        "lua/plugins/neotree.lua",
+        "lua/plugins/telescope.lua"
+      ]
+    },
+    {
+      "path": "home/.config/paru/paru.conf",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [
+            "linux"
+          ],
+          "profile": null,
+          "default": false
+        }
+      ]
+    },
+    {
+      "path": "home/.config/systemd/user/steam-flatpak-shortcuts.path",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [
+            "linux"
+          ],
+          "profile": null,
+          "default": false
+        }
+      ]
+    },
+    {
+      "path": "home/.config/systemd/user/steam-flatpak-shortcuts.service",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [
+            "linux"
+          ],
+          "profile": null,
+          "default": false
+        }
+      ]
+    },
+    {
+      "path": "home/.config/topgrade.toml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.config/uwsm/env",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [
+            "linux"
+          ],
+          "profile": null,
+          "default": false
+        }
+      ]
+    },
+    {
+      "path": "home/.envs.sh",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.git-merge-drivers",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.local/bin/steam-flatpak-shortcuts.ts",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.local/share/noctalia/plugins/special-workspaces",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.screenrc",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.ssh/allowed_signers",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.tmux.conf",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.vimrc",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    },
+    {
+      "path": "home/.zprofile",
+      "autosave": true,
+      "encrypt": false,
+      "variants": []
+    }
+  ],
+  "exclude": [],
+  "recipients": [],
+  "permissions": {
+    "home/.claude/settings.json": 384,
+    "home/.config/gh/config.yml": 384,
+    "home/.local": 448,
+    "home/.ssh": 448,
+    "home/.ssh/allowed_signers": 384
+  }
+}

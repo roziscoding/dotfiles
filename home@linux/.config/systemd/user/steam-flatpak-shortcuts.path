@@ -1,0 +1,8 @@
+[Unit]
+Description=Observa os atalhos que o Steam flatpak cria na sandbox
+
+[Path]
+PathChanged=%h/.var/app/com.valvesoftware.Steam/.local/share/applications
+
+[Install]
+WantedBy=default.target

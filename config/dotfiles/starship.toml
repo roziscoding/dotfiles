@@ -1,0 +1,161 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+palette = "noctalia"
+
+add_newline = false
+command_timeout = 5000
+
+
+format = """
+$os\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$username\
+${custom.gnu_screen}\
+$directory\
+$vcsh\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$package\
+$deno\
+$nodejs\
+$bun\
+$env_var\
+$fill\
+$sudo\
+$cmd_duration\
+$time\
+$line_break\
+$jobs\
+$status\
+$shell\
+$character"""
+
+[username]
+format = "[$user]($style)"
+show_always = true
+aliases = { "user" = "roziscoding" }
+
+[directory]
+format = " in [$path]($style)[$read_only]($read_only_style) "
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[nodejs]
+detect_extensions = []
+detect_folders = []
+format = "[$symbol($version )]($style)"
+
+[deno]
+format = "[$symbol($version )]($style)"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[package]
+format = "[$symbol$version]($style) "
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+time_format = "%d/%m/%Y %Hh%M"
+
+[sudo]
+disabled = false
+format = "[$symbol]($style)"
+
+[os]
+disabled = false
+format = "[$symbol]($style)"
+
+[os.symbols]
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = "💠 "
+Alpine = "🏔 "
+Amazon = "🙂 "
+Android = "🤖 "
+Arch = "🎗 "
+Artix = "🎗 "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+Emscripten = "🔗 "
+EndeavourOS = " "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜 "
+HardenedBSD = "🛡 "
+Illumos = "🐦 "
+Kali = "🐉 "
+Linux = "🐧 "
+Mabox = "📦 "
+Macos = " "
+Manjaro = "🥭 "
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "❄️ "
+OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "🦎 "
+OracleLinux = "🦴 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+RockyLinux = "💠 "
+Redox = "🧪 "
+Solus = "⛵️ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Ultramarine = "🔷 "
+Unknown = "❓ "
+Void = "  "
+Windows = "🪟 "
+
+[custom.gnu_screen]
+command = "screen -Q title"
+style = "green bold"
+description = "Display a monitor glyph and the session name if we're in a gnu screen session."
+format = '[:$output]($style)'
+when = """ test "$STY" """
+
