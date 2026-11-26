@@ -40,5 +40,6 @@
   "editorMode": "normal",
   "autoCompactEnabled": false,
   "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "hooks": {"SessionStart":[{"matcher":"^(startup|resume|clear|compact|fork)$","hooks":[{"type":"command","command":"bash '/home/tela/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
 }
