@@ -130,7 +130,7 @@ builtin = "history-watch"
 
 # EKS access, shared with the team through 1Password ("EKS Config Files" item).
 "~/.kube/config" = { source = "dotfiles/eks-kubeconfig.tera", mode = "template", permissions = "0600" }
-"~/.kube/get-token.sh" = { source = "dotfiles/eks-get-token.sh.tera", mode = "template", permissions = "0755" }
+"~/.kube/get-token.sh" = { source = "dotfiles/eks-kube-exec.sh.tera", mode = "template", permissions = "0755" }
 "~/.aws/config" = { source = "dotfiles/eks-aws-config.tera", mode = "template", permissions = "0644" }
 
 # Tracked in place: the live file is the source, saved to the mise history.
