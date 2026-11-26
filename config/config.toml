@@ -52,12 +52,6 @@ experimental = true
 
 [settings.npm]
 package_manager = "bun"
-
-# dotfiles/eks-*.tera reference a 1Password vault and item by ID, which the
-# publish scan reads as tokens. They are IDs, not secrets.
-[settings.history]
-allow_secret_values = ["wuir2kvqpjlojcnaaza3cb5lxa", "dq7hhmyldx6jx7vkmugjkzjlkq"]
-
 [settings.github]
 credential_command = "gh auth token"
 
