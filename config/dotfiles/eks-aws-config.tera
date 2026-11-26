@@ -1,0 +1,4 @@
+{#- Read from the "EKS Config Files" item in the Foundation Team Vault (1Password, telateam account).
+    When `op` is missing or signed out, the current file is kept. Cached for a day:
+    to pick up a new version, run `rm -rf ~/.cache/mise/exec && mise dot apply`. -#}
+{{ exec(command=`op read --account telateam.1password.com "op://wuir2kvqpjlojcnaaza3cb5lxa/dq7hhmyldx6jx7vkmugjkzjlkq/aws-config" 2>/dev/null || command cat "$HOME/.aws/config" 2>/dev/null || true`, cache_key="eks-aws-config", cache_duration="1d") }}
