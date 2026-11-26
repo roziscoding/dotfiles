@@ -56,7 +56,7 @@ mise bootstrap --dry-run     # preview packages, services, hooks and dotfiles
 
 - The repository is public. Never write a secret into a tracked file or a source.
 - `dotfiles/codex-managed.toml.tera` reads the Context7 key from 1Password with `exec()` and a one-day cache. The value is empty when `op` is signed out, and the empty value is cached too: after signing in, run `rm -rf ~/.cache/mise/exec && mise dot apply`.
-- `dotfiles/eks-*.tera` render `~/.kube/config`, `~/.kube/get-token.sh` and `~/.aws/config` from the "EKS Config Files" item in the team's 1Password (`telateam` account), with a one-day cache. When `op` is signed out, the current file is kept. To change one of these files, upload the new version to the 1Password item, then run `rm -rf ~/.cache/mise/exec && mise dot apply`.
+- `dotfiles/eks-*.tera` render `~/.kube/config`, `~/.kube/get-token.sh` and `~/.aws/config` from the "EKS Config Files" item in the team's 1Password (`telateam` account), without a cache, so every `mise dot status`, `diff` and `apply` calls `op`. When `op` is signed out, the current file is kept. To change one of these files, upload the new version to the 1Password item, then run `mise dot apply`.
 - `~/.envs.sh` holds `op://` references, not values.
 - `mise dot sync` refuses to push lines that look like secrets. Treat a refusal as a real finding.
 
