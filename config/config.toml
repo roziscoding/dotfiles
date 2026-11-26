@@ -33,6 +33,7 @@ usage = "latest"
 "npm:skills" = "latest"
 codex = "latest"
 "npm:@openai/codex-security" = "latest"
+herdr = "latest"
 
 [env]
 DOCKER_HOST = ""
