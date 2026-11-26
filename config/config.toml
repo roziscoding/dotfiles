@@ -53,6 +53,11 @@ experimental = true
 [settings.npm]
 package_manager = "bun"
 
+# Saved versions of dotfiles/eks-*.tera had `cache_key = "..."` lines, which the
+# publish scan reads as `*_KEY` secrets. They are cache names, not secrets.
+[settings.history]
+allow_secret_values = ["eks-aws-config", "eks-kubeconfig", "eks-get-token"]
+
 [settings.github]
 credential_command = "gh auth token"
 
