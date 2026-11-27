@@ -49,7 +49,7 @@ scale = 1.0
 shadow = true
 show_on_workspace_switch = true
 smart_auto_hide = false
-start = ["workspaces", "wallpaper", "wallhaven", "audio_visualizer"]
+start = ["workspaces", "special_workspaces", "wallpaper", "wallhaven", "audio_visualizer"]
 thickness = 34
 widget_spacing = 6
 
