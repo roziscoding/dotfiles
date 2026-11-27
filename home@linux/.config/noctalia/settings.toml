@@ -73,7 +73,7 @@ border_width = 1.0
 enabled = true
 fill = "surface_container"
 id = "g3"
-members = ["tray", "status", "notifications", "widget_2"]
+members = ["tray", "status", "notifications", "output_volume"]
 opacity = 1.0
 padding = 6.0
 
@@ -231,7 +231,7 @@ border = "outline_variant"
 border_width = 0.0
 concave_edge_corners = true
 cross_axis_padding = 8
-enabled = true
+enabled = false
 icon_size = 48
 inactive_opacity = 0.85000002384185791
 inactive_scale = 0.85000002384185791
@@ -558,9 +558,6 @@ wifi = true
 manager_open_near_click = true
 manager_placement = "attached"
 
-[plugin_settings."blackbartblues/audio-switcher"]
-show_notification_on_switch = false
-
 [plugin_settings."noctalia/world_clock"]
 show_add_zone = false
 time_format = "24h"
@@ -568,7 +565,7 @@ working_hours_end = 18
 working_hours_start = 9
 
 [plugin_settings."yuuto/arch-updater"]
-auto_check_hours = 8
+amem_helper_placeholder = 0
 
 [plugins]
 auto_update = "all"
