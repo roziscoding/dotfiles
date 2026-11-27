@@ -565,7 +565,8 @@ working_hours_end = 18
 working_hours_start = 9
 
 [plugin_settings."yuuto/arch-updater"]
-amem_helper_placeholder = 0
+aur_helper = "paru"
+auto_check_hours = 8
 
 [plugins]
 auto_update = "all"
@@ -573,7 +574,6 @@ enabled = [
   "noctalia/wallhaven",
   "yuuto/arch-updater",
   "aristides/udiskie",
-  "blackbartblues/audio-switcher",
   "noctalia/world_clock",
   "dotnetrob/cat",
   "roz/special-workspaces",
@@ -929,6 +929,7 @@ type = "sysmon"
 
 [widget.output_volume]
 device = "output"
+hide_label_when_muted = true
 type = "volume"
 
 [widget.privacy]
@@ -950,8 +951,10 @@ hide_when_empty = true
 type = "aristides/udiskie:status"
 
 [widget.sysmon]
-stat = "gpu_vram"
+show_value = true
+stat = "gpu_usage"
 type = "sysmon"
+visualization = "none"
 
 [widget.sysmon_gpu]
 glyph = "photo"
@@ -972,6 +975,7 @@ type = "custom_button"
 
 [widget.special_workspaces]
 always_show = ["magic", "toggleable"]
+capsule = true
 glyphs = { magic = "sparkles", toggleable = "layers-subtract" }
 style = "pills"
 type = "roz/special-workspaces:widget"
@@ -986,9 +990,6 @@ type = "noctalia/wallhaven:wallhaven"
 [widget.widget]
 hide_on_empty = true
 type = "yuuto/arch-updater:widget"
-
-[widget.widget_2]
-type = "blackbartblues/audio-switcher:widget"
 
 [widget.workspaces]
 label_source = "name"
