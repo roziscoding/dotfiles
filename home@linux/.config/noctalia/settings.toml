@@ -810,7 +810,7 @@ wallpaper_scheme = "m3-rainbow"
 
 
 [wallpaper]
-directory = "$HOME/Pictures/Wallpapers"
+directory = "~/Pictures/Wallpapers"
 directory_dark = ""
 directory_light = ""
 edge_smoothness = 0.30000001192092896
