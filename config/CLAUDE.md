@@ -16,7 +16,7 @@ mise manages them through `[dotfiles]` and `[bootstrap.*]` in this directory (`~
 - **`mode = "track"`**: the live file is the source. Edit it in place, or let the application rewrite it. Most files use this mode.
     - A directory entry with `include` tracks only the listed files.
     - `variants = [{ os = "linux" }]` keeps the path off other platforms.
-- **`mode = "template"`**: `~/.zshrc` and `~/.gitconfig`, rendered from Tera sources in `dotfiles/`. Never edit the target: `mise dot apply` overwrites it.
+- **`mode = "template"`**: `~/.zshrc`, `~/.gitconfig`, `~/.kube/config`, `~/.kube/get-token.sh` and `~/.aws/config`, rendered from Tera sources in `dotfiles/`. Never edit the target: `mise dot apply` overwrites it.
 - **Merge edits** (`"<target>/<id>"` keys): `~/.codex/config.toml` and `~/.config/starship.toml`. mise owns only the keys present in the source, and the application owns the rest of the file.
     - `merge = true`: the source wins. A value the application changed is reverted on the next apply.
     - `merge = "missing"`: the source only fills keys the target lacks.
@@ -56,6 +56,7 @@ mise bootstrap --dry-run     # preview packages, services, hooks and dotfiles
 
 - The repository is public. Never write a secret into a tracked file or a source.
 - `dotfiles/codex-managed.toml.tera` reads the Context7 key from 1Password with `exec()` and a one-day cache. The value is empty when `op` is signed out, and the empty value is cached too: after signing in, run `rm -rf ~/.cache/mise/exec && mise dot apply`.
+- `dotfiles/eks-*.tera` render `~/.kube/config`, `~/.kube/get-token.sh` and `~/.aws/config` from the "EKS Config Files" item in the team's 1Password (`telateam` account), without a cache, so every `mise dot status`, `diff` and `apply` calls `op`. When `op` is signed out, the current file is kept. To change one of these files, upload the new version to the 1Password item, then run `mise dot apply`.
 - `~/.envs.sh` holds `op://` references, not values.
 - `mise dot sync` refuses to push lines that look like secrets. Treat a refusal as a real finding.
 
